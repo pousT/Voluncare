@@ -29,7 +29,7 @@
     if($valid)
     {
         mysqli_stmt_execute($query);    
-        echo "<h2>注册成功</h2>"; 
+        echo "1"; 
     }
     else
     {
