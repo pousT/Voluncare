@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+  <script src="/ionic/js/angular/angular.min.js"></script>
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" media="screen">
+  <title><%= title %></title>
+
+</head>
+<body>
+
+<div data-ng-app="myApp" data-ng-controller="formCtrl">
+  <form novalidate name="myform">
+            <fieldset>
+                <legend></legend>
+                <div class="panel panel-default">
+                <div class="panel-heading">
+                    <p class="tc">注册信息</p>
+                </div>
+                <div class="panel-body m15">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-user"></span>
+                        </span>
+                        <input type="text" class="form-control" data-ng-model="user.name" placeholder="请输入用户名" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-lock"></span>
+                        </span>
+                        <input type="password" class="form-control" data-ng-model="user.pw" placeholder="请输入密码" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-lock"></span>
+                        </span>
+                        <input type="password" class="form-control" data-ng-model="user.pwc" placeholder="请再次输入密码" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-lock"></span>
+                        </span>
+                        <input type="text" class="form-control" data-ng-model="user.telephone" placeholder="请输入电话" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-lock"></span>
+                        </span>
+                        <input type="Date" class="form-control" data-ng-model="user.birthday" placeholder="请输入生日" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-lock"></span>
+                        </span>
+                        <input type="textarea" class="form-control" data-ng-model="user.address" placeholder="请输入地址" required>
+                    </div>
+                </div>
+              <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-lock"></span>
+                        </span>
+                        <input type="radio" class="form-control" data-ng-model="user.gender" value="male" >男<br>
+                        <input type="radio" class="form-control" data-ng-model="user.gender" value="female" >女<br>
+                    </div>
+                </div>
+                <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block" id="register1">注册</button>
+                </div>
+                <div class="form-group">
+                        <button type="button" class="btn btn-info col-sm-2 col-sm-offset-10" id="login1" >登录</button>
+                </div>
+                </div>
+                </div>
+            </fieldset>
+        </form>
+          <p>form = {{user }}</p>
+  <p>master = {{master}}</p>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('formCtrl', function($scope) {
+    $scope.master = {};
+    $scope.reset = function() {
+        $scope.user = angular.copy($scope.master);
+    };
+    $scope.reset();
+});
+</script>
+
+</body>
+</html>
