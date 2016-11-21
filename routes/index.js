@@ -64,10 +64,11 @@ router.post('/login',function(req, res) {
             console.log(err);
         }else if(!doc) {
             req.session.error = '用户名不存在';
+            res.locals.error = '名不存在'; 
             res.sendStatus(404);                            //    状态码返回404
             //res.redirect("/login");
         }else {
-            if(req.body.upwd != doc.password){     //查询到匹配用户名的信息，但相应的password属性不匹配
+            if(req.body.password != doc.password){     //查询到匹配用户名的信息，但相应的password属性不匹配
                 req.session.error = "密码错误";
                 res.sendStatus(404);
                 //res.redirect("/login");

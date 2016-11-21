@@ -1,23 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
-
-
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title><%= title %></title>
-    <link rel="stylesheet" href="stylesheets/bootstrap.min.css" media="screen">
-    <link rel="stylesheet" href="/ionic/css/ionic.min.css" rel="stylesheet">
-
-    <style type="text/css">
-    .m15{ margin: 15px;}
-     .tc{ text-align: center;font-size: 18px;font-weight: 600;}
-    </style>
+<meta charset="utf-8">
+    <link href="/ionic/css/ionic.min.css" rel="stylesheet">
+    <script type="text/javascript" src="/ionic/js/ionic.bundle.js"></script>
 </head>
-<body screen_capture_injected="true">
-    <div class="container">
-    <%- message %>
-        <form class="col-sm-offset-4 col-sm-4 form-horizontal" role="form" method="post" onsubmit="return false">
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+    <div class="bar bar-header">
+    <%= title %>
+    <%- message%>
+    </div>
+
+        <form ng-submit="processForm()">
             <fieldset>
                 <legend></legend>
                 <div class="panel panel-default">
@@ -30,7 +26,7 @@
                         <span class="input-group-addon">
                         <span class="glyphicon glyphicon-user"></span>
                         </span>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="请输入用户名" required>
+                        <input type="text" class="form-control" ng-model="formData.name" id="username" name="username" placeholder="请输入用户名"><span style="color:red" ng-show="formData.name.$dirty && myForm.user.$invalid"><span ng-show="formData.name.$error.required">用户名是必须的。</span></span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -38,51 +34,42 @@
                         <span class="input-group-addon">
                         <span class="glyphicon glyphicon-lock"></span>
                         </span>
-                        <input type="text" class="form-control" id="password" name="password" placeholder="请输入密码" required>
+                        <input type="text" class="form-control" ng-model="formData.password" id="password" name="password" placeholder="请输入密码" required>
                     </div>
                 </div>
                 <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block" id="login0">登录</button>
+                        <button type="submit" id="login0">登录</button>
                 </div>
                 <div class="form-group">
-                        <button type="button" class="btn btn-info col-sm-2 col-sm-offset-10" id="register0">注册</button>
+                        <button type="button" id="register0">注册</button>
                 </div>
                 </div>
                 </div>
             </fieldset>
         </form>
-    </div>
+</div>
 
-    <script type="text/javascript" src="/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="/jquery/jquery.form.js"></script>
-    <script type="text/javascript" src="/ionic/js/ionic.bundle.js"></script>
-    <script type="text/javascript" src="/ionic/js/angular/angular.min.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function(){ 
-        $("#register0").click(function(){ 
-            location.href = "register";
-        });
-        $("#login0").click(function(){ 
-            var username = $("#username").val();
-            var password = $("#password").val();
-            var data = {"name":username,"upwd":password};
-            $.ajax({ 
-                url:'/login',
-                type:'post',
-                data: data,
-                success: function(data,status){ 
-                    if(status == 'success'){ 
-                        location.href = 'home';
-                    }
-                },
-                error: function(data,status){ 
-                    if(status == 'error'){ 
-                        location.href = 'login';
-                    }
-                }
-            });
-        });
-    });
-    </script>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http, $location) {
+    $scope.formData = {};
+    $scope.error = "";
+    $scope.processForm = function() {
+        $http({
+            url:'/login',
+            method: 'POST',            
+            data: $scope.formData      
+        }).success(function(data,status){
+            if(status == 200) {
+                window.location = '/home';
+            }
+
+        }).error(function(status, data){
+            window.location = '/login';
+        })
+    }
+});
+</script>
+
 </body>
 </html>

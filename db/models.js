@@ -10,16 +10,5 @@ module.exports = {
         status:{type:Number,default:0}
     }
 
-    event:{
-        tile:{type:String, required:true},
-        start:{type:Date, required:true},
-        finished:{type:Date},
-        total:{type:Number,required:true},
-        credit:{type:Number,required:true},
-        requiredCredit:{type:Number,default:0},
-        requiredStatus:{type:Number,default:0},
-        location:{type:String, required:true},
-        description:{type:String, required:true}
-    }
 
 };
