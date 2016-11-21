@@ -9,44 +9,27 @@
 
 <div ng-app="myApp" ng-controller="myCtrl">
     <div class="bar bar-header">
-    <%= title %>
-    <%- message%>
+        <div class="h1 title"><%= title %></div>
+           <%- message%> 
     </div>
-
-        <form ng-submit="processForm()">
-            <fieldset>
-                <legend></legend>
-                <div class="panel panel-default">
-                <div class="panel-heading">
-                    <p class="tc">请先登录</p>
+    <div class="content has-header">
+              <div class="list">
+            <label class="item item-input">  
+                <i class="icon ion-person"></i>  
+                        <input type="text" class="form-control" ng-model="formData.name" id="username" name="username" placeholder="请输入用户名"><span style="color:red" ng-show="formData.name.$dirty && formData.user.$invalid"><span ng-show="formData.name.$error.required">用户名是必须的。</span></span>
+            </label>
                 </div>
-                <div class="panel-body m15">
-                <div class="form-group">
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-user"></span>
-                        </span>
-                        <input type="text" class="form-control" ng-model="formData.name" id="username" name="username" placeholder="请输入用户名"><span style="color:red" ng-show="formData.name.$dirty && myForm.user.$invalid"><span ng-show="formData.name.$error.required">用户名是必须的。</span></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-lock"></span>
-                        </span>
+                    <label class="item item-input">  
+                        <i class="icon ion-locked"></i> 
                         <input type="text" class="form-control" ng-model="formData.password" id="password" name="password" placeholder="请输入密码" required>
-                    </div>
+                    </label>
+
+                <div class="padding">
+                        <button class="button button-block button-positive" type="button" ng-click="processForm()">登录</button>
+                        <button class="button button-block button-positive" type="button" ng-click="register()">注册</button>
+                        <br>
                 </div>
-                <div class="form-group">
-                        <button type="submit" id="login0">登录</button>
-                </div>
-                <div class="form-group">
-                        <button type="button" id="register0">注册</button>
-                </div>
-                </div>
-                </div>
-            </fieldset>
-        </form>
+    </div>
 </div>
 
 <script>
@@ -54,6 +37,9 @@ var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope, $http, $location) {
     $scope.formData = {};
     $scope.error = "";
+    $scope.register = function() {
+                window.location = '/register';        
+    }
     $scope.processForm = function() {
         $http({
             url:'/login',
