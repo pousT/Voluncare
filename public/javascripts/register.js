@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ionic-citypicker']);
+var app = angular.module('myApp', ['ionic']);
 app.controller('myCtrl', function($scope, $http, $location) {
         $scope.login = function(){ 
             window.location = '/login';

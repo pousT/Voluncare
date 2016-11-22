@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html  ng-app="myApp">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title><%= title %></title>
     <script type="text/javascript" src="/ionic/js/ionic.bundle.js"></script>
-    <script src="lib/ionic-citypicker/dist/ionic-citypicker.min.js"></script>
     <link href="/ionic/css/ionic.min.css" rel="stylesheet">
     <style type="text/css">
     .m15{ margin: 15px;}
@@ -14,13 +13,14 @@
     </style>
 </head>
 <body>
-    <div ng-app="myApp" ng-controller="myCtrl">
+    <div ng-controller="myCtrl">
 
-    <div class="bar bar-header">
-        <div class="h1 title">注册信息</div>
-        <%- message %>        
-    </div>
-    <div class="content has-header">
+  <ion-header-bar class="bar-light bar-subheader" title=''>
+    <h1 class="title"><%= title %></h1>
+    <%- message%> 
+  </ion-header-bar> 
+  <ion-view>
+    <ion-content class="padding">
         <label class="item item-input"> 
                 <span class="input-label">用户名</span>
                 <input type="text" ng-model="formData.name" id="username" name="username" placeholder="请输入用户名" required>
@@ -45,7 +45,7 @@
                 <span class="input-label">地址</span>   
                     <input type="textarea" ng-model="formData.address" id="address" name="address" placeholder="请输入地址" required>
             </label>
-                <div>     
+     
                         <label class="item item-radio">
                             <input type="radio" ng-model="formData.gender" id="gender" name="gender" value="male" ><div class="item-content">男</div>
                             <i class="radio-icon ion-checkmark"></i>
@@ -54,15 +54,17 @@
                             <input type="radio" ng-model="formData.gender" id="gender" name="gender" value="female" ><div class="item-content">女</div>
                             <i class="radio-icon ion-checkmark"></i>
                         </label>  
-                </div>
 
-                <div class="padding">
+
+                <label class="item item-input">
                         <button class="button button-block button-positive" ng-click="submit()" class="btn btn-primary btn-block" id="register1">注册</button>
-                
+                </label>
+                <label class="item item-input">
                         <button class="button button-block button-positive" ng-click="login()" >登录</button>
-                </div>
-    </div>
-    
+               </label>
+        </ion-content>               
+    </ion-view>
+
 </div>
 <script type="text/javascript" src="/javascripts/register.js"></script>
 </body>
