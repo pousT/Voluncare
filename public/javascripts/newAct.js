@@ -1,14 +1,15 @@
-
 var app = angular.module('myApp', ['ionic','ngMessages']);
 app.controller('myCtrl', function($scope, $http, $location) {
+        $scope.login = function(){ 
+            window.location = '/login';
+            
+        };
+
     $scope.formData = {};
     $scope.error = "";
-    $scope.register = function() {
-                window.location = '/register';        
-    }
-    $scope.processForm = function() {
+    $scope.submit = function() {
         $http({
-            url:'/login',
+            url:'/newAct',
             method: 'POST',            
             data: $scope.formData      
         }).success(function(data,status){
@@ -17,7 +18,8 @@ app.controller('myCtrl', function($scope, $http, $location) {
             }
 
         }).error(function(status, data){
-            window.location = '/login';
+            window.location = '/newAct';
         })
     }
+
 });

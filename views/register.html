@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title><%= title %></title>
     <script type="text/javascript" src="/ionic/js/ionic.bundle.js"></script>
+    <script src="/angular-messages/angular-messages.min.js"></script>
     <link href="/ionic/css/ionic.min.css" rel="stylesheet">
     <style type="text/css">
     .m15{ margin: 15px;}
@@ -15,35 +16,39 @@
 <body>
     <div ng-controller="myCtrl">
 
-  <ion-header-bar class="bar-light bar-subheader" title=''>
+  <ion-header-bar class="bar-dark" title=''>
     <h1 class="title"><%= title %></h1>
     <%- message%> 
   </ion-header-bar> 
   <ion-view>
     <ion-content class="padding">
+    <form name="myForm">
         <label class="item item-input"> 
                 <span class="input-label">用户名</span>
-                <input type="text" ng-model="formData.name" id="username" name="username" placeholder="请输入用户名" required>
+                <input type="text" name="user" ng-model="formData.name" id="username" placeholder="请输入用户名" required/><div ng-messages="myForm.user.$error"><div ng-messages-include = "msg/errorMsg.html"></div></div>
         </label>
             <label class="item item-input"> 
                 <span class="input-label">密码</span>
-                <input type="password" ng-model="formData.pw" id="password" name="password" placeholder="请输入密码" required>
+                <input type="password" ng-model="formData.pw" id="password" name="password" placeholder="请输入密码" required/><div ng-messages="myForm.password.$error"><div ng-messages-include="msg/errorMsg.html"></div></div>
             </label>
                 <label class="item item-input"> 
                     <span class="input-label">确认密码</span>
-                <input type="password" ng-model="formData.pwc" id="password1" name="password1" placeholder="请再次输入密码" required>
+                <input type="password" ng-model="formData.pwc" id="password1" name="password1" placeholder="请再次输入密码" required/><div ng-messages="myForm.password1.$error"><div ng-messages-include = "msg/errorMsg.html"></div></div>
                 </label>
                <label class="item item-input"> 
                     <span class="input-label">电话</span>
-                    <input type="text" ng-model="formData.telephone" id="telephone" name="telephone" placeholder="请输入电话" required>
+                    <input type="text" ng-model="formData.telephone" id="telephone" name="telephone" placeholder="请输入电话" required/><div ng-messages="myForm.telephone.$error"><div ng-messages-include = "msg/errorMsg.html"></div></div>
                 </label>
             <label class="item item-input"> 
                     <span class="input-label">生日</span>
-                    <input type="Date" ng-model="formData.birthday" id="birthday" name="birthday" placeholder="请输入生日" required>
+                    <input type="Date" ng-model="formData.birthday" id="birthday" name="birthday" placeholder="请输入生日" required/><div ng-messages="myForm.birthday.$error"><div ng-messages-include = "msg/errorMsg.html"></div></div>
             </label>
              <label class="item item-input">
                 <span class="input-label">地址</span>   
-                    <input type="textarea" ng-model="formData.address" id="address" name="address" placeholder="请输入地址" required>
+                    <input type="textarea" ng-model="formData.address" id="address" name="address" placeholder="请输入地址" required/>
+                    <div ng-messages="myForm.address.$error">
+                        <div ng-messages-include = "msg/errorMsg.html"></div>
+                    </div>
             </label>
      
                         <label class="item item-radio">
@@ -57,11 +62,12 @@
 
 
                 <label class="item item-input">
-                        <button class="button button-block button-positive" ng-click="submit()" class="btn btn-primary btn-block" id="register1">注册</button>
+                        <button class="button button-block button-positive" ng-disabled="myForm.$invalid" ng-click="submit()" class="btn btn-primary btn-block" id="register1">注册</button>
                 </label>
                 <label class="item item-input">
-                        <button class="button button-block button-positive" ng-click="login()" >登录</button>
+                        <button class="button button-block button-dark" ng-click="login()" >登录</button>
                </label>
+        </form>
         </ion-content>               
     </ion-view>
 
