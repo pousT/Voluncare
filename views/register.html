@@ -51,15 +51,11 @@
                     </div>
             </label>
      
-                        <label class="item item-radio">
-                            <input type="radio" ng-model="formData.gender" id="gender" name="gender" value="male" ><div class="item-content">男</div>
-                            <i class="radio-icon ion-checkmark"></i>
-                        </label>  
-                        <label class="item item-radio">                          
-                            <input type="radio" ng-model="formData.gender" id="gender" name="gender" value="female" ><div class="item-content">女</div>
-                            <i class="radio-icon ion-checkmark"></i>
-                        </label>  
-
+            <label class="item item-input">
+                <span class="input-label">性别</span>  
+                <select class="form-control" name="gender" id="input_gender" ng-model="formData.gender" ng-options="gender.name for gender in genders" required>
+                </select> 
+            </label>
 
                 <label class="item item-input">
                         <button class="button button-block button-positive" ng-disabled="myForm.$invalid" ng-click="submit()" class="btn btn-primary btn-block" id="register1">注册</button>
