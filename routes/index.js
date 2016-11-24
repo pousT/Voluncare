@@ -97,14 +97,27 @@ router.get("/newAct", function(req,res){
     res.render('newAct', { title: '新建活动'});
 });
 router.post("/newAct", function(req,res) {
-    var Activity = global.dbHandel.getModel('activity'); 
-            User.create({                             // 创建一组user对象置入model
-                "name": uname,
-                "password": upwd,
-                "birthday": ubirthday,
+    var Activity = global.dbHandel.getModel('activity');
+    var title = req.body.title;
+    var start = req.body.start;
+    var end = req.body.end;
+    var address = req.body.address;
+    var info = req.body.info;
+    var maxNum = req.body.maxNum;
+    var creditReq = req.body.creditReq;
+    var statusReq = req.body.statusReq;
+    var bonus = req.body.bonus;
+    console.log(req.body); 
+            Activity.create({                             
+                "title": title,
+                "start": start,
+                "end": end,
                 "address": uaddress,
-                "gender": ugender,
-                "telephone": utelephone
+                "description": info,
+                "maxNumber": maxNum,
+                "creditReq": creditReq,
+                "statusReq": statusReq,
+                "credit": bonus
             },function(err,doc){ 
                  if (err) {
                         res.sendStatus(500);
