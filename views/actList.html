@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html  ng-app="myApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title><%= title %></title>
+
+    <link href="/ionic/css/ionic.min.css" rel="stylesheet">
+    <style type="text/css">
+    .m15{ margin: 15px;}
+     .tc{ text-align: center;font-size: 18px;font-weight: 600;}
+    </style>
+</head>
+<body>
+    <div ng-controller="myCtrl">
+
+  <ion-header-bar class="bar-dark" title=''>
+    <h1 class="title"><%= title %></h1>
+    <%- message%> 
+  </ion-header-bar> 
+  <ion-view>
+    <ion-content class="padding">
+      <ion-list>
+        <% activities.forEach(function (activity, index) { %>
+          <p><h2><a href="#"><%= activity.title %></a></h2></p>
+          <p class="info">
+            Title：<%= activity.title %> | 
+            Date：<%= activity.start %>
+          </p>
+          <p><%- activity.maxNumber %></p>
+        <% }) %>
+      </ion-list>
+    </ion-content>               
+</ion-view>
+
+</div>
+<script type="text/javascript" src="/ionic/js/ionic.bundle.js"></script>
+<script src="/angular-messages/angular-messages.min.js"></script>
+<script type="text/javascript" src="/javascripts/actList.js"></script>
+</body>
+</head>
+</html>

@@ -130,4 +130,22 @@ router.post("/newAct", function(req,res) {
                   });    
 
 });
+/* GET create new activity page. */
+
+router.get("/actList", function(req,res){
+    var Activity = global.dbHandel.getModel('activity');
+    Activity.find({},function(err,docs) {
+        if(err) {
+            res.sendStatus(500);
+            console.log(err);
+        }else if(!docs) {
+            req.session.error = '活动列表为空';
+            res.locals.error = '活动列表为空'; 
+            res.sendStatus(404);                            //    状态码返回404
+        }else {
+            res.render('actList', { title: '活动列表', activities: docs});            
+        }
+    });
+
+});
 module.exports = router;
