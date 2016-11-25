@@ -98,6 +98,7 @@ router.get("/newAct", function(req,res){
 });
 router.post("/newAct", function(req,res) {
     var Activity = global.dbHandel.getModel('activity');
+    console.log(Activity);
     var title = req.body.title;
     var start = req.body.start;
     var end = req.body.end;
@@ -110,10 +111,10 @@ router.post("/newAct", function(req,res) {
     console.log(req.body); 
             Activity.create({                             
                 "title": title,
+                "description": info,
                 "start": start,
                 "end": end,
-                "address": uaddress,
-                "description": info,
+                "address": address,
                 "maxNumber": maxNum,
                 "creditReq": creditReq,
                 "statusReq": statusReq,
