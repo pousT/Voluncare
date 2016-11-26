@@ -1,0 +1,228 @@
+\contentsline {section}{\numberline {1}Introduction}{1}
+\contentsline {subsection}{\numberline {1.1}Purpose}{1}
+\contentsline {paragraph}{}{1}
+\contentsline {subsection}{\numberline {1.2}Scope of Project}{1}
+\contentsline {paragraph}{}{1}
+\contentsline {subsection}{\numberline {1.3}Introduction}{1}
+\contentsline {paragraph}{}{1}
+\contentsline {subsection}{\numberline {1.4}Glossary}{2}
+\contentsline {paragraph}{}{2}
+\contentsline {subsection}{\numberline {1.5}Overview of Document}{2}
+\contentsline {paragraph}{}{2}
+\contentsline {section}{\numberline {2}Functional Requirements Specification}{3}
+\contentsline {paragraph}{}{3}
+\contentsline {subsection}{\numberline {2.1} User Use Case}{3}
+\contentsline {subsubsection}{\numberline {2.1.1}Use case: Check member manual}{3}
+\contentsline {paragraph}{}{3}
+\contentsline {paragraph}{}{3}
+\contentsline {paragraph}{}{3}
+\contentsline {paragraph}{}{3}
+\contentsline {subsubsection}{\numberline {2.1.2}Use case: Check credit record}{3}
+\contentsline {paragraph}{}{4}
+\contentsline {paragraph}{}{4}
+\contentsline {paragraph}{}{4}
+\contentsline {subsubsection}{\numberline {2.1.3}Use case: Check personal information }{4}
+\contentsline {paragraph}{}{5}
+\contentsline {paragraph}{}{5}
+\contentsline {paragraph}{}{5}
+\contentsline {subsubsection}{\numberline {2.1.4}Use case: Check activity record }{6}
+\contentsline {paragraph}{}{6}
+\contentsline {paragraph}{}{6}
+\contentsline {paragraph}{}{6}
+\contentsline {subsubsection}{\numberline {2.1.5}Use case: Submit application }{7}
+\contentsline {paragraph}{}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {subsubsection}{\numberline {2.1.6}Use case: Check study record}{8}
+\contentsline {paragraph}{}{8}
+\contentsline {paragraph}{}{8}
+\contentsline {paragraph}{}{8}
+\contentsline {subsubsection}{\numberline {2.1.7}Use case: Attend projects }{9}
+\contentsline {paragraph}{}{9}
+\contentsline {paragraph}{}{9}
+\contentsline {paragraph}{}{9}
+\contentsline {subsubsection}{\numberline {2.1.8}Use case: View projects}{10}
+\contentsline {paragraph}{}{10}
+\contentsline {paragraph}{}{10}
+\contentsline {paragraph}{}{10}
+\contentsline {subsubsection}{\numberline {2.1.9}Use case: View Courses }{11}
+\contentsline {paragraph}{}{11}
+\contentsline {paragraph}{}{11}
+\contentsline {paragraph}{}{11}
+\contentsline {subsubsection}{\numberline {2.1.10}Use case: Attend Course }{12}
+\contentsline {paragraph}{}{12}
+\contentsline {paragraph}{}{12}
+\contentsline {paragraph}{}{12}
+\contentsline {subsubsection}{\numberline {2.1.11}Use case: Sign up }{13}
+\contentsline {paragraph}{}{13}
+\contentsline {paragraph}{}{13}
+\contentsline {paragraph}{}{13}
+\contentsline {subsubsection}{\numberline {2.1.12}Use case: Log in }{14}
+\contentsline {paragraph}{}{14}
+\contentsline {paragraph}{}{14}
+\contentsline {paragraph}{}{14}
+\contentsline {subsubsection}{\numberline {2.1.13}Use case: Complete the personal information}{15}
+\contentsline {paragraph}{}{15}
+\contentsline {paragraph}{}{15}
+\contentsline {paragraph}{}{15}
+\contentsline {paragraph}{}{15}
+\contentsline {subsubsection}{\numberline {2.1.14}Use case: Edit the information }{16}
+\contentsline {paragraph}{}{16}
+\contentsline {paragraph}{}{16}
+\contentsline {paragraph}{}{16}
+\contentsline {subsection}{\numberline {2.2}Manager Use Case}{17}
+\contentsline {subsubsection}{\numberline {2.2.1}Use case: Initiate learning and growth}{17}
+\contentsline {paragraph}{}{17}
+\contentsline {paragraph}{}{17}
+\contentsline {paragraph}{}{17}
+\contentsline {subsubsection}{\numberline {2.2.2}Use case: Edit learning and growth}{18}
+\contentsline {paragraph}{}{18}
+\contentsline {paragraph}{}{18}
+\contentsline {paragraph}{}{18}
+\contentsline {subsubsection}{\numberline {2.2.3}Use case: Identity authentication}{19}
+\contentsline {paragraph}{}{19}
+\contentsline {paragraph}{}{19}
+\contentsline {paragraph}{}{19}
+\contentsline {subsubsection}{\numberline {2.2.4}Use case: Add activity records }{20}
+\contentsline {paragraph}{}{20}
+\contentsline {paragraph}{}{20}
+\contentsline {paragraph}{}{20}
+\contentsline {subsubsection}{\numberline {2.2.5}Use case: View users list }{21}
+\contentsline {paragraph}{}{21}
+\contentsline {paragraph}{}{21}
+\contentsline {paragraph}{}{21}
+\contentsline {subsubsection}{\numberline {2.2.6}Use case: Search users }{22}
+\contentsline {paragraph}{}{22}
+\contentsline {paragraph}{}{22}
+\contentsline {paragraph}{}{22}
+\contentsline {subsubsection}{\numberline {2.2.7}Use case: View users?`details }{23}
+\contentsline {paragraph}{}{23}
+\contentsline {paragraph}{}{23}
+\contentsline {paragraph}{}{23}
+\contentsline {subsubsection}{\numberline {2.2.8}Use case: Generate QR Code }{24}
+\contentsline {paragraph}{}{24}
+\contentsline {paragraph}{}{24}
+\contentsline {paragraph}{}{24}
+\contentsline {subsubsection}{\numberline {2.2.9}Use case: Modify user credit}{25}
+\contentsline {paragraph}{}{25}
+\contentsline {paragraph}{}{25}
+\contentsline {paragraph}{}{25}
+\contentsline {subsubsection}{\numberline {2.2.10}Use case: View users` credit records }{26}
+\contentsline {paragraph}{}{26}
+\contentsline {paragraph}{}{26}
+\contentsline {paragraph}{}{26}
+\contentsline {subsubsection}{\numberline {2.2.11}Use case: Add charge information }{27}
+\contentsline {paragraph}{}{27}
+\contentsline {paragraph}{}{27}
+\contentsline {paragraph}{}{27}
+\contentsline {subsubsection}{\numberline {2.2.12}Use case: Update Charge information }{28}
+\contentsline {paragraph}{}{28}
+\contentsline {paragraph}{}{28}
+\contentsline {paragraph}{}{28}
+\contentsline {subsubsection}{\numberline {2.2.13}Use case: Edit Discount Strategy }{29}
+\contentsline {paragraph}{}{29}
+\contentsline {paragraph}{}{29}
+\contentsline {paragraph}{}{29}
+\contentsline {subsubsection}{\numberline {2.2.14}Use case: Initial projects }{30}
+\contentsline {paragraph}{}{30}
+\contentsline {paragraph}{}{30}
+\contentsline {paragraph}{}{30}
+\contentsline {subsubsection}{\numberline {2.2.15}Use case: Edit projects }{31}
+\contentsline {paragraph}{}{31}
+\contentsline {paragraph}{}{31}
+\contentsline {paragraph}{}{31}
+\contentsline {subsubsection}{\numberline {2.2.16}Use case: Check Course Fee }{32}
+\contentsline {paragraph}{}{32}
+\contentsline {paragraph}{}{32}
+\contentsline {paragraph}{}{32}
+\contentsline {subsubsection}{\numberline {2.2.17}Use case: View Courses }{33}
+\contentsline {paragraph}{}{33}
+\contentsline {paragraph}{}{33}
+\contentsline {paragraph}{}{33}
+\contentsline {subsubsection}{\numberline {2.2.18}Use case: View projects }{34}
+\contentsline {paragraph}{}{34}
+\contentsline {paragraph}{}{34}
+\contentsline {paragraph}{}{34}
+\contentsline {section}{\numberline {3}Functional Requirements}{35}
+\contentsline {subsection}{\numberline {3.1} System Requirements}{35}
+\contentsline {subsubsection}{\numberline {3.1.1}Check member manual}{35}
+\contentsline {paragraph}{}{35}
+\contentsline {subsubsection}{\numberline {3.1.2}Check credit record}{35}
+\contentsline {paragraph}{}{35}
+\contentsline {subsubsection}{\numberline {3.1.3}Check personal information}{35}
+\contentsline {paragraph}{}{35}
+\contentsline {subsubsection}{\numberline {3.1.4}Check activity record}{36}
+\contentsline {paragraph}{}{36}
+\contentsline {subsubsection}{\numberline {3.1.5}Check submit application}{36}
+\contentsline {paragraph}{}{36}
+\contentsline {subsubsection}{\numberline {3.1.6}Check study record }{37}
+\contentsline {paragraph}{}{37}
+\contentsline {subsubsection}{\numberline {3.1.7}Attend projects}{37}
+\contentsline {paragraph}{}{37}
+\contentsline {subsubsection}{\numberline {3.1.8}View projects}{38}
+\contentsline {paragraph}{}{38}
+\contentsline {subsubsection}{\numberline {3.1.9}View Courses}{38}
+\contentsline {paragraph}{}{38}
+\contentsline {subsubsection}{\numberline {3.1.10}Attend Coursel}{39}
+\contentsline {paragraph}{}{39}
+\contentsline {subsubsection}{\numberline {3.1.11}Sign up}{39}
+\contentsline {paragraph}{}{39}
+\contentsline {subsubsection}{\numberline {3.1.12}Log in}{40}
+\contentsline {paragraph}{}{40}
+\contentsline {subsubsection}{\numberline {3.1.13}Complete the personal information}{40}
+\contentsline {paragraph}{}{40}
+\contentsline {subsubsection}{\numberline {3.1.14}Edit the information}{41}
+\contentsline {paragraph}{}{41}
+\contentsline {subsubsection}{\numberline {3.1.15}Initiate learning and growth}{42}
+\contentsline {paragraph}{}{42}
+\contentsline {subsubsection}{\numberline {3.1.16}Edit learning and growth}{43}
+\contentsline {paragraph}{}{43}
+\contentsline {subsubsection}{\numberline {3.1.17}Identity authentication}{44}
+\contentsline {paragraph}{}{44}
+\contentsline {subsubsection}{\numberline {3.1.18}Add activity records}{45}
+\contentsline {paragraph}{}{45}
+\contentsline {subsubsection}{\numberline {3.1.19}View users list}{45}
+\contentsline {paragraph}{}{45}
+\contentsline {subsubsection}{\numberline {3.1.20}Search users}{46}
+\contentsline {paragraph}{}{46}
+\contentsline {subsubsection}{\numberline {3.1.21}View users` details}{46}
+\contentsline {paragraph}{}{46}
+\contentsline {subsubsection}{\numberline {3.1.22}View users` details}{47}
+\contentsline {paragraph}{}{47}
+\contentsline {subsubsection}{\numberline {3.1.23}Modify user credit}{47}
+\contentsline {paragraph}{}{47}
+\contentsline {subsubsection}{\numberline {3.1.24}View users` credit}{48}
+\contentsline {paragraph}{}{48}
+\contentsline {subsubsection}{\numberline {3.1.25}Add Charge Information}{48}
+\contentsline {paragraph}{}{48}
+\contentsline {subsubsection}{\numberline {3.1.26}Update Charge Information}{49}
+\contentsline {paragraph}{}{49}
+\contentsline {subsubsection}{\numberline {3.1.27}Edit Discount Strategy}{50}
+\contentsline {paragraph}{}{50}
+\contentsline {subsubsection}{\numberline {3.1.28}Initial projects}{51}
+\contentsline {paragraph}{}{51}
+\contentsline {subsubsection}{\numberline {3.1.29}Edit projects}{52}
+\contentsline {paragraph}{}{52}
+\contentsline {subsubsection}{\numberline {3.1.30}Check Course Fee}{53}
+\contentsline {paragraph}{}{53}
+\contentsline {subsubsection}{\numberline {3.1.31}View Courses}{53}
+\contentsline {paragraph}{}{53}
+\contentsline {subsubsection}{\numberline {3.1.32}View projects}{54}
+\contentsline {paragraph}{}{54}
+\contentsline {section}{\numberline {4}Database}{54}
+\contentsline {subsection}{\numberline {4.1}ER Diagram}{54}
+\contentsline {subsection}{\numberline {4.2}Database}{55}
+\contentsline {subsubsection}{\numberline {4.2.1}User}{56}
+\contentsline {paragraph}{}{56}
+\contentsline {subsubsection}{\numberline {4.2.2}UserStudy}{56}
+\contentsline {paragraph}{}{56}
+\contentsline {subsubsection}{\numberline {4.2.3}Study}{57}
+\contentsline {paragraph}{}{57}
+\contentsline {subsubsection}{\numberline {4.2.4}Activity Data Entity}{57}
+\contentsline {paragraph}{}{57}
+\contentsline {subsubsection}{\numberline {4.2.5}User-activity Data Entity}{57}
+\contentsline {paragraph}{}{57}
+\contentsline {subsubsection}{\numberline {4.2.6}Application Data Entity}{58}
+\contentsline {paragraph}{}{58}
+\contentsline {subsubsection}{\numberline {4.2.7}Admin Data Entity}{58}
+\contentsline {paragraph}{}{58}
