@@ -18,7 +18,7 @@ app.controller('myCtrl', function($scope, $http, $location) {
             data: $scope.formData    
         }).success(function(data,status){
             if(status == 200) {
-                window.location = '/home';
+                window.location = '/avatar';
             }
 
         }).error(function(status, data){

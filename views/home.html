@@ -4,13 +4,25 @@
     <title><%= title %></title>
     <%- message%> 
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript" src="/ionic/js/ionic.bundle.js"></script>
+    <script src="/angular-messages/angular-messages.min.js"></script>
+    <link href="/ionic/css/ionic.min.css" rel="stylesheet">
     <style type="text/css">
     a{margin-left: 20px; text-decoration: none;}
     a:hover{text-decoration: underline;}
     </style>
   </head>
   <body>
-  <h1>Your name:   <%- user.name %></h1>
+    <div class="list">
+
+    <a class="item item-thumbnail-left" href="#">
+      <img src="<%- user.avatar%>">
+      <h1>Your name:   <%- user.name %></h1>
+      <p>Nine Inch Nails</p>
+    </a>
+
+</div>
+
     <p>Welcome to your home ~</p>
     <p><a href="/logout">我要注销 </a>
     </p>

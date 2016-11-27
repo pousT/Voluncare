@@ -1,5 +1,44 @@
 var express = require('express');
 var router = express.Router();
+var multer = require('multer');
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/images/avatar');
+  },
+  filename: function (req, file, cb) {
+    cb(null, req.session.user.name + '.jpg');
+  }
+});
+var upload = multer({ storage: storage });
+
+router.get('/avatar', function(req, res) {
+    res.render("avatar", {title: '上传图片'});
+});
+router.post('/avatar', upload.single('avatar'), function (req, res, next) {
+   
+  var uavatar = "/images/avatar/"+req.file.filename;
+  var User = global.dbHandel.getModel('user');
+    if(!req.session.user){                     //到达/home路径首先判断是否已经登录
+        req.session.error = "请先登录"
+        res.redirect("/login");                //未登录则重定向到 /login 路径
+    }
+    else{
+        var query = {"_id": req.session.user._id};
+        var update = {avatar: uavatar};
+        var options = {new: true};
+        User.findOneAndUpdate(query, update, options, function(err, user) {
+        if (err) {
+            req.session.error = "头像更新失败";
+            res.sendStatus(500);   
+        } else {
+            req.session.user = user;
+            req.session.error =  '头像上传成功';
+            res.sendStatus(200);
+        }
+        });
+    }       
+  
+});
 
 /* GET home page. */
 router.get("/home",function(req,res){ 
@@ -7,7 +46,10 @@ router.get("/home",function(req,res){
         req.session.error = "请先登录"
         res.redirect("/login");                //未登录则重定向到 /login 路径
     }
-    res.render("home",{title:'Home'});         //已登录则渲染home页面
+    else{
+        res.render("home",{title:'Home'});         //已登录则渲染home页面
+    }
+    
 });
 
 //signup page
@@ -15,9 +57,10 @@ router.get('/register', function(req, res, next) {
   res.render('register', { title: '注册' });
 });
 router.post('/register',function (req, res) {
+    console.log(req.body);
     var User = global.dbHandel.getModel('user');
     var uname = req.body.name;
-    var upwd = req.body.password;
+    var upwd = req.body.pw;
     var utelephone = req.body.telephone;
     var uaddress = req.body.address;
     var ugender = req.body.gender;
@@ -43,6 +86,7 @@ router.post('/register',function (req, res) {
                         res.sendStatus(500);
                         console.log(err);
                     } else {
+                        req.session.user = doc;
                         req.session.error = '用户名创建成功！';
                         res.sendStatus(200);
                     }
