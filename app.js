@@ -12,7 +12,7 @@ global.db = mongoose.connect("mongodb://localhost:27017/Voluncare");
 
 // 下边这里也加上 use(multer())
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(multer());
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -52,14 +52,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);  // 即为为路径 / 设置路由
-app.use('/users', users); // 即为为路径 /users 设置路由
-app.use('/login',routes); // 即为为路径 /login 设置路由
-app.use('/register',routes); // 即为为路径 /register 设置路由
-app.use('/home',routes); // 即为为路径 /home 设置路由
-app.use('/logout',routes); // 即为为路径 /logout 设置路由
+app.use('/', routes);  
+app.use('/users', users); 
+app.use('/login',routes); 
+app.use('/register',routes); 
+app.use('/home',routes); 
+app.use('/logout',routes); 
 app.use('/newAct',routes);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

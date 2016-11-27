@@ -7,22 +7,18 @@ app.controller('myCtrl', function($scope, $http, $location) {
 
     $scope.formData = {};
     $scope.error = "";
-    $scope.genders = [
-      "男",
-      "女"
-    ];
     $scope.submit = function() {
         $http({
-            url:'/register',
+            url:'/newAct',
             method: 'POST',            
-            data: $scope.formData    
+            data: $scope.formData      
         }).success(function(data,status){
             if(status == 200) {
                 window.location = '/home';
             }
 
         }).error(function(status, data){
-            window.location = '/register';
+            window.location = '/newAct';
         })
     }
 
