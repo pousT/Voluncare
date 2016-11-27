@@ -7,7 +7,8 @@ module.exports = {
         birthday:{type:Date,required:true},
         gender:{type:String,required:true},
         credit:{type:Number,default:0},
-        status:{type:Number,default:0}
+        status:{type:Number,default:0},
+        avatar:{type:String,default:"images/avatar/default"}
     },
 
     activity:{
