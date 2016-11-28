@@ -1,0 +1,46 @@
+
+\documentclass[12pt]{amsart}
+\usepackage{geometry} % see geometry.pdf on how to lay out the page. There's lots.
+\usepackage{graphicx} 
+\geometry{a4paper} % or letter or a5paper or ... etc
+% \geometry{landscape} % rotated page geometry
+
+
+
+
+
+% See the ``Article customise'' template for come common customisations
+
+
+\title{}
+\author{}
+\date{} % delete this line to display the current date
+
+
+\makeatletter %?\section???????
+\renewcommand{\section}{\@startsection{section}{1}{0mm}
+  {-\baselineskip}{0.5\baselineskip}{\bf\leftline}}
+\makeatother
+
+
+
+%%% BEGIN DOCUMENT
+\begin{document}
+\section{External Challenges}
+
+
+\subsection{\textbf{Requirement Engineering}}
+\subsubsection{\textbf{Requirement Elicitation}}
+\paragraph{In order to elicit user and system requirements, we conducted three interviews with our stakeholder, Mr Mao, who is a successful business man yet has limited computer science knowledge. At the first meeting, Mr Mao?s description of system was vague and it is hard for us to identify his requirements. Therefore, we adjusted our interview strategy in the following interview. Instead of simply asking questions and letting him answer, we also drew down lo-fi prototype during the interview to validate his requirement immediately. In this way, the communication efficiency was improved. }
+\subsubsection{\textbf{Requirement Specification and Validation}}
+\paragraph{Since we have stakeholders with different backgrounds, i.e. our supervisor who speaks English and is an expert in software engineering, and another stakeholder who is a Chinese philanthropist who has limited computer science and engineering knowledge, it is a challenge to guarantee requirements are visible to and understood by all stakeholders. To solve this problem, we implemented requirement specification and validation in different ways for different stakeholders. For our supervisor, we showed him Software Requirement Specification in English. For Mr Mao, we showed him prototypes with Chinese description. By doing so, different stakeholders can understand our software design. }
+
+
+\subsection{\textbf{Time Pressure}}
+\paragraph{Our stakeholder is a successful business man who has strong ambition and want this system to be published as soon as possible. To fulfill his ambition, there is huge pressure for us to implement the software in a short time and deliver the first version in less than two months. Therefore, we selected the most fundamental system requirements for the first version as we have limited time to finish all functionalities.}
+
+
+
+\subsection{\textbf{Reference}}
+\paragraph{BABOK Guide - IIBA, International Institute of Business Analysis}
+\end{document}
