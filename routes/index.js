@@ -12,10 +12,10 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 router.get('/avatar', function(req, res) {
-    res.render("avatar", {title: '上传图片'});
+    res.render("avatar", {title: '上传头像'});
 });
 router.post('/avatar', upload.single('avatar'), function (req, res, next) {
-   
+  console.log(req.file); 
   var uavatar = "/images/avatar/"+req.file.filename;
   var User = global.dbHandel.getModel('user');
     if(!req.session.user){                     //到达/home路径首先判断是否已经登录
@@ -29,11 +29,11 @@ router.post('/avatar', upload.single('avatar'), function (req, res, next) {
         User.findOneAndUpdate(query, update, options, function(err, user) {
         if (err) {
             req.session.error = "头像更新失败";
-            res.sendStatus(500);   
+            res.redirect("/avatar");
         } else {
             req.session.user = user;
             req.session.error =  '头像上传成功';
-            res.sendStatus(200);
+            res.redirect("/home");
         }
         });
     }       

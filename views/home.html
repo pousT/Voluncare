@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
   <head>
     <title><%= title %></title>
     <%- message%> 
@@ -13,18 +13,19 @@
     </style>
   </head>
   <body>
-    <div class="list">
+    <div class="list" ng-controller="myCtrl">
 
     <a class="item item-thumbnail-left" href="#">
       <img src="<%- user.avatar%>">
       <h1>Your name:   <%- user.name %></h1>
-      <p>Nine Inch Nails</p>
+      <button class="button button-block button-dark" ng-click="avatar()" >修改头像</button>
     </a>
 
-</div>
+  </div>
 
     <p>Welcome to your home ~</p>
     <p><a href="/logout">我要注销 </a>
     </p>
+<script type="text/javascript" src="/javascripts/home.js"></script>
   </body>
 </html>
