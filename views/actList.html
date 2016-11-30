@@ -25,10 +25,11 @@
         <% activities.forEach(function (activity, index) { %>
           <p><h2><a href="#"><%= activity.title %></a></h2></p>
           <p class="info">
+            <img src="<%- activity.image%>"/>
             Title：<%= activity.title %> | 
             Date：<%= activity.start %>
           </p>
-          <p><%- activity.maxNumber %></p>
+          <p>人数：<%- activity.maxNumber %></p>
         <% }) %>
       </ion-list>
     </ion-content>               

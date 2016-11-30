@@ -8,7 +8,7 @@ module.exports = {
         gender:{type:String,required:true},
         credit:{type:Number,default:0},
         status:{type:Number,default:0},
-        avatar:{type:String,default:"images/avatar/default"}
+        avatar:{type:String,default:"images/avatar/default.jpg"}
     },
 
     activity:{
@@ -20,7 +20,8 @@ module.exports = {
         creditReq:{type:Number,default:0},
         statusReq:{type:Number,default:0},
         credit:{type:Number,required:true},
-        maxNumber:{type:Number, required:true}
+        maxNumber:{type:Number, required:true},
+        image:{type:String,default:"images/activity/default.jpg"}
     }
 
 

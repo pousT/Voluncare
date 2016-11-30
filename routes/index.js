@@ -9,8 +9,16 @@ var storage = multer.diskStorage({
     cb(null, req.session.user.name + '.jpg');
   }
 });
+var storageAct = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/images/activity');
+  },
+  filename: function (req, file, cb) {
+    cb(null, req.session.user.name + '.jpg');
+  }
+});
 var upload = multer({ storage: storage });
-
+var uploadAct = multer({ storage: storageAct });
 router.get('/avatar', function(req, res) {
     res.render("avatar", {title: '上传头像'});
 });
@@ -39,7 +47,28 @@ router.post('/avatar', upload.single('avatar'), function (req, res, next) {
     }       
   
 });
-
+router.get('/actImage', function(req, res) {
+    res.render("actImage", {title: '上传活动封面图'});
+});
+router.post('/actImage', uploadAct.single('actImage'), function (req, res, next) {
+  console.log(req.file); 
+  var actImage = "/images/activity/"+req.file.filename;
+  var Activity = global.dbHandel.getModel('activity');
+        var query = {"_id": req.cookies.newActivity._id};
+        var update = {image: actImage};
+        var options = {new: true};
+        Activity.findOneAndUpdate(query, update, options, function(err, user) {
+        if (err) {
+            req.session.error = "封面图上传失败";
+            res.redirect("/actImage");
+        } else {
+            req.session.user = user;
+            req.session.error =  '封面图上传成功';
+            res.redirect("/actList");
+        }
+        });       
+  
+});
 /* GET home page. */
 router.get("/home",function(req,res){ 
     if(!req.session.user){                     //到达/home路径首先判断是否已经登录
@@ -168,6 +197,8 @@ router.post("/newAct", function(req,res) {
                         res.sendStatus(500);
                         console.log(err);
                     } else {
+
+                        res.cookie('newActivity', doc);
                         req.session.error = '活动创建成功！';
                         res.sendStatus(200);
                     }
