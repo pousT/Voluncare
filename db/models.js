@@ -20,7 +20,8 @@ module.exports = {
         creditReq:{type:Number,default:0},
         statusReq:{type:Number,default:0},
         credit:{type:Number,required:true},
-        maxNumber:{type:Number, required:true}
+        maxNumber:{type:Number, required:true},
+        image:{type:String,default:"images/activity/default.jpg"}
     }
 
 
