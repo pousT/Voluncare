@@ -60,6 +60,7 @@ app.use('/home',routes);
 app.use('/logout',routes); 
 app.use('/newAct',routes);
 app.use('/avatar',routes);
+app.use('/actImage',routes);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
