@@ -9,8 +9,16 @@ var storage = multer.diskStorage({
     cb(null, req.session.user.name + '.jpg');
   }
 });
+var storageAct = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/images/act');
+  },
+  filename: function (req, file, cb) {
+    cb(null, req.session.user.name + '.jpg');
+  }
+});
 var upload = multer({ storage: storage });
-
+var uploadAct = multer({ storage: storageAct });
 router.get('/avatar', function(req, res) {
     res.render("avatar", {title: '上传头像'});
 });
@@ -39,7 +47,28 @@ router.post('/avatar', upload.single('avatar'), function (req, res, next) {
     }       
   
 });
-
+router.get('/actImage', function(req, res) {
+    res.render("actImage", {title: '上传活动封面图'});
+});
+router.post('/actImage', upload.single('actImage'), function (req, res, next) {
+  console.log(req.file); 
+  var uactImage = "/images/actImage/"+req.file.filename;
+  var Activity = global.dbHandel.getModel('activity');
+        var query = {"_id": req.session.user._id};
+        var update = {avatar: uavatar};
+        var options = {new: true};
+        Activity.findOneAndUpdate(query, update, options, function(err, user) {
+        if (err) {
+            req.session.error = "头像更新失败";
+            res.redirect("/avatar");
+        } else {
+            req.session.user = user;
+            req.session.error =  '头像上传成功';
+            res.redirect("/home");
+        }
+        });       
+  
+});
 /* GET home page. */
 router.get("/home",function(req,res){ 
     if(!req.session.user){                     //到达/home路径首先判断是否已经登录
