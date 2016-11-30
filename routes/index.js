@@ -11,7 +11,7 @@ var storage = multer.diskStorage({
 });
 var storageAct = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './public/images/act');
+    cb(null, './public/images/activity');
   },
   filename: function (req, file, cb) {
     cb(null, req.session.user.name + '.jpg');
@@ -50,21 +50,21 @@ router.post('/avatar', upload.single('avatar'), function (req, res, next) {
 router.get('/actImage', function(req, res) {
     res.render("actImage", {title: '上传活动封面图'});
 });
-router.post('/actImage', upload.single('actImage'), function (req, res, next) {
+router.post('/actImage', uploadAct.single('actImage'), function (req, res, next) {
   console.log(req.file); 
-  var uactImage = "/images/actImage/"+req.file.filename;
+  var actImage = "/images/activity/"+req.file.filename;
   var Activity = global.dbHandel.getModel('activity');
-        var query = {"_id": req.session.user._id};
-        var update = {avatar: uavatar};
+        var query = {"_id": req.cookies.newActivity._id};
+        var update = {image: actImage};
         var options = {new: true};
         Activity.findOneAndUpdate(query, update, options, function(err, user) {
         if (err) {
-            req.session.error = "头像更新失败";
-            res.redirect("/avatar");
+            req.session.error = "封面图上传失败";
+            res.redirect("/actImage");
         } else {
             req.session.user = user;
-            req.session.error =  '头像上传成功';
-            res.redirect("/home");
+            req.session.error =  '封面图上传成功';
+            res.redirect("/actList");
         }
         });       
   
@@ -197,6 +197,8 @@ router.post("/newAct", function(req,res) {
                         res.sendStatus(500);
                         console.log(err);
                     } else {
+
+                        res.cookie('newActivity', doc);
                         req.session.error = '活动创建成功！';
                         res.sendStatus(200);
                     }
