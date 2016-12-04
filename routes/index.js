@@ -209,7 +209,7 @@ router.post("/newAct", function(req,res) {
 
 router.get("/actList", function(req,res){
     var Activity = global.dbHandel.getModel('activity');
-    Activity.find({},function(err,docs) {
+    Activity.find({},{title:1, image:1, start:1},function(err,docs) {
         if(err) {
             res.sendStatus(500);
             console.log(err);
@@ -218,9 +218,54 @@ router.get("/actList", function(req,res){
             res.locals.error = '活动列表为空'; 
             res.sendStatus(404);                            //    状态码返回404
         }else {
-            res.render('actList', { title: '活动列表', activities: docs});            
+            res.render('actList', { title: '活动列表', activities: docs});
+            console.log(docs);            
         }
     });
+
+});
+router.get('/activity/:id', function(req, res, next) {
+  var id = req.params.id;
+
+    var Activity = global.dbHandel.getModel('activity');
+    Activity.findOne({_id: id},function(err,doc) {
+        if(err){ 
+            res.sendStatus(500);
+            req.session.error =  '网络异常错误！';
+            console.log(err);
+        }else if(doc){
+            res.cookie('activity', doc); 
+            res.render('activity', {title: '活动详情', activity: doc});
+        }else {
+            req.session.error =  '活动不存在！';
+            res.redirect("/actList");
+        }
+});
+});
+
+router.get('/participate', function(req, res) {
+    if(!req.session.user){                     //到达/home路径首先判断是否已经登录
+        req.session.error = "请先登录"
+        res.redirect("/login");                //未登录则重定向到 /login 路径
+    }else {
+        var Activity = global.dbHandel.getModel('activity');
+        var User = global.dbHandel.getModel('user'); 
+        var uId = req.session.user._id;
+        var aId = req.cookies.activity._id;
+        console.log(uId);
+        console.log(aId);
+
+        User.findOneAndUpdate({_id:uId}, {'$addToSet':{'actSign':aId}},  function(err, doc) {
+            console.log(doc);
+        });
+        Activity.findOneAndUpdate({_id:aId}, {'$addToSet': {'users': uId}}, function(err, doc) {
+            console.log(doc);
+        });
+        Activity.findOneAndUpdate({_id:aId}, {'$inc':{'maxNumber':-1}}, function(err, doc) {
+            console.log(doc);
+        });        
+    }
+
 
 });
 module.exports = router;
