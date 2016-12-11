@@ -13,18 +13,14 @@
     </style>
 </head>
 <body>
-
-
-      <div class="bar bar-subheader bar-positive">
+   <div class="bar bar-subheader bar-positive">
         <div class="button-bar">
           <a class="button" href="/home">主页</a>
           <a class="button" href="/actlist">活动</a>
           <a class="button" href="/logout">注销</a>
         </div>
       </div>
-    
-
-    <div ng-controller="myCtrl">
+    <div ng-controller="actCtrl">
 
   <ion-header-bar class="bar-dark" title=''>
     <h1 class="title"><%= title %></h1>
@@ -32,23 +28,24 @@
   </ion-header-bar> 
   <ion-view>
     <ion-content class="padding">
-      <ion-list>
-        <% activities.forEach(function (activity, index) { %>
-          <p><h2><a href="/activity/<%-activity._id%>"><%= activity.title %></a></h2></p>
+          <p><h2><%=activity.title %></h2></p>
           <p class="info">
-            <img src="<%- activity.image%>"/>
-            Title：<%= activity.title %> | 
-            Date：<%= activity.start %>
+            <img src="<%=activity.image%>"/>
+            Date：<%=activity.start %> 
+            <p><%= activity.description%><p>
           </p>
-        <% }) %>
-      </ion-list>
+       <label class="item item-input">
+         <button class="button button-block button-dark" ng-click="participate()" >报名</button>
+       </label>
     </ion-content>               
 </ion-view>
 
 </div>
 <script type="text/javascript" src="/ionic/js/ionic.bundle.js"></script>
 <script src="/angular-messages/angular-messages.min.js"></script>
-<script type="text/javascript" src="/javascripts/actList.js"></script>
+<script type="text/javascript" src="/javascripts/app.js"></script>
+<script type="text/javascript" src="/javascripts/activity.js"></script>
+
 </body>
 </head>
 </html>
