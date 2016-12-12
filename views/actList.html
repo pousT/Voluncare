@@ -24,10 +24,11 @@
       <ion-list>
         <% activities.forEach(function (activity, index) { %>
           <p><h2><a href="/activity/<%-activity._id%>"><%= activity.title %></a></h2></p>
-          <p class="info">
-            <img src="<%- activity.image%>"/>
-            Title：<%= activity.title %> | 
-            Date：<%= activity.start %>
+          <p class="item">
+            <img class="item" src="<%- activity.image%>"/>
+
+            <p class="item">Title：<%= activity.title %> | 
+            Date：<%= activity.start %></p>
           </p>
         <% }) %>
       </ion-list>
