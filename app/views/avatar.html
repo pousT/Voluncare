@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>  
+<html ng-app="myApp">    
+<head>          
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title><%= title %></title>
+    <script type="text/javascript" src="/ionic/js/ionic.bundle.js"></script>
+    <script src="/angular-messages/angular-messages.min.js"></script>
+    <link href="/ionic/css/ionic.min.css" rel="stylesheet">
+    <meta charset="utf-8"/>  
+</head>    
+<body>
+<div ng-controller="myCtrl">    
+  <ion-header-bar class="bar-dark" title=''>
+    <h1 class="title"><%= title %></h1>
+    <%- message%> 
+  </ion-header-bar> 
+  <ion-view>
+    <ion-content  class="padding">
+    <form name="myForm" action="/avatar" method="post" enctype="multipart/form-data"> 
+        <input type="file" name="avatar" required/><br/>  
+        <label class="item item-input">
+            <input type="submit" class="button button-block button-positive"/>
+        </label>
+        <label class="item item-input">
+            <button class="button button-block button-dark" ng-click="home()" >跳过</button>
+        </label>
+    </form>...{{avatar.name}}
+    </ion-content>
+    
+</ion-view>
+</div>
+<script src='/angular-file-model/angular-file-model.js'></script>  
+<script type="text/javascript" src="/javascripts/avatar.js"></script>   
+</body>  
+</html>   

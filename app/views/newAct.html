@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html  ng-app="myApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title><%= title %></title>
+
+    <link href="/ionic/css/ionic.min.css" rel="stylesheet">
+    <style type="text/css">
+    .m15{ margin: 15px;}
+     .tc{ text-align: center;font-size: 18px;font-weight: 600;}
+    </style>
+</head>
+<body>
+    <div ng-controller="myCtrl">
+
+  <ion-header-bar class="bar-dark" title=''>
+    <h1 class="title"><%= title %></h1>
+    <%- message%> 
+  </ion-header-bar> 
+  <ion-view>
+    <ion-content class="padding">
+    <form name="myForm">
+        <label class="item item-input"> 
+                <span class="input-label">活动标题</span>
+                <input type="text" name="title" ng-model="formData.title" placeholder="请输入活动标题" required>
+        </label>
+
+            <label class="item item-input"> 
+                    <span class="input-label">开始时间</span>
+                    <input type="Date" name="begin" ng-model="formData.start" placeholder="请输入活动开始时间" required>
+            </label>
+            <label class="item item-input"> 
+                    <span class="input-label">结束时间</span>
+                    <input type="Date" name="end" ng-model="formData.end" placeholder="请输入活动结束时间" required>
+            </label>            
+             <label class="item item-input">
+                <span class="input-label">地址</span>   
+                    <input type="textarea" name="address" ng-model="formData.address" id="address" name="address" placeholder="请输入地址" required>
+            </label>
+             <label class="item item-input">
+                <span class="input-label">活动详情</span>   
+                    <input type="textarea" name="info" ng-model="formData.info" placeholder="请输入活动详情" required>
+            </label>  
+             <label class="item item-input">
+                <span class="input-label">报名人数</span>   
+                    <input type="number" name="maxNum" ng-model="formData.maxNum" placeholder="请输入报名人数" required>
+            </label>
+             <label class="item item-input">
+                <span class="input-label">积分要求</span>   
+                    <input type="number" name="creditReq" ng-model="formData.creditReq" placeholder="请输入积分要求" required>
+            </label>
+             <label class="item item-input">
+                <span class="input-label">身份要求</span>   
+                    <input type="number" name="statusReq" ng-model="formData.statusReq" placeholder="请输入身份要求" required>
+            </label>
+             <label class="item item-input">
+                <span class="input-label">积分奖励</span>   
+                    <input type="number" name="bonus" ng-model="formData.bonus" placeholder="请输入积分奖励" required>
+            </label> 
+            <label class="item item-input">
+                    <button class="button button-block button-positive" ng-click="submit()" class="btn btn-primary btn-block" id="create">新建活动</button>
+            </label>
+        </form>
+        </ion-content>               
+    </ion-view>
+
+</div>
+<script type="text/javascript" src="/ionic/js/ionic.bundle.js"></script>
+<script src="/angular-messages/angular-messages.min.js"></script>
+<script type="text/javascript" src="/javascripts/newAct.js"></script>
+</body>
+</head>
+</html>

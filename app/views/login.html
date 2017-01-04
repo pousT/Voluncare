@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="myApp" >
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <link href="/ionic/css/ionic.min.css" rel="stylesheet">
+    <script type="text/javascript" src="/ionic/js/ionic.bundle.js"></script>
+    <script src="/angular-messages/angular-messages.min.js"></script>
+    <title><%= title %></title>
+</head>
+<body>
+  <ion-view>
+<div ng-controller="myCtrl">
+  <ion-header-bar class="bar-dark" title=''>
+    <h1 class="title"><%= title %></h1>
+    <%- message%> 
+  </ion-header-bar>    
+
+    <ion-content class="padding">
+    <form name="myForm" novalidate>
+      <ul class="list">
+        <li class="item item-input">
+            <i class="icon ion-person"></i>  
+            <input type="text" name = "user" ng-model="formData.name" placeholder="请输入用户名" required/><div ng-messages="myForm.user.$error">
+            <div ng-messages="myForm.user.$error">
+              <div ng-messages-include = "/msg/errorMsg.html"></div>
+            </div>
+        </li>
+        <li class="item item-input">
+            <i class="icon ion-locked"></i> 
+            <input type="password" ng-model="formData.password" placeholder="请输入密码" required/>
+        </li>
+      </ul>
+
+        <div class="padding">
+            <button class="button button-block button-positive" ng-disabled="myForm.$invalid" ng-click="processForm()">登录</button>       
+            <button class="button button-block button-positive" ng-click="register()">注册</button>
+        </div>
+      </form>
+    </ion-content>
+  </div>    
+</ion-view>
+
+<script type="text/javascript" src="/javascripts/login.js"></script>
+</body>
+</html>
