@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var homeController = require('../controllers/home');
 var multer = require('multer');
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -19,9 +20,8 @@ var storageAct = multer.diskStorage({
 });
 var upload = multer({ storage: storage });
 var uploadAct = multer({ storage: storageAct });
-router.get('/avatar', function(req, res) {
-    res.render("avatar", {title: '上传头像'});
-});
+/*upload avatar page*/
+router.get('/avatar', homeController.avatar);
 router.post('/avatar', upload.single('avatar'), function (req, res, next) {
   console.log(req.file); 
   var uavatar = "/images/avatar/"+req.file.filename;
@@ -47,9 +47,10 @@ router.post('/avatar', upload.single('avatar'), function (req, res, next) {
     }       
   
 });
-router.get('/actImage', function(req, res) {
-    res.render("actImage", {title: '上传活动封面图'});
-});
+
+/*upload cover image page*/
+router.get('/actImage',homeController.actImage);
+
 router.post('/actImage', uploadAct.single('actImage'), function (req, res, next) {
   console.log(req.file); 
   var actImage = "/images/activity/"+req.file.filename;
@@ -70,16 +71,7 @@ router.post('/actImage', uploadAct.single('actImage'), function (req, res, next)
   
 });
 /* GET home page. */
-router.get("/home",function(req,res){ 
-    if(!req.session.user){                     //到达/home路径首先判断是否已经登录
-        req.session.error = "请先登录"
-        res.redirect("/login");                //未登录则重定向到 /login 路径
-    }
-    else{
-        res.render("home",{title:'Home'});         //已登录则渲染home页面
-    }
-    
-});
+router.get('/home', homeController.home);
 
 //signup page
 router.get('/register', function(req, res, next) {
@@ -125,9 +117,7 @@ router.post('/register',function (req, res) {
 });
 
 //log in page
-router.get('/login', function(req, res, next) {
-  res.render('login', { title: '登录' });
-});
+router.get('/login', homeController.login);
 router.post('/login',function(req, res) {
     var User = global.dbHandel.getModel('user'); 
     var uname = req.body.name; 
@@ -152,23 +142,9 @@ router.post('/login',function(req, res) {
 });
 
 /* GET logout page. */
-router.get("/logout",function(req,res){    // 到达 /logout 路径则登出， session中user,error对象置空，并重定向到根路径
-    req.session.user = null;
-    req.session.error = null;
-    res.redirect("/login");
-});
+router.get("/logout",homeController.logout);
 /* GET create new activity page. */
-router.get("/newAct", function(req,res){
-    if(!req.session.user){                     //到达/home路径首先判断是否已经登录
-        req.session.error = "请先登录"
-        res.redirect("/login");                //未登录则重定向到 /login 路径
-    }
-    if(req.session.user.status<0){
-        req.session.error = "没有权限"
-        res.redirect("/home");
-    }
-    res.render('newAct', { title: '新建活动'});
-});
+router.get("/newAct", homeController.newAct);
 router.post("/newAct", function(req,res) {
     var Activity = global.dbHandel.getModel('activity');
     console.log(Activity);
@@ -207,41 +183,9 @@ router.post("/newAct", function(req,res) {
 });
 /* GET create new activity page. */
 
-router.get("/actList", function(req,res){
-    var Activity = global.dbHandel.getModel('activity');
-    Activity.find({},{title:1, image:1, start:1},function(err,docs) {
-        if(err) {
-            res.sendStatus(500);
-            console.log(err);
-        }else if(!docs) {
-            req.session.error = '活动列表为空';
-            res.locals.error = '活动列表为空'; 
-            res.sendStatus(404);                            //    状态码返回404
-        }else {
-            res.render('actList', { title: '活动列表', activities: docs});
-            console.log(docs);            
-        }
-    });
-
-});
-router.get('/activity/:id', function(req, res, next) {
-  var id = req.params.id;
-
-    var Activity = global.dbHandel.getModel('activity');
-    Activity.findOne({_id: id},function(err,doc) {
-        if(err){ 
-            res.sendStatus(500);
-            req.session.error =  '网络异常错误！';
-            console.log(err);
-        }else if(doc){
-            res.cookie('activity', doc); 
-            res.render('activity', {title: '活动详情', activity: doc});
-        }else {
-            req.session.error =  '活动不存在！';
-            res.redirect("/actList");
-        }
-});
-});
+router.get("/actList", homeController.actList);
+//活动详情
+router.get('/activity/:id', homeController.actDetail);
 
 router.get('/participate', function(req, res) {
     if(!req.session.user){                     //到达/home路径首先判断是否已经登录

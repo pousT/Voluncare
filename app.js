@@ -13,8 +13,9 @@ global.db = mongoose.connect("mongodb://localhost:27017/Voluncare");
 // 下边这里也加上 use(multer())
 app.use(bodyParser.urlencoded({ extended: true }));
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+
+var routes = require('./app_server/routes/index');
+var users = require('./app_server/routes/users');
 
 var session = require('express-session');
 
@@ -39,7 +40,8 @@ app.use(function(req,res,next){
 
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+//app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.engine("html",require("ejs").__express);
 //app.set('view engine', 'ejs');
 app.set('view engine', 'html');
@@ -53,17 +55,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);  
-app.use('/users', users); 
-app.use('/login',routes); 
-app.use('/register',routes); 
-app.use('/home',routes); 
-app.use('/logout',routes); 
-app.use('/newAct',routes);
-app.use('/avatar',routes);
-app.use('/actImage',routes);
-app.use('actList', routes);
-app.use('/activity', routes);
-app.use('/participate', routes);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
