@@ -33,15 +33,15 @@
   <ion-view>
     <ion-content class="padding">
       <ion-list>
-        <% activities.forEach(function (activity, index) { %>
-          <p><h2><a href="/activity/<%-activity._id%>"><%= activity.title %></a></h2></p>
+        <ion-item ng-repeat="activity in activities">
+          <p><h2><a href="/activity/{{activity._id}}">{{activity.title}}</a></h2></p>
           <p class="item">
-            <img class="item" src="<%- activity.image%>"/>
+            <img class="item" ng-src='{{activity.image}}'/>
 
-            <p class="item">Title：<%= activity.title %> | 
-            Date：<%= activity.start %></p>
-          </p>
-        <% }) %>
+            <p class="item">Title：{{activity.title}} | 
+            Date：{{activity.start}}</p>
+        </ion-item>
+        
       </ion-list>
     </ion-content>               
 </ion-view>

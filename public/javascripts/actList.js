@@ -1,25 +1,16 @@
 var app = angular.module('myApp', ['ionic','ngMessages']);
-app.controller('myCtrl', function($scope, $http, $location) {
+var activities =  function ($http) {
+    return $http.get('/api/activities');
+};
+app.service('activities', activities);
+app.controller('myCtrl', function($scope, $http, $location, activities) {
         $scope.login = function(){ 
             window.location = '/login';
             
         };
-
-    $scope.formData = {};
-    $scope.error = "";
-    $scope.submit = function() {
-        $http({
-            url:'/newAct',
-            method: 'POST',            
-            data: $scope.formData      
-        }).success(function(data,status){
-            if(status == 200) {
-                window.location = '/home';
-            }
-
-        }).error(function(status, data){
-            window.location = '/newAct';
-        })
-    }
+    activities.success(function (data) {
+        $scope.activities = data;
+    });
+    
 
 });
