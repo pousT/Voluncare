@@ -1,17 +1,21 @@
 var express = require('express');
 var router = express.Router();
-var userCtrl = require('../controllers/user');
-var activityCtrl = require('../controllers/activity');
+var jwt = require('express-jwt');
+var auth = jwt({
+    secret: process.env.JWT_SECRET,
+    userProperty: 'payload'
+});
 
-router.get('/users', userCtrl.users);
-router.post('/user', userCtrl.userCreate);
-router.get('/user/:uName', userCtrl.userFindOne);
-router.put('/user/:userid', userCtrl.userUpdateAvatar);
+var activityCtrl = require('../controllers/activity');
+var ctrlAuth = require('../controllers/authentication');
+router.post('/register', ctrlAuth.register);
+router.post('/login', ctrlAuth.login);
+
 
 //活动
 router.get('/activities', activityCtrl.activities);
 router.get('/activities/:actid', activityCtrl.actFindOne);
-router.post('/activity', activityCtrl.actCreate);
-router.put('/actCover/:actid',activityCtrl.updateCover);
-router.put('/activity/:actid',activityCtrl.update);
+router.post('/activity',auth, activityCtrl.actCreate);
+router.put('/actCover/:actid',auth,activityCtrl.updateCover);
+router.put('/activity/:actid',auth,activityCtrl.update);
 module.exports = router;
