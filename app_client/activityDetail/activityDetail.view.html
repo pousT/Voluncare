@@ -1,0 +1,13 @@
+  <ion-view view-title="活动详情">
+    <ion-content class="padding">
+          <p><h2>{{activity.title}}</h2></p>
+          <p class="info">
+            <img ng-src='../{{activity.image}}'/>
+            Date：{{activity.start |formatDate}} 
+            <p>{{ activity.description}}<p>
+          </p>
+       <label class="item item-input">
+         <button class="button button-block button-dark" ng-click="participate()" >报名</button>
+       </label>
+    </ion-content>               
+</ion-view>

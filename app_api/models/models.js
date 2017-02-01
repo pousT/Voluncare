@@ -12,7 +12,9 @@ var activitySchema = new mongoose.Schema({
         statusReq:{type:Number,default:0},
         credit:{type:Number,required:true},
         maxNumber:{type:Number, required:true},
-        image:{type:String,default:"images/activity/default.jpg"}
+        image:{type:String,default:"images/activity/default.jpg"},
+        userSign:{type:Array},
+        userFinish:{type:Array}
     });
 
 var userSchema = new mongoose.Schema({ 

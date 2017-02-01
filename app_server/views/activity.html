@@ -28,11 +28,11 @@
   </ion-header-bar> 
   <ion-view>
     <ion-content class="padding">
-          <p><h2><%=activity.title %></h2></p>
+          <p><h2>{{activity.title }}</h2></p>
           <p class="info">
-            <img src="../<%=activity.image%>"/>
-            Date：<%=activity.start %> 
-            <p><%= activity.description%><p>
+            <img ng-src='../{{activity.image}}'/>
+            Date：{{activity.start }} 
+            <p>{{ activity.description}}<p>
           </p>
        <label class="item item-input">
          <button class="button button-block button-dark" ng-click="participate()" >报名</button>

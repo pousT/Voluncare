@@ -3,6 +3,26 @@ var request = require('request');
 var apiOptions = {
     server : "http://localhost:3000"
 };
+function info (res, status) {
+    var title, content;
+    if (status === 404) {
+        title = "404, 页面没有找到";
+        content = "亲，页面飞走了...";
+    } else if (status === 500) {
+        title = "500, 内部错误";
+        content = "尴尬...，发生错误";
+    } else {
+        title = status + ", 有什么不对劲";
+        content = "某些地方可能有些错误";
+    }
+    res.status(status);
+    res.render('info', {
+        title : title,
+        content : content,
+        status: status,
+    });
+};
+
 //登录
 module.exports.login = function(req, res) {
     res.render('login', { title: '登录' });
@@ -63,21 +83,21 @@ module.exports.actImage = function(req, res) {
 };
 //活动详情
 module.exports.actDetail = function(req, res, next) {
-    var requestOptions, path;
-    path = "/api/activities/" + req.params.id;
-    requestOptions = {
-        url: apiOptions.server+path ,
-        method: "GET",
-        json: {},
-    }
-    request(requestOptions, function (err, response, body) {
-        if (response.statusCode == 200) {
-            res.cookie('activity', body); 
-            res.render('activity', { title: '活动详情', activity: body });
-        } else {
-            res.render('info', err);
-        }
-    });
+//    var requestOptions, path;
+//    path = "/api/activities/" + req.params.id;
+//    requestOptions = {
+//        url: apiOptions.server+path ,
+//        method: "GET",
+//        json: {},
+//    }
+//    request(requestOptions, function (err, response, body) {
+//        if (response.statusCode == 200) {
+//            res.cookie('activity', body); 
+            res.render('activity', { title: '活动详情'});
+//        } else {
+//            res.render('info', err);
+//        }
+//    });
 };
 //参加活动
 module.exports.participate = function(req, res) {
