@@ -1,6 +1,6 @@
     <ion-view view-title="注册">  
-      <ion-content class="padding">
-      <form action="index.html" method="post">        
+      <ion-content class="padding"> 
+      <div class="form">       
         <fieldset>
           <legend><span class="number">1</span>账户信息</legend>
           <label for="name">用户名:</label>
@@ -18,7 +18,14 @@
         <fieldset>
           <legend class="title"><span class="number">2</span>个人资料</legend>
           <label for="birthday">生日:</label>
-          <input type="Date" ng-model="formData.birthday" id="birthday" name="birthday"/>
+          <input type="date" ng-model="formData.birthday" id="birthday" name="birthday"/>
+<div class="padding">
+  <onezone-datepicker datepicker-object="onezoneDatepicker">
+    <button class="button show-onezone-datepicker">
+      {{onezoneDatepicker.date | formatDate}}
+    </button>
+  </onezone-datepicker>
+</div>
           <label>性别:</label>
             <label class="item item-radio">
               <input type="radio" name="group" value="go" checked="checked">
@@ -38,15 +45,9 @@
         </fieldset>
         <fieldset>
         <label>地址:</label>
-        <ionic-city-picker options='vm.CityPickData1'></ionic-city-picker>
-        
-          <label>Interests:</label>
-          <input type="checkbox" id="development" value="interest_development" name="user_interest"><label class="light" for="development">Development</label><br>
-            <input type="checkbox" id="design" value="interest_design" name="user_interest"><label class="light" for="design">Design</label><br>
-          <input type="checkbox" id="business" value="interest_business" name="user_interest"><label class="light" for="business">Business</label>
-        
+        <ionic-city-picker options='vm.CityPickData1'></ionic-city-picker>        
         </fieldset>
-        <button type="submit">Sign Up</button>
-      </form>
+        <button ng-click="onSubmit()">注册！</button>
+      </div>
     </ion-content>               
 </ion-view>
