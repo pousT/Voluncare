@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <title><%= title %></title>
+    <%- message%> 
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript" src="/ionic/js/ionic.bundle.js"></script>
+    <script src="/angular-messages/angular-messages.min.js"></script>
+    <link href="/ionic/css/ionic.min.css" rel="stylesheet">
+    <style type="text/css">
+    a{margin-left: 20px; text-decoration: none;}
+    a:hover{text-decoration: underline;}
+    </style>
+  </head>
+  <body>
+     <div class="bar bar-header bar-positive">
+        <div class="button-bar">
+          <a class="button" href="/home">主页</a>
+          <a class="button" href="/actlist">活动</a>
+          <a class="button" href="/logout">注销</a>
+        </div>
+      </div>
+
+      <div class="content has-header ionic-pseudo">
+
+    <div class="list" ng-controller="myCtrl">
+
+    <a class="item item-thumbnail-left" href="#">
+      <img src="<%- user.avatar%>">
+      <h1>Your name:   <%- user.name %></h1>
+      <button class="button button-block button-dark" ng-click="avatar()" >修改头像</button>
+    </a>
+
+  </div>
+
+</div>
+
+    <p>Welcome to your home ~</p>
+    <p><a href="/logout">我要注销 </a>
+    </p>
+<script type="text/javascript" src="/javascripts/home.js"></script>
+  </body>
+</html>

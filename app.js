@@ -1,3 +1,4 @@
+require('dotenv').load();
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -7,14 +8,15 @@ var bodyParser = require('body-parser');
 var multer = require('multer');
 var mongoose = require('mongoose');
 var app = express();
-global.dbHandel = require('./db/dbHandle');
-global.db = mongoose.connect("mongodb://localhost:27017/Voluncare");
+
+//global.db = mongoose.connect("mongodb://localhost:27017/Voluncare");
 
 // 下边这里也加上 use(multer())
 app.use(bodyParser.urlencoded({ extended: true }));
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+
+var routes = require('./app_server/routes/index');
+var users = require('./app_server/routes/users');
 
 var session = require('express-session');
 
@@ -39,7 +41,8 @@ app.use(function(req,res,next){
 
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+//app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.engine("html",require("ejs").__express);
 //app.set('view engine', 'ejs');
 app.set('view engine', 'html');
@@ -51,23 +54,31 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'app_client')));
+app.use(express.static(path.join(__dirname, 'bower_components')));
+var routesApi = require('./app_api/routes/index');
+var passport = require('passport');
+require('./app_api/config/passport');
 
-app.use('/', routes);  
-app.use('/users', users); 
-app.use('/login',routes); 
-app.use('/register',routes); 
-app.use('/home',routes); 
-app.use('/logout',routes); 
-app.use('/newAct',routes);
-app.use('/avatar',routes);
-app.use('/actImage',routes);
+app.use(passport.initialize());
+//app.use('/', routes);
+app.use('/api', routesApi);
+app.use(function (req, res) {
+    res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
-
+// error handlers
+app.use(function(err, req, res, next) {
+    if (err.name == 'UnauthorizedError') {
+        res.status(401);
+        res.json({ message: err.name + ":" + err.message });
+    }
+});
 // error handlers
 
 // development error handler

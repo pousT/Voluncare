@@ -1,0 +1,15 @@
+  <ion-view view-title="活动列表">
+    <ion-content class="padding">
+      <ion-list>
+        <ion-item ng-repeat="activity in activities">
+          <p><h2><a href="/activity/{{activity._id}}">{{activity.title}}</a></h2></p>
+          <a class="item" ng-click="goDetail({{activity}})">
+            <img class="item" ng-src='{{activity.image}}'/>
+          </a>
+            <p class="item">Title：{{activity.title}} | 
+            Date：{{activity.start|formatDate}}</p>
+        </ion-item>
+        
+      </ion-list>
+    </ion-content>               
+</ion-view>

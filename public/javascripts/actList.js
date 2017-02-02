@@ -1,25 +1,28 @@
 var app = angular.module('myApp', ['ionic','ngMessages']);
-app.controller('myCtrl', function($scope, $http, $location) {
+var activities =  function ($http) {
+    return $http.get('/api/activities');
+};
+var formdate = function() {
+    return function(dateStr) {
+        var date = new Date(dateStr);
+        var d = date.getDate();
+        var monthNames = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
+        var m = monthNames[date.getMonth()];
+        var y = date.getFullYear();
+        var output = y + '-' + m + '-' + d;
+        return output;
+    };
+};
+app.service('activities', activities);
+app.controller('myCtrl', function($scope, $http, $location, activities) {
         $scope.login = function(){ 
             window.location = '/login';
             
         };
-
-    $scope.formData = {};
-    $scope.error = "";
-    $scope.submit = function() {
-        $http({
-            url:'/newAct',
-            method: 'POST',            
-            data: $scope.formData      
-        }).success(function(data,status){
-            if(status == 200) {
-                window.location = '/home';
-            }
-
-        }).error(function(status, data){
-            window.location = '/newAct';
-        })
-    }
+    activities.success(function (data) {
+        $scope.activities = data;
+    });
+    
 
 });
+app.filter('formdate', formdate);
