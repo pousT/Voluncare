@@ -1,5 +1,5 @@
 (function () {
-    angular.module('myApp', ['ionic']);
+    angular.module('myApp', ['ionic', 'ionic-citypicker']);
     
     function config($stateProvider, $urlRouterProvider) {
         $stateProvider
