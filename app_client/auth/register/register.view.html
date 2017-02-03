@@ -1,53 +1,71 @@
     <ion-view view-title="注册">  
       <ion-content class="padding"> 
-      <div class="form">       
+      <form class="form" name = "myForm">       
         <fieldset>
           <legend><span class="number">1</span>账户信息</legend>
           <label for="name">用户名:</label>
-          <input type="text" id="name" ng-model="formData.name" name="user_name">
-          
+          <input type="text" id="name" ng-model="formData.name" name="name" required/>
+            <div class="error-messages" ng-if="myForm.name.$dirty" ng-messages="myForm.name.$error">
+              <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>
+            </div>          
           <label for="telephone">电话:</label>
-          <input type="text" id="telephone" name="telephone">
-          
+          <input type="number" id="telephone" ng-model="formData.telephone" ng-minlength="11" ng-maxlength="13" name="telephone" required/>
+            <div class="error-messages" ng-if="myForm.telephone.$dirty" ng-messages="myForm.telephone.$error">
+              <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>
+            </div>          
           <label for="password">密码:</label>
-          <input type="password" ng-model="formData.pw" id="password" name="user_password">
+          <input type="password" ng-model="formData.pw" id="password" name="password" ng-minlength="6" ng-maxlength="16" password-characters-validator required/>
+            <div class="error-messages" ng-if="myForm.password.$dirty" ng-messages="myForm.password.$error">
+              <div ng-message="minlength">
+                密码长度需为6-16位
+              </div>
+              <div ng-message="maxlength">
+                密码长度需为6-16位
+              </div>              
+              <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>
+            </div>  
           <label for="passwordC">确认密码:</label>
-          <input type="password" ng-model="formData.pwc" id="passwordC" name="user_passwordC">          
+          <input type="password" ng-model="formData.pwc" id="passwordC" name="passwordC" match-validator="myForm.password" required/>
+            <div class="error-messages" ng-if="myForm.passwordC.$dirty" ng-messages="myForm.passwordC.$error">
+              <div ng-message="match">输入不一致</div>
+              <div ng-message="minlength">
+                密码长度需为6-16位
+              </div>
+              <div ng-message="maxlength">
+                密码长度需为6-16位
+              </div>              
+              <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>
+            </div>          
         </fieldset>
         
         <fieldset>
           <legend class="title"><span class="number">2</span>个人资料</legend>
-          <label for="birthday">生日:</label>
-          <input type="date" ng-model="formData.birthday" id="birthday" name="birthday"/>
-<div class="padding">
-  <onezone-datepicker datepicker-object="onezoneDatepicker">
-    <button class="button show-onezone-datepicker">
-      {{onezoneDatepicker.date | formatDate}}
-    </button>
-  </onezone-datepicker>
-</div>
+          <label>生日:</label>
+
+            <onezone-datepicker datepicker-object="onezoneDatepicker">
+              <button class="button button-block button-outline button-stable show-onezone-datepicker">
+                {{onezoneDatepicker.date | formatDate}}
+              </button>
+            </onezone-datepicker>
+
           <label>性别:</label>
             <label class="item item-radio">
-              <input type="radio" name="group" value="go" checked="checked">
-              <div class="item-content">
+              <ion-radio name="group" value="male" ng-model="formData.sex">
                 男
-              </div>
-              <i class="radio-icon ion-checkmark"></i>
+              </ion-radio>
             </label>
 
             <label class="item item-radio">
-              <input type="radio" name="group" value="python">
-              <div class="item-content">
+              <ion-radio name="group" value="female" ng-model="formData.sex">
                 女
-              </div>
-              <i class="radio-icon ion-checkmark"></i>
+              </ion-radio>
             </label>
         </fieldset>
         <fieldset>
         <label>地址:</label>
         <ionic-city-picker options='vm.CityPickData1'></ionic-city-picker>        
         </fieldset>
-        <button ng-click="onSubmit()">注册！</button>
-      </div>
+        <button ng-click="onSubmit()" ng-disabled="myForm.$invalid">注册！</button>
+      </form>
     </ion-content>               
-</ion-view>
+  </ion-view>
