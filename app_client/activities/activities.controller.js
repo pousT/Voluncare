@@ -3,8 +3,8 @@ angular
 .controller('activitiesCtrl', activitiesCtrl);
 
 
-homeCtrl.$inject = ['activitiesData','userData','$scope'];
-function activitiesCtrl(activitiesData,userData,$scope,$state) {
+activitiesCtrl.$inject = ['activitiesData','$scope'];
+function activitiesCtrl(activitiesData,$scope,$state) {
     activitiesData.success(function (data) {
         message = data.length > 0 ? "" : "暂无数据";
         $scope.activities = data;

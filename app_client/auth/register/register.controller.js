@@ -10,7 +10,7 @@
             pwc:'',
             birthday:'',
             address:'',
-            sex:""
+            gender:""
         };
         $scope.returnPage = $location.search().page || '/';
         $scope.onSubmit = function() {
@@ -87,8 +87,7 @@ angular.module('myApp')
   })
   .directive('passwordCharactersValidator', function() {
     var PASSWORD_FORMATS = [
-      /[A-Z]+/, //uppercase letters
-      /\w+/, //other letters
+      /[a-z]+/, //letters
       /\d+/ //numbers
     ];
 

@@ -25,7 +25,7 @@
               <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>
             </div>  
           <label for="passwordC">确认密码:</label>
-          <input type="password" ng-model="formData.pwc" id="passwordC" name="passwordC" match-validator="myForm.password" required/>
+          <input type="password" ng-model="formData.pwc" id="passwordC" name="passwordC" match-validator="formData.pw" required/>
             <div class="error-messages" ng-if="myForm.passwordC.$dirty" ng-messages="myForm.passwordC.$error">
               <div ng-message="match">输入不一致</div>
               <div ng-message="minlength">
@@ -50,13 +50,13 @@
 
           <label>性别:</label>
             <label class="item item-radio">
-              <ion-radio name="group" value="male" ng-model="formData.sex">
+              <ion-radio name="group" value="male" ng-model="formData.gender">
                 男
               </ion-radio>
             </label>
 
             <label class="item item-radio">
-              <ion-radio name="group" value="female" ng-model="formData.sex">
+              <ion-radio name="group" value="female" ng-model="formData.gender">
                 女
               </ion-radio>
             </label>

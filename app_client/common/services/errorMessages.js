@@ -5,5 +5,5 @@
   <div ng-message="email">You have entered an incorrect email value</div>
   <div ng-message="pattern">You did not enter the value in the correct format</div>
   <div ng-message="password-characters">
-    密码需要包含数字、大小写
+    密码需要包含数字、小写字母
   </div>
