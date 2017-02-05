@@ -3,8 +3,8 @@ angular
 .controller('homeCtrl', homeCtrl);
 
  
-homeCtrl.$inject = ['activitiesData','userData','$scope'];
-function homeCtrl(activitiesData,userData,$scope) {
+homeCtrl.$inject = ['activitiesData','authentication','$scope'];
+function homeCtrl(activitiesData,authentication,$scope) {
     activitiesData.success(function (data) {
         message = data.length > 0 ? "" : "暂无数据";
         data = data;
@@ -12,5 +12,5 @@ function homeCtrl(activitiesData,userData,$scope) {
         console.log(e);
         message = "Sorry, something's gone wrong ";
     });
-    $scope.user = userData;
+    $scope.user = authentication.currentUser();
 }

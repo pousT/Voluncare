@@ -1,5 +1,5 @@
 (function () {
-    angular.module('myApp', ['ionic']);
+    angular.module('myApp', ['ionic', 'ionic-citypicker','onezone-datepicker','ngMessages']);
     
     function config($stateProvider, $urlRouterProvider) {
         $stateProvider
@@ -33,12 +33,11 @@
             url:'/login',
             templateUrl: '/auth/login/login.view.html',
             controller: 'loginCtrl'
-        })
-        $urlRouterProvider.otherwise("/");
-        
-    }
+        });
+        $urlRouterProvider.otherwise("/"); 
+};
     angular
 .module('myApp')
-.config(['$stateProvider', '$urlRouterProvider', config]);
+.config(['$stateProvider', '$urlRouterProvider',config]);
 }
 )();

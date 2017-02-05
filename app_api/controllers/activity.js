@@ -1,11 +1,34 @@
 var dbHandle = require('../models/dbHandle.js');
 var mongoose = require('mongoose');
 var actModel = mongoose.model('Activity');
+var User = mongoose.model('User');
 
 var sendJSONresponse = function (res, status, content) {
     res.status(status);
     res.json(content);
 }
+var getAuthor = function (req, res, callback) {
+    if (req.payload && req.payload.telephone) {
+        User.findOne({ telephone: req.payload.telephone })
+            .exec(function (err, user) {
+            if (!user) {
+                sendJSONresponse(res, 404, { message: "User not found" });
+                return;
+            }
+            else if (err) {
+                console.log(err);
+                sendJSONresponse(res, 404, err);
+                return;
+            }
+            callback(req, res,user);
+        });
+    } else {
+        sendJSONresponse(res, 404, {
+            message : "User not found"
+        });
+        return;
+    }
+};
 module.exports.activities = function (req, res) {
     actModel.find().exec(function (err, activities) {
         if (err) {
@@ -34,32 +57,41 @@ module.exports.actFindOne = function (req, res) {
     });
 };
 module.exports.actCreate = function (req, res) {
-    var title = req.body.title;
-    var start = req.body.start;
-    var end = req.body.end;
-    var address = req.body.address;
-    var info = req.body.info;
-    var maxNum = req.body.maxNum;
-    var creditReq = req.body.creditReq;
-    var statusReq = req.body.statusReq;
-    var bonus = req.body.bonus;
-    actModel.create({
-        "title": title,
-        "description": info,
-        "start": start,
-        "end": end,
-        "address": address,
-        "maxNumber": maxNum,
-        "creditReq": creditReq,
-        "statusReq": statusReq,
-        "credit": bonus
-    }, function(err, activity) {
-        if (err) {
-            console.log(err);
-            sendJSONresponse(res, 400, err);
+     getAuthor(req, res, function(req, res,user) {
+        if(user.status >5) {
+            var title = req.body.title;
+            var start = req.body.start;
+            var end = req.body.end;
+            var address = req.body.address;
+            var info = req.body.info;
+            var maxNum = req.body.maxNum;
+            var creditReq = req.body.creditReq;
+            var statusReq = req.body.statusReq;
+            var bonus = req.body.bonus;
+            actModel.create({
+                "title": title,
+                "description": info,
+                "start": start,
+                "end": end,
+                "address": address,
+                "maxNumber": maxNum,
+                "creditReq": creditReq,
+                "statusReq": statusReq,
+                "credit": bonus
+            }, function(err, activity) {
+                if (err) {
+                    console.log(err);
+                    sendJSONresponse(res, 400, err);
+                } else {
+                    console.log(activity);
+                    sendJSONresponse(res, 201, activity);
+                }
+            });
         } else {
-            console.log(activity);
-            sendJSONresponse(res, 201, activity);
+            console.log(user);
+            sendJSONresponse(res, 400, {
+                "message": "权限不足"
+            });
         }
     });
 };
