@@ -1,7 +1,6 @@
 angular
 .module('myApp')
 .service('activitiesData', activitiesData)
-.service('userData', userData)
 .service('activityData', activityData);
 
 activitiesData.$inject = ['$http'];
@@ -16,12 +15,5 @@ function activityData ($http) {
     }
     return {
         getActivityById: getActivityById
-    };
-    
-}
-function userData() {
-    return {
-        name: "soup",
-        avatar: "/images/avatar/default.jpg"
     };
 }

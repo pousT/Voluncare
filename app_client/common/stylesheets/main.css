@@ -44,7 +44,7 @@ select {
   background-color: #e8eeef;
   color: #8a97a0;
   box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 input[type="radio"],
@@ -72,7 +72,9 @@ button {
   box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
   margin-bottom: 10px;
 }
-
+button[disabled] {
+  opacity: 0.65; 
+}
 fieldset {
   margin-bottom: 30px;
   border: none;
@@ -155,4 +157,22 @@ box-shadow: none;
 }
 .title {
   text-align: center;
+}
+
+.error-messages.ng-active {
+  background:maroon;
+  color:white;
+  padding:5px;
+  border-radius:5px;
+  margin-top:15px;
+  position:relative;
+}
+.error-messages.ng-active:after {
+  position:absolute;
+  top:-10px;
+  content:"";
+  left:20px;
+  border-style:solid;
+  border-color:transparent transparent maroon;
+  border-width:5px;
 }

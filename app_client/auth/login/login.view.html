@@ -1,0 +1,21 @@
+    <ion-view view-title="登录">  
+      <ion-content class="padding"> 
+      <form class="form" name = "myForm">       
+        <fieldset>
+          <legend>账户信息</legend>    
+          {{formError}}     
+          <label for="telephone">电话:</label>
+          <input type="number" id="telephone" ng-model="formData.telephone" required/>
+            <div class="error-messages" ng-if="myForm.telephone.$dirty" ng-messages="myForm.telephone.$error">
+              <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>
+            </div>          
+          <label for="password">密码:</label>
+          <input type="password" ng-model="formData.password" id="password" name="password"required/>
+            <div class="error-messages" ng-if="myForm.password.$dirty" ng-messages="myForm.password.$error">       
+              <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>
+            </div>           
+        </fieldset>
+        <button ng-click="onSubmit()" ng-disabled="myForm.$invalid">登录</button>
+      </form>
+    </ion-content>               
+  </ion-view>
