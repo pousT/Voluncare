@@ -18,5 +18,5 @@ router.get('/activities/:actid', activityCtrl.actFindOne);
 router.post('/activity',auth, activityCtrl.actCreate);
 router.put('/actCover/:actid',auth,activityCtrl.updateCover);
 router.put('/activity/:actid',auth,activityCtrl.update);
-router.put('/activity/participate',activityCtrl.participate);
+router.put('/activity/participate',auth,activityCtrl.participate);
 module.exports = router;

@@ -33,6 +33,11 @@
             url:'/login',
             templateUrl: '/auth/login/login.view.html',
             controller: 'loginCtrl'
+        })
+        .state('postActivity', {
+            url:'postActivity',
+            templateUrl: '/postActivity/postActivity.view.html',  
+            controller:'postActivityCtrl'          
         });
         $urlRouterProvider.otherwise("/"); 
 };

@@ -58,26 +58,28 @@ module.exports.actFindOne = function (req, res) {
 };
 module.exports.actCreate = function (req, res) {
      getAuthor(req, res, function(req, res,user) {
-        if(user.status >5) {
+        if(user.status >-1) {
             var title = req.body.title;
             var start = req.body.start;
             var end = req.body.end;
             var address = req.body.address;
-            var info = req.body.info;
+            var description = req.body.description;
             var maxNum = req.body.maxNum;
-            var creditReq = req.body.creditReq;
-            var statusReq = req.body.statusReq;
+            var creditReq = req.body.credit;
+            var statusReq = req.body.status;
             var bonus = req.body.bonus;
+            var address = req.body.address;
             Activity.create({
                 "title": title,
-                "description": info,
+                "description": description,
                 "start": start,
                 "end": end,
                 "address": address,
                 "maxNumber": maxNum,
                 "creditReq": creditReq,
                 "statusReq": statusReq,
-                "credit": bonus
+                "credit": bonus,
+                "address": address
             }, function(err, activity) {
                 if (err) {
                     console.log(err);
@@ -121,26 +123,24 @@ module.exports.updateCover = function (req, res) {
     });
 };
 module.exports.participate = function (req, res) {
-    var uid = req.body.uId;
     var aid = req.body.actId;
-    Activity.findById(aid).exec(function (err, activity) {
-        if(!activity) {
-            sendJSONresponse(res, 404, {
-                "message": "活动不存在"
+    getAuthor(req, res, function(req, res,user) {
+        if(user.status < 1) {
+            console.log(user);
+            sendJSONresponse(res, 400, {
+                "message": "权限不足"
             });
             return;            
-        } else if (err) {
-            sendJSONresponse(res, 400, err);
-            return;            
-        } else {
-            User.findById(uid).exec(function (err, user) {
-                if(!user) {
-                    sendJSONresponse(res, 404, {
-                        "message": "找不到用户数据"
-                    });
-                    return;
-                } else if (err) {
-            sendJSONresponse(res, 400, err);                    
+        }
+        Activity.findById(aid).exec(function (err, activity) {
+            if(!activity) {
+                sendJSONresponse(res, 404, {
+                    "message": "活动不存在"
+                });
+                return;            
+            } else if (err) {
+                sendJSONresponse(res, 400, err);
+                return;            
             } else {
                 user.actSign.push(activity);
                 user.save(function (err, user) {
@@ -155,12 +155,10 @@ module.exports.participate = function (req, res) {
                     }
                 });
             }
-            });
-        }
+        });
 
     });
-
-}
+};
 module.exports.update = function (req, res) {
     var id = req.params.actid;
      Activity.findById(id).exec(function (err, activity) {
