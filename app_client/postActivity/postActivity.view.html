@@ -1,0 +1,61 @@
+    <ion-view view-title="新建活动">  
+      <ion-content class="padding"> 
+      <form class="form" name = "myForm">       
+        <fieldset>
+          <legend><span class="number">1</span>活动信息</legend>
+          <label for="title">活动标题:</label>
+          <input type="text" id="title" ng-model="formData.title" name="title" required/>
+            <div class="error-messages" ng-if="myForm.title.$dirty" ng-messages="myForm.title.$error">
+              <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>
+            </div>          
+          <label for="description">活动详情:</label>
+          <input type="textarea" id="description" ng-model="formData.description" name="description" required/>
+            <div class="error-messages" ng-if="myForm.description.$dirty" ng-messages="myForm.description.$error">
+              <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>
+            </div>
+          <label for="credit">积分要求:</label>    
+          <input type="number" id="credit" ng-model="formData.credit" name="credit" required/>
+            <div class="error-messages" ng-if="myForm.credit.$dirty" ng-messages="myForm.credit.$error">
+              <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>
+            </div>   
+          <label for="status">身份要求:</label>    
+          <input type="number" id="status" ng-model="formData.status" name="status" required/>
+            <div class="error-messages" ng-if="myForm.status.$dirty" ng-messages="myForm.status.$error">
+              <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>
+            </div> 
+          <label for="bonus">积分奖励:</label>    
+          <input type="number" id="bonus" ng-model="formData.bonus" ng-minlength="11" ng-maxlength="13" name="bonus" required/>
+            <div class="error-messages" ng-if="myForm.bonus.$dirty" ng-messages="myForm.bonus.$error">
+              <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>
+            </div>     
+          <label for="maxNum">报名人数:</label>
+          <input type="number" ng-model="formData.maxNum" id="maxNum" name="maxNum" required/>
+            <div class="error-messages" ng-if="myForm.maxNum.$dirty" ng-messages="myForm.maxNum.$error">              <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>
+            </div>           
+        </fieldset>
+        
+        <fieldset>
+          <legend class="title"><span class="number">2</span>个人资料</legend>
+          <label>开始时间:</label>
+
+            <onezone-datepicker datepicker-object="onezoneDatepicker">
+              <button class="button button-block button-outline button-stable show-onezone-datepicker">
+                {{onezoneDatepicker.date | formatDate}}
+              </button>
+            </onezone-datepicker>
+          <label>结束时间:</label>
+
+            <onezone-datepicker datepicker-object="onezoneDatepicker">
+              <button class="button button-block button-outline button-stable show-onezone-datepicker">
+                {{onezoneDatepicker.date | formatDate}}
+              </button>
+            </onezone-datepicker>
+        </fieldset>
+        <fieldset>
+        <label>地址:</label>
+        <ionic-city-picker options='vm.CityPickData1'></ionic-city-picker>        
+        </fieldset>
+        <button ng-click="onSubmit()" ng-disabled="myForm.$invalid">注册！</button>
+      </form>
+    </ion-content>               
+  </ion-view>
