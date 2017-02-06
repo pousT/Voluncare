@@ -37,25 +37,13 @@
         <fieldset>
           <legend class="title"><span class="number">2</span>个人资料</legend>
           <label>开始时间:</label>
-
-            <onezone-datepicker datepicker-object="onezoneDatepicker">
-              <button class="button button-block button-outline button-stable show-onezone-datepicker">
-                {{onezoneDatepicker.date | formatDate}}
-              </button>
-            </onezone-datepicker>
           <label>结束时间:</label>
-
-            <onezone-datepicker datepicker-object="onezoneDatepicker">
-              <button class="button button-block button-outline button-stable show-onezone-datepicker">
-                {{onezoneDatepicker.date | formatDate}}
-              </button>
-            </onezone-datepicker>
         </fieldset>
         <fieldset>
         <label>地址:</label>
         <ionic-city-picker options='vm.CityPickData1'></ionic-city-picker>        
         </fieldset>
-        <button ng-click="onSubmit()" ng-disabled="myForm.$invalid">注册！</button>
+        <button ng-click="onSubmit()" ng-disabled="myForm.$invalid">创建</button>
       </form>
     </ion-content>               
   </ion-view>

@@ -45,4 +45,24 @@
             });
             return false;
         };
+      var vm=$scope.vm={};
+      vm.cb = function () {
+        $scope.formData.address = vm.CityPickData1.areaData[0] + "-" 
+                                + vm.CityPickData1.areaData[1] + "-" 
+                                + vm.CityPickData1.areaData[2];
+        console.log($scope.formData.address);
+        }
+      vm.CityPickData1 = {
+        areaData: [],
+        backdrop: true,
+        backdropClickToClose: true,
+        defaultAreaData: ['浙江', '宁波', '海曙区'],
+        buttonClicked: function () {
+          vm.cb()
+        },
+        tag: '-',
+        iconClass: 'ion-location',
+        title: '请输入地址'
+      }
+    }
 })();

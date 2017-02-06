@@ -35,7 +35,7 @@
             controller: 'loginCtrl'
         })
         .state('postActivity', {
-            url:'postActivity',
+            url:'/postActivity',
             templateUrl: '/postActivity/postActivity.view.html',  
             controller:'postActivityCtrl'          
         });
