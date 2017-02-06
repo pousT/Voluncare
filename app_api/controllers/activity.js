@@ -1,6 +1,6 @@
 var dbHandle = require('../models/dbHandle.js');
 var mongoose = require('mongoose');
-var actModel = mongoose.model('Activity');
+var Activity = mongoose.model('Activity');
 var User = mongoose.model('User');
 
 var sendJSONresponse = function (res, status, content) {
@@ -30,7 +30,7 @@ var getAuthor = function (req, res, callback) {
     }
 };
 module.exports.activities = function (req, res) {
-    actModel.find().exec(function (err, activities) {
+    Activity.find().exec(function (err, activities) {
         if (err) {
             console.log(err);
             sendJSONresponse(res, 400, err);
@@ -41,7 +41,7 @@ module.exports.activities = function (req, res) {
 };
 module.exports.actFindOne = function (req, res) {
     var activityid = req.params.actid;
-    actModel.findById(activityid).exec(function (err, activity) {
+    Activity.findById(activityid).exec(function (err, activity) {
         if (!activity) {
             sendJSONresponse(res, 404, {
                 "message": "活动不存在"
@@ -68,7 +68,7 @@ module.exports.actCreate = function (req, res) {
             var creditReq = req.body.creditReq;
             var statusReq = req.body.statusReq;
             var bonus = req.body.bonus;
-            actModel.create({
+            Activity.create({
                 "title": title,
                 "description": info,
                 "start": start,
@@ -98,7 +98,7 @@ module.exports.actCreate = function (req, res) {
 
 module.exports.updateCover = function (req, res) {
     var id = req.params.actid;
-    actModel.findById(id).exec(function (err, activity) {
+    Activity.findById(id).exec(function (err, activity) {
         if (!activity) {
             sendJSONresponse(res, 404, {
                 "message": "活动不存在"
@@ -107,7 +107,7 @@ module.exports.updateCover = function (req, res) {
         } else if (err) {
             sendJSONresponse(res, 400, err);
             return;
-        }
+        } else {
         activity.image = "/images/activity/"+req.file.filename;
         activity.save(function (err, activity) {
             if (err) {
@@ -115,13 +115,55 @@ module.exports.updateCover = function (req, res) {
             } else {
                 sendJSONresponse(res, 200, activity);
             }
-        });
+        });            
+        }
+
     });
 };
+module.exports.participate = function (req, res) {
+    var uid = req.body.uId;
+    var aid = req.body.actId;
+    Activity.findById(aid).exec(function (err, activity) {
+        if(!activity) {
+            sendJSONresponse(res, 404, {
+                "message": "活动不存在"
+            });
+            return;            
+        } else if (err) {
+            sendJSONresponse(res, 400, err);
+            return;            
+        } else {
+            User.findById(uid).exec(function (err, user) {
+                if(!user) {
+                    sendJSONresponse(res, 404, {
+                        "message": "找不到用户数据"
+                    });
+                    return;
+                } else if (err) {
+            sendJSONresponse(res, 400, err);                    
+            } else {
+                user.actSign.push(activity);
+                user.save(function (err, user) {
+                    console.log(user);
+                })
+                activity.userSign.push(user);
+                activity.save(function (err, activity) {
+                    if (err) {
+                        sendJSONresponse(res, 404, err);
+                    } else {
+                        sendJSONresponse(res, 200, activity);
+                    }
+                });
+            }
+            });
+        }
 
+    });
+
+}
 module.exports.update = function (req, res) {
     var id = req.params.actid;
-     actModel.findById(id).exec(function (err, activity) {
+     Activity.findById(id).exec(function (err, activity) {
         if (!activity) {
             sendJSONresponse(res, 404, {
                 "message": "活动不存在"
