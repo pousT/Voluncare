@@ -123,15 +123,15 @@ module.exports.updateCover = function (req, res) {
     });
 };
 module.exports.participate = function (req, res) {
-    var aid = req.body.actId;
     getAuthor(req, res, function(req, res,user) {
-        if(user.status < 1) {
+        if(user.status < 0) {
             console.log(user);
             sendJSONresponse(res, 400, {
                 "message": "权限不足"
-            });
-            return;            
+        });
+        return;
         }
+        var aid = req.body.aid;
         Activity.findById(aid).exec(function (err, activity) {
             if(!activity) {
                 sendJSONresponse(res, 404, {
@@ -156,9 +156,8 @@ module.exports.participate = function (req, res) {
                 });
             }
         });
-
     });
-};
+}
 module.exports.update = function (req, res) {
     var id = req.params.actid;
      Activity.findById(id).exec(function (err, activity) {

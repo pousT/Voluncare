@@ -1,9 +1,9 @@
-var mongoose = require('mongoose'),
+var Mongoose = require('mongoose'),
     crypto = require('crypto'),
     jwt = require('jsonwebtoken'),
     activitySchema = require('./activitySchema.js');
 
-module.exports = new mongoose.Schema({ 
+module.exports = new Mongoose.Schema({ 
         name:{type:String,required:true},
         telephone:{type:String,required:true,unique:true},
         address:{type:String,required:true},
@@ -12,8 +12,8 @@ module.exports = new mongoose.Schema({
         credit:{type:Number,default:0},
         status:{type:Number,default:0},
         avatar:{type:String,default:"images/avatar/default.jpg"},
-        actSign:[activitySchema],
-        actFinish:[activitySchema],
+        actSign:[{ type: Mongoose.Schema.Types.ObjectId, ref: 'Activity' }],
+        actFinish:[{ type: Mongoose.Schema.Types.ObjectId, ref: 'Activity' }],
         salt:{type:String},
         hash: {type:String}
     });

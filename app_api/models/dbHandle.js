@@ -13,7 +13,7 @@ mongoose.connect(dbURI);
 //    console.log('Mongoose log disconnected');
 //});
 
-
+mongoose.Promise = global.Promise;
 // 连接事件
 mongoose.connection.on('connected', function () {
     console.log('Mongoose connected to ' + dbURI);

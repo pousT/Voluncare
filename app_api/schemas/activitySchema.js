@@ -1,6 +1,6 @@
-var mongoose = require('mongoose'),
+var Mongoose = require('mongoose'),
 userSchema = require('./userSchema.js');
-module.exports = new mongoose.Schema({
+module.exports = new Mongoose.Schema({
         title:{type:String, required:true},
         description:{type:String, required:true},
         start:{type:Date, required:true},
@@ -11,6 +11,6 @@ module.exports = new mongoose.Schema({
         credit:{type:Number,required:true},
         maxNumber:{type:Number, required:true},
         image:{type:String,default:"images/activity/default.jpg"},
-        userSign:[userSchema],
-        userFinish:[userSchema]
+        userSign:[{ type: Mongoose.Schema.Types.ObjectId, ref: 'User' }],
+        userFinish:[{ type: Mongoose.Schema.Types.ObjectId, ref: 'User' }]
     });
