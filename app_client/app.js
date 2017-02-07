@@ -1,5 +1,5 @@
 (function () {
-    angular.module('myApp', ['ionic', 'ionic-citypicker','onezone-datepicker','ngMessages']);
+    angular.module('myApp', ['ionic', 'ionic-citypicker','onezone-datepicker','ngMessages','ion-datetime-picker']);
     
     function config($stateProvider, $urlRouterProvider) {
         $stateProvider
