@@ -7,9 +7,10 @@ var auth = jwt({
 });
 
 var activityCtrl = require('../controllers/activity');
-var ctrlAuth = require('../controllers/authentication');
-router.post('/register', ctrlAuth.register);
-router.post('/login', ctrlAuth.login);
+var authCtrl = require('../controllers/authentication');
+var recordCtrl = require('../controllers/record');
+router.post('/register', authCtrl.register);
+router.post('/login', authCtrl.login);
 
 
 //活动
@@ -18,4 +19,6 @@ router.get('/activities/:actid', activityCtrl.actFindOne);
 router.post('/activity',auth, activityCtrl.actCreate);
 router.put('/actCover/:actid',auth,activityCtrl.updateCover);
 router.put('/activity/participate',auth,activityCtrl.participate);
+
+router.post('/record',auth, recordCtrl.attend);
 module.exports = router;

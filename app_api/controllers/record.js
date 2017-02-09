@@ -1,0 +1,63 @@
+var dbHandle = require('../models/dbHandle.js');
+var mongoose = require('mongoose');
+var Record = mongoose.model('Record');
+var User = mongoose.model('User');
+var Activity = mongoose.model('Activity');
+var sendJSONresponse = function (res, status, content) {
+    res.status(status);
+    res.json(content);
+}
+var getAuthor = function (req, res, callback) {
+    if (req.payload && req.payload.telephone) {
+        User.findOne({ telephone: req.payload.telephone })
+            .exec(function (err, user) {
+            if (!user) {
+                sendJSONresponse(res, 404, { message: "User not found" });
+                return;
+            }
+            else if (err) {
+                console.log(err);
+                sendJSONresponse(res, 404, err);
+                return;
+            }
+            callback(req, res,user);
+        });
+    } else {
+        sendJSONresponse(res, 404, {
+            message : "User not found"
+        });
+        return;
+    }
+};
+
+module.exports.attend = function (req, res) {
+    
+    getAuthor(req, res, function(req, res,user) {
+        var adminStatus = 0; // 管理员身份
+        if(user.status >= adminStatus) {
+            User.findByIdAndUpdate(req.body.pid, {$push:{"actFinish":req.body.aid}, $pull:{"actSign":req.body.aid}, $inc: { "credit": req.body.number }}, function(err, user) {
+                console.log(user);
+            });
+            Activity.findByIdAndUpdate(req.body.aid, {$pull:{"userSign":req.body.pid}, $push:{"userFinish":req.body.pid}}, function(err, activity) {
+                if (err) {
+                    console.log(err);
+                }
+                console.log(activity);
+            });
+            var record = new Record();
+            record.user = req.body.pid;
+            record.activity = req.body.aid;
+            record.number = req.body.number;
+            record.reason = req.body.reason;
+            record.save(function(err, record) {
+                    if (err) {
+                        sendJSONresponse(res, 404, err);
+                    } else {
+                        console.log(record);
+                        sendJSONresponse(res, 200, record);
+                    }                
+            });
+        }
+
+    });
+}

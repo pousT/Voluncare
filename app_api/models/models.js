@@ -3,8 +3,8 @@ var crypto = require('crypto')
 var jwt = require('jsonwebtoken');
 
 var activitySchema = require('../schemas/activitySchema.js');
-
 var userSchema = require('../schemas/userSchema.js');
+var recordSchema = require('../schemas/recordSchema.js');
 //用户密码验证
 userSchema.methods.setPassword = function(password) {
     this.salt = crypto.randomBytes(16).toString('hex');
@@ -34,5 +34,5 @@ userSchema.methods.generateJwt = function() {
 };
 mongoose.model('User', userSchema);
 mongoose.model('Activity', activitySchema);
-
+mongoose.model('Record', recordSchema);
 

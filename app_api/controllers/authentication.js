@@ -38,6 +38,7 @@ module.exports.register = function(req, res) {
 
     });
 };
+
 module.exports.login = function(req, res) {
     if (!req.body.telephone || !req.body.password) {
         sendJSONresponse(res, 400, { message: '请输入电话和密码!' });
