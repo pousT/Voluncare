@@ -1,7 +1,8 @@
 angular
 .module('myApp')
 .service('activitiesData', activitiesData)
-.service('activityData', activityData);
+.service('activityData', activityData)
+.service('recordsData', recordsData);
 
 activitiesData.$inject = ['$http'];
 function activitiesData ($http) {
@@ -20,9 +21,26 @@ function activityData ($http,authentication) {
             }
         });        
     };
-
+    var participate = function(aid) {
+        return $http.put("/api/participate", {aid: aid}, {
+            headers: {
+                Authorization: 'Bearer ' + authentication.getToken()
+            }            
+        });
+    }
     return {
         getActivityById: getActivityById,
-        addActivity: addActivity
-    };
+        addActivity: addActivity,
+        participate: participate
+    };  
+};
+
+recordsData.$inject = ['$http','authentication'];
+function recordsData ($http,authentication) {
+    var url = '/api/records';
+    return $http.get(url, {
+        headers: {
+            Authorization: 'Bearer ' + authentication.getToken()
+        }
+    });
 }

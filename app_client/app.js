@@ -38,6 +38,11 @@
             url:'/postActivity',
             templateUrl: '/postActivity/postActivity.view.html',  
             controller:'postActivityCtrl'          
+        })
+        .state('records', {
+            url:'/records',
+            templateUrl: '/records/records.view.html',  
+            controller:'recordsCtrl'          
         });
         $urlRouterProvider.otherwise("/"); 
 };

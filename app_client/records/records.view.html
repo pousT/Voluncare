@@ -1,0 +1,11 @@
+  <ion-view view-title="积分纪录">
+    <ion-content class="padding">
+      <ion-list>
+        <ion-item ng-repeat="record in records">
+            <p class="item">Title：{{record.reason}} | 
+            时间：{{record.time|formatDate}}</p>
+        </ion-item>
+        
+      </ion-list>
+    </ion-content>               
+</ion-view>
