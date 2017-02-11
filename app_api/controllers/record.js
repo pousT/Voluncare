@@ -60,4 +60,27 @@ module.exports.attend = function (req, res) {
         }
 
     });
+};
+
+module.exports.records = function(req, res) {
+    getAuthor(req, res, function(req, res,user) {
+        var adminStatus = 0; // 管理员身份
+        if(user.status >= adminStatus) {
+            Record.find().exec(function (err, records) {
+                if (err) {
+                    console.log(err);
+                    sendJSONresponse(res, 400, err);
+                    return;
+                }
+                sendJSONresponse(res, 200, records);
+            });
+        } else {
+            console.log(user);
+            sendJSONresponse(res, 400, {
+                "message": "权限不足"
+            });            
+        }
+
+    });    
 }
+

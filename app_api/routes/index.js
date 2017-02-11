@@ -21,4 +21,5 @@ router.put('/actCover/:actid',auth,activityCtrl.updateCover);
 router.put('/activity/participate',auth,activityCtrl.participate);
 
 router.post('/record',auth, recordCtrl.attend);
+router.get('/records',auth, recordCtrl.records);
 module.exports = router;
