@@ -132,6 +132,7 @@ module.exports.participate = function (req, res) {
         return;
         }
         var aid = req.body.aid;
+
         Activity.findById(aid).exec(function (err, activity) {
             if(!activity) {
                 sendJSONresponse(res, 404, {
@@ -142,11 +143,11 @@ module.exports.participate = function (req, res) {
                 sendJSONresponse(res, 400, err);
                 return;            
             } else {
-                user.actSign.push(activity);
+                user.actSign.addToSet(activity);
                 user.save(function (err, user) {
                     console.log(user);
                 })
-                activity.userSign.push(user);
+                activity.userSign.addToSet(user);
                 activity.save(function (err, activity) {
                     if (err) {
                         sendJSONresponse(res, 404, err);
