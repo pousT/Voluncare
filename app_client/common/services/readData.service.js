@@ -37,10 +37,15 @@ function activityData ($http,authentication) {
 
 recordsData.$inject = ['$http','authentication'];
 function recordsData ($http,authentication) {
-    var url = '/api/records';
-    return $http.get(url, {
-        headers: {
-            Authorization: 'Bearer ' + authentication.getToken()
-        }
-    });
+    var records = function() {
+        var url = '/api/records';
+        return $http.get(url, {
+            headers: {
+                Authorization: 'Bearer ' + authentication.getToken()
+            }
+        });
+    };
+    return {
+        records: records
+    }
 }
