@@ -45,7 +45,17 @@ function recordsData ($http,authentication) {
             }
         });
     };
+    var findUserByTelephone = function(telephone) {
+        var url = '/api/record/findUser';
+        return $http.post(url, {telephone:telephone}, {
+            headers: {
+                Authorization: 'Bearer ' + authentication.getToken()
+            }            
+        });
+    }
     return {
-        records: records
+        records: records,
+        findUserByTelephone:findUserByTelephone
+
     }
 }
