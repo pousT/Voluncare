@@ -35,10 +35,10 @@ module.exports.attend = function (req, res) {
     getAuthor(req, res, function(req, res,user) {
         var adminStatus = 0; // 管理员身份
         if(user.status >= adminStatus) {
-            User.findByIdAndUpdate(req.body.pid, {$push:{"actFinish":req.body.aid}, $pull:{"actSign":req.body.aid}, $inc: { "credit": req.body.number }}, function(err, user) {
+            User.findByIdAndUpdate(req.body.pid, {$addToSet:{"actFinish":req.body.aid}, $pull:{"actSign":req.body.aid}, $inc: { "credit": req.body.number }}, function(err, user) {
                 console.log(user);
             });
-            Activity.findByIdAndUpdate(req.body.aid, {$pull:{"userSign":req.body.pid}, $push:{"userFinish":req.body.pid}}, function(err, activity) {
+            Activity.findByIdAndUpdate(req.body.aid, {$pull:{"userSign":req.body.pid}, $addToSet:{"userFinish":req.body.pid}}, function(err, activity) {
                 if (err) {
                     console.log(err);
                 }
