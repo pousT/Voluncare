@@ -1,14 +1,17 @@
-  <ion-view view-title="活动列表">
-    <ion-content class="padding">
-      <ion-list>
-        <ion-item ng-repeat="activity in activities">
-          <a class="item" ng-click="goDetail({{activity}})">
-            <img class="item" ng-src='{{activity.image}}'/>
-          </a>
-            <p class="item">Title：{{activity.title}} | 
-            Date：{{activity.start|formatDate}}</p>
-        </ion-item>
-        
-      </ion-list>
-    </ion-content>               
-</ion-view>
++  <ion-view view-title="活动列表">
+ +    <ion-content class="padding">
+ +      <ion-list>
+ +        <ion-item ng-repeat="activity in activities">
+ +        <div class="item item-body"> 
+ +            <p>  {{activity.title}} </p>
+ +       </div>
+ +          <a class="item" ng-click="goDetail({{activity}})">
+ +            <img class="full-image" style="height:20%; width:100%" ng-src='{{activity.image}}'/>
+ +          </a>
+ +            <p class="item">
+ +            活动时间：{{activity.start|formatDate}} -- {{activity.end|formatDate}} <br> 
+ +            地址：{{activity.address}}   |  积分: {{activity.credit}}</p>
+ +        </ion-item>
+ +      </ion-list>
+ + </ion-content>               
+ +</ion-view>
