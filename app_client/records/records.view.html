@@ -1,15 +1,10 @@
   <ion-view view-title="积分纪录">
     <ion-content class="padding">
 
-
-    <legend>账户信息</legend>    
-          {{formError}}     
+    <legend>查询用户</legend>   
           <label for="telephone">电话:</label>
-          <input type="number" id="telephone" ng-model="telephone" required/>
-            <div class="error-messages" ng-if="telephone.$dirty" ng-messages="telephone.$error">
-              <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>
-            </div> 
-        <button ng-click="findUserByTelephone({{telephone}})" >查询</button>
+          <input type="number" id="telephone" ng-model="telephone.text"/>      
+        <button ng-click="findUserByTelephone()" >查询</button>
 
     <a> {{foundUser.name}} </a>
 
