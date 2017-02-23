@@ -1,5 +1,14 @@
   <ion-view view-title="积分纪录">
     <ion-content class="padding">
+
+    <legend>查询用户</legend>   
+          <label for="telephone">电话:</label>
+          <input type="number" id="telephone" ng-model="telephone.text"/>      
+        <button ng-click="findUserByTelephone()" >查询</button>
+
+    <a> {{foundUser.name}} </a>
+
+
       <ion-list>
         <ion-item ng-repeat="record in records">
             <p class="item">Title：{{record.reason}} | 

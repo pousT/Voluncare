@@ -159,6 +159,18 @@ module.exports.participate = function (req, res) {
         });
     });
 }
+module.exports.myActivities = function(req, res) {
+    var ids = req.aids;
+    Activity.find({_id: { $in:ids}}).exec( function(err, activities) {
+        if(err) {
+                sendJSONresponse(res, 400, err);
+                return;              
+            } else {
+                sendJSONresponse(res, 200, activities);
+            }
+    });_
+}
+
 module.exports.update = function (req, res) {
     var id = req.params.actid;
      Activity.findById(id).exec(function (err, activity) {

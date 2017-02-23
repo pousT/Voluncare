@@ -67,6 +67,7 @@ module.exports.findUser = function (req, res) {
         var adminStatus = 0; // 管理员身份
         if(user.status >= adminStatus) {
             var query = User.findOne({ 'telephone': req.body.telephone});
+            console.log( req.body.telephone);
             query.select('_id name telephone');
             query.exec(function (err, user) {
                     if (err) {
