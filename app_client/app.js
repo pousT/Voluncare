@@ -8,11 +8,6 @@
             templateUrl: 'home/home.view.html',
             controller: 'homeCtrl'
         })
-        .state('about', {
-            url:'/about',
-            templateUrl: 'about/about.html',
-            controller: 'aboutCtrl'
-        })
         .state('activities', {
             url:'/activities',
             templateUrl: 'activities/activities.view.html',
