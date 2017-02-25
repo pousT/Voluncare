@@ -10,10 +10,11 @@ module.exports = new Mongoose.Schema({
         birthday:{type:Date,required:true},
         gender:{type:String,required:true},
         credit:{type:Number,default:0},
-        status:{type:Number,default:0},
         avatar:{type:String,default:"images/avatar/default.jpg"},
         actSign:[{ type: Mongoose.Schema.Types.ObjectId, ref: 'Activity' }],
         actFinish:[{ type: Mongoose.Schema.Types.ObjectId, ref: 'Activity' }],
+        time:{type : Date, default: Date.now},
+        balance:{type:Number,default:0},
         salt:{type:String},
         hash: {type:String}
     });
