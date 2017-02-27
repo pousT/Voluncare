@@ -2,15 +2,17 @@
     <ion-content class="padding">
       <ion-list>
         <ion-item ng-repeat="activity in activities">
-        <div class="item item-body"> 
-            <p>  {{activity.title}} </p>
-       </div>
-          <a class="item" ng-click="goDetail({{activity}})">
+        <!--<div class="item item-body"> -->
+        <div class="item">
+          <h2 class="title"> {{activity.title}} </h2> <br>
+      
+          <a  ng-click="goDetail({{activity}})">
             <img class="full-image" style="height:20%; width:100%" ng-src='{{activity.image}}'/>
           </a>
-            <p class="item">
+            <p >
             活动时间：{{activity.start|formatDate}} -- {{activity.end|formatDate}} <br> 
             地址：{{activity.address}}   |  积分: {{activity.credit}}</p>
+            </div>
         </ion-item>
       </ion-list>
  </ion-content>               
