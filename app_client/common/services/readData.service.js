@@ -53,9 +53,19 @@ function recordsData ($http,authentication) {
             }            
         });
     }
+
+    var createRecord = function(data) {
+        var url = 'api/record/createRecord';
+        return $http.post(url, data, {
+            headers: {
+                Authorization: 'Bearer ' + authentication.getToken()
+            }
+        });
+    }
     return {
         records: records,
-        findUserByTelephone:findUserByTelephone
+        findUserByTelephone:findUserByTelephone,
+        createRecord: createRecord
 
     }
 }

@@ -46,13 +46,17 @@ function recordsCtrl(recordsData,$scope,$state) {
 
         
     $scope.adjustValue = function() {
-        console.log($scope.foundUser);
-        console.log($scope.selectedReason.text);
-        console.log($scope.number.text);
+        formData = {
+                    pid: $scope.foundUser._id,
+                    telephone: $scope.foundUser.telephone,
+                    reason: $scope.selectedReason.text,
+                    number:$scope.number.text
+                };
         if($scope.foundUser){
-            console.log("insert into database");
-            //存入数据库
+            recordsData.createRecord(formData).success(function(data) {
              window.location.reload();
+            });
+
         } else {
             console.log("fail");
             window.alert("用户不存在,添加失败"); 

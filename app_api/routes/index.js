@@ -23,4 +23,5 @@ router.put('/activity/participate',auth,activityCtrl.participate);
 router.post('/record',auth, recordCtrl.attend);
 router.get('/records',auth, recordCtrl.records);
 router.post('/record/findUser', auth, recordCtrl.findUser);
+router.post('/record/createRecord',auth, recordCtrl.postRecord);
 module.exports = router;
