@@ -1,19 +1,15 @@
   <ion-view view-title="活动详情">
     <ion-content class="padding">
-          <p><h1>{{activity.title}}</h1></p>
-          <div class="bar bar-subheader">
-            <h2 class="title">活动时间：{{activity.start|formatDate}} -- {{activity.end|formatDate}}</h2>
-          </div>
-            <img class="full-image" style="height:20%; width:97%" ng-src='../{{activity.image}}'/>
-          </a>
+          <p><h2>{{activity.title}}</h2></p>
+          <p class="info">
+            <p><img ng-src='../{{activity.image}}'/></p>
+            时间：{{activity.start |formatDate}} 
 			<p>活动总人数：{{activity.maxNumber}}</p>
 			<p>剩余可报名人数：{{ activity.maxNumber-activity.userSign.length }}<p>
-            <p class="info">
-            <p>{{ activity.description}}</p>
-            地址：{{activity.address}}   |  积分: {{activity.credit}}
+            <p>活动详情：{{ activity.description}}<p>
           </p>
        <label class="item item-input">
-         <button class="button button-block button-dark" ng-click="paticipate()" ng-disabled="activity.userSign.length+activity.userFinish.length>activity.maxNumber-1" >报名</button>
+         <button class="button button-block button-dark" ng-click="participate()||check()" ng-disabled="activity.userSign.length+activity.userFinish.length>activity.maxNumber-1" >报名</button>
        </label>
     </ion-content>               
 </ion-view>
