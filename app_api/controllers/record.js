@@ -49,6 +49,7 @@ module.exports.attend = function (req, res) {
             record.activity = req.body.aid;
             record.number = req.body.number;
             record.reason = req.body.reason;
+            record.telephone = req.body.telephone;
             record.save(function(err, record) {
                     if (err) {
                         sendJSONresponse(res, 404, err);
@@ -61,13 +62,35 @@ module.exports.attend = function (req, res) {
 
     });
 };
+module.exports.postRecord = function(req, res) {
+    getAuthor(req, res, function(req, res,user) {
+        var adminStatus = 0; // 管理员身份
+        if(user.status >= adminStatus) {
+            var record = new Record();
+            record.user = req.body.pid;
+            record.number = req.body.number;
+            record.reason = req.body.reason;
+            record.telephone = req.body.telephone;
+            record.save(function(err, record) {
+                    if (err) {
+                        sendJSONresponse(res, 404, err);
+                    } else {
+                        User.findByIdAndUpdate(req.body.pid, {$inc: { "credit": req.body.number }}, function(err, user) {
+                            console.log(user);
+                        });
+                        sendJSONresponse(res, 200, record);
+                    }                
+            });
+        }
+
+    });    
+}
 module.exports.findUser = function (req, res) {
     
     getAuthor(req, res, function(req, res,user) {
         var adminStatus = 0; // 管理员身份
         if(user.status >= adminStatus) {
             var query = User.findOne({ 'telephone': req.body.telephone});
-            console.log( req.body.telephone);
             query.select('_id name telephone');
             query.exec(function (err, user) {
                     if (err) {
