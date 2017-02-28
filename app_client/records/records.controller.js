@@ -24,6 +24,7 @@ function recordsCtrl(recordsData,$scope,$state) {
 
             } else {
                 //这里处理用户不存在
+                window.alert("用户不存在"); 
                 console.log("用户不存在");
             }
         }).error(function (e) {
@@ -31,5 +32,35 @@ function recordsCtrl(recordsData,$scope,$state) {
             message = "Sorry, something's gone wrong ";            
         })
     }
-}
 
+
+
+    
+
+
+
+
+    $scope.reasons = ["公益活动", "学习成长", "其他"];
+    $scope.number = {text: ""}
+    $scope.selectedReason = {text: ""}
+
+        
+    $scope.adjustValue = function() {
+        console.log($scope.foundUser);
+        console.log($scope.selectedReason.text);
+        console.log($scope.number.text);
+        if($scope.foundUser){
+            console.log("insert into database");
+            //存入数据库
+             window.location.reload();
+        } else {
+            console.log("fail");
+            window.alert("用户不存在,添加失败"); 
+        }
+
+
+
+    }
+
+
+}

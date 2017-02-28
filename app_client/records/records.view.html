@@ -1,12 +1,21 @@
   <ion-view view-title="积分纪录">
     <ion-content class="padding">
-
     <legend>查询用户</legend>   
-          <label for="telephone">电话:</label>
-          <input type="number" id="telephone" ng-model="telephone.text"/>      
+          <label for="telephone">电话</label>
+          <input type="text" id="telephone" ng-model="telephone.text"/>      
         <button ng-click="findUserByTelephone()" >查询</button>
-
     <a> {{foundUser.name}} </a>
+    
+        <label for="selectedReason">调整原因</label>
+        <select ng-init="selectedReason.text = reasons[0]" ng-model="selectedReason.text" ng-options="x for x in reasons">
+        </select>
+
+        <label for="number">调整数值</label>
+        <input type="number" ng-model="number.text">
+      <button ng-click="adjustValue()" >确定</button>
+
+    <legend>历史记录</legend>
+
 
 
       <ion-list>
