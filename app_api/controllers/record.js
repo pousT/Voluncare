@@ -80,6 +80,24 @@ module.exports.findUser = function (req, res) {
 
     });
 };
+module.exports.findUserById = function (req, res) {
+    
+    getAuthor(req, res, function(req, res,user) {
+        var adminStatus = 0; // 管理员身份
+        if(user.status >= adminStatus) {
+            var query = User.findOne({ '_id': req.body.id});
+            query.select('_id name telephone');
+            query.exec(function (err, user) {
+                    if (err) {
+                        sendJSONresponse(res, 404, err);
+                    } else {
+                        sendJSONresponse(res, 200, user);
+                    }                 
+            });
+        }
+
+    });
+};
 module.exports.records = function(req, res) {
     getAuthor(req, res, function(req, res,user) {
         var adminStatus = 0; // 管理员身份
@@ -101,4 +119,3 @@ module.exports.records = function(req, res) {
 
     });    
 }
-
