@@ -12,7 +12,8 @@ function recordsCtrl(recordsData,$scope,$state) {
         console.log(e);
         message = "Sorry, something's gone wrong ";
     });
-        $scope.telephone = {text: ""}
+        $scope.telephone = {text: ""};
+
 
     $scope.findUserByTelephone = function() {
         console.log($scope.telephone);
@@ -32,6 +33,7 @@ function recordsCtrl(recordsData,$scope,$state) {
             message = "Sorry, something's gone wrong ";            
         })
     }
+
 
 
 
