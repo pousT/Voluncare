@@ -15,12 +15,15 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      '../*.js',
-      '../app_client/*.js',
-      '../app_client/*/*.*.js',
-      '../app_client/*/*/*.*.js',
+      '../../bower_components/ionic/release/js/ionic.bundle.min.js',
       'angular-mocks.js',
-      '**/*.test.js'
+      '../../bower_components/onezone-datepicker/dist/onezone-datepicker.min.js',
+      '../../public/angular-messages/angular-messages.min.js',
+      '../../bower_components/ion-datetime-picker/release/ion-datetime-picker.min.js',
+      '../*.js',
+      '../*/*.*.js',
+      '../*/*/*.*.js',
+      '/unit/*.test.js'
     ],
 
 

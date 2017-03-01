@@ -168,7 +168,7 @@ module.exports.myActivities = function(req, res) {
             } else {
                 sendJSONresponse(res, 200, activities);
             }
-    });_
+    });
 }
 
 module.exports.update = function (req, res) {
