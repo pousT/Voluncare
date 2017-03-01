@@ -6,6 +6,7 @@ module.exports = new Mongoose.Schema({
         time:{type : Date, default: Date.now},
         number:{type:Number,required:true},
         user:{ type: Mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
-        telephone:{type:String, require:true},
+        userName:{type:String, required:true},
+        telephone:{type:String, required:true},
         activity:{type: Mongoose.Schema.Types.ObjectId, ref: 'Activity'}
     });
