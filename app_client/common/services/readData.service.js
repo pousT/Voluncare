@@ -28,10 +28,19 @@ function activityData ($http,authentication) {
             }            
         });
     }
+    var myActivities = function() {
+        var url ="/api/activities";
+        return $http.get(url, {
+            headers: {
+                Authorization: 'Bearer ' + authentication.getToken()
+            }
+        });
+    }
     return {
         getActivityById: getActivityById,
         addActivity: addActivity,
-        participate: participate
+        participate: participate,
+        myActivities: myActivities
     };  
 };
 

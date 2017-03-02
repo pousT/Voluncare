@@ -43,6 +43,11 @@
             url:'/recharge',
             templateUrl: '/recharge/recharge.view.html',  
             controller:'rechargeCtrl'          
+        })
+        .state('myActivities', {
+            url:'/myActivities',
+            templateUrl: '/myActivities/myActivities.view.html',  
+            controller:'myActivitiesCtrl'               
         });
         $urlRouterProvider.otherwise("/"); 
 };
