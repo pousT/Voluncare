@@ -3,23 +3,23 @@ angular
 .controller('rechargeCtrl', rechargeCtrl);
 
 
-rechargeCtrl.$inject = ['rechargeData','$scope','$state'];
-function rechargeCtrl(rechargeData,$scope,$state) {
-    
-    }).error(function (e) {
-        console.log(e);
-        message = "Sorry, something's gone wrong ";
-    });
-        
-
-
+rechargeCtrl.$inject = ['$scope','$state'];
+function rechargeCtrl($scope,$state) {
 
     $scope.methods = ["请选择充值方式", "微信转账", "支付宝转账", "银行卡转账", "现金充值"];
     $scope.amount = {text: ""}
     $scope.card = {text: ""}
     $scope.selectedMethod = {text: ""}
-
-
+    $scope.accounts = {weChat:"13586699908",
+                        alipay:"13586699908",
+                        bank: {
+                            name:"鄞州银行",
+                            detail:"咸祥支行",
+                            id:"6223896813783106",
+                            owner:"朱凯霞"
+                        },
+                        telephone:"13586699908",
+                        phone:"0574-87155555"};
 
 }
 

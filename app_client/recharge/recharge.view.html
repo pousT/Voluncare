@@ -7,9 +7,6 @@
     <legend>查询用户</legend>   
           
 
-
-
-
         <input type="number" ng-model="amount.text">
          <select ng-init="selectedMethod.text = methods[0]" ng-model="selectedMethod.text" ng-options="x for x in methods">
         </select>
@@ -17,10 +14,10 @@
       <button ng-click="adjustValue()" >立即充值</button>
 
     <legend>充值说明</legend>
-    <p>微信：13586699908</p> 
-    <p>支付宝：13586699908</p>
-    <p>银行卡：鄞州银行 咸祥支行 6223896813783106 朱凯霞</p>
-    <p>联系电话：0574-87155555 13586699908</p> 
+    <p>微信：{{accounts.weChat}}</p> 
+    <p>支付宝：{{accounts.alipay}}</p>
+    <p>银行卡：{{accounts.bank.name}} {{accounts.bank.detail}} {{accounts.bank.id}} {{accounts.bank.owner}}</p>
+    <p>联系电话：{{accounts.phone}} {{accounts.telephone}}</p> 
 
     <legend>财务记录</legend>
 
