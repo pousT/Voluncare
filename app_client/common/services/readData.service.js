@@ -29,7 +29,7 @@ function activityData ($http,authentication) {
         });
     }
     var myActivities = function() {
-        var url ="/api/activities";
+        var url ="/api/myActivities";
         return $http.get(url, {
             headers: {
                 Authorization: 'Bearer ' + authentication.getToken()
