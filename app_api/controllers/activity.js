@@ -66,7 +66,7 @@ module.exports.actCreate = function (req, res) {
             var description = req.body.description;
             var maxNum = req.body.maxNum;
             var creditReq = req.body.credit;
-            var statusReq = req.body.status;
+            var price = req.body.price;
             var bonus = req.body.bonus;
             var address = req.body.address;
             Activity.create({
@@ -77,9 +77,8 @@ module.exports.actCreate = function (req, res) {
                 "address": address,
                 "maxNumber": maxNum,
                 "creditReq": creditReq,
-                "statusReq": statusReq,
-                "credit": bonus,
-                "address": address
+                "price": price,
+                "credit": bonus
             }, function(err, activity) {
                 if (err) {
                     console.log(err);
