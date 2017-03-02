@@ -19,6 +19,7 @@ router.get('/activities/:actid', activityCtrl.actFindOne);
 router.post('/activity',auth, activityCtrl.actCreate);
 router.put('/actCover/:actid',auth,activityCtrl.updateCover);
 router.put('/activity/participate',auth,activityCtrl.participate);
+router.get('/myActivities', auth, activityCtrl.myActivities);
 
 router.post('/record',auth, recordCtrl.attend);
 router.get('/records',auth, recordCtrl.records);

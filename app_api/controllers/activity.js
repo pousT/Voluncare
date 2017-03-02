@@ -159,15 +159,17 @@ module.exports.participate = function (req, res) {
     });
 }
 module.exports.myActivities = function(req, res) {
-    var ids = req.aids;
-    Activity.find({_id: { $in:ids}}).exec( function(err, activities) {
-        if(err) {
-                sendJSONresponse(res, 400, err);
-                return;              
-            } else {
-                sendJSONresponse(res, 200, activities);
-            }
+    getAuthor(req, res, function(req, res,user) {
+        Activity.find({_id: { $in:user.actSign}}).exec( function(err, activities) {
+            if(err) {
+                    sendJSONresponse(res, 400, err);
+                    return;              
+                } else {
+                    sendJSONresponse(res, 200, activities);
+                }
+        });
     });
+
 }
 
 module.exports.update = function (req, res) {
