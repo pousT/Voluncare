@@ -38,6 +38,11 @@
             url:'/records',
             templateUrl: '/records/records.view.html',  
             controller:'recordsCtrl'          
+        })
+        .state('recharge', {
+            url:'/recharge',
+            templateUrl: '/recharge/recharge.view.html',  
+            controller:'rechargeCtrl'          
         });
         $urlRouterProvider.otherwise("/"); 
 };
