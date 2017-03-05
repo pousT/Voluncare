@@ -7,10 +7,10 @@
     <legend>查询用户</legend>   
           
 
-        <input type="number" ng-model="amount.text">
+        <input type="number" placeholder="请输入充值金额" ng-model="amount.text">
          <select ng-init="selectedMethod.text = methods[0]" ng-model="selectedMethod.text" ng-options="x for x in methods">
         </select>
-        <input type="number" ng-model="card.text">
+        <input type="number" placeholder="请备注卡号后4位" ng-model="card.text">
       <button ng-click="adjustValue()" >立即充值</button>
 
     <legend>充值说明</legend>
