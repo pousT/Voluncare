@@ -13,6 +13,11 @@
             templateUrl: 'activities/activities.view.html',
             controller: 'activitiesCtrl'
         })
+        .state('userlist', {
+            url:'/userlist',
+            templateUrl: '/userlist/userlist.view.html',
+            controller: 'userlistCtrl'
+        })
         .state('detail', {
             url:'/activityDetail',
             params: {'activity': null},
@@ -38,6 +43,16 @@
             url:'/records',
             templateUrl: '/records/records.view.html',  
             controller:'recordsCtrl'          
+        })
+        .state('recharge', {
+            url:'/recharge',
+            templateUrl: '/recharge/recharge.view.html',  
+            controller:'rechargeCtrl'          
+        })
+        .state('myActivities', {
+            url:'/myActivities',
+            templateUrl: '/myActivities/myActivities.view.html',  
+            controller:'myActivitiesCtrl'               
         });
         $urlRouterProvider.otherwise("/"); 
 };
