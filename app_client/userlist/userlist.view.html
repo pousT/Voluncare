@@ -35,7 +35,7 @@
         <div class="col-demo">余额</div>
       </div>
     </div>
-<ion-list ng-repeat="users in userlist">
+<ion-list ng-repeat="user in users">
 <a  ng-click="goDetail({{user}})">
     <div class="row">
       <div class="col">
@@ -45,7 +45,7 @@
         <div class="col-demo">{{user.name}}</div>
       </div>
       <div class="col">
-        <div class="col-demo">{{user.birthday}}</div>
+        <div class="col-demo">{{user.birthday|formatDate}}</div>
       </div>
       <div class="col">
         <div class="col-demo">{{user.gender}}</div>
