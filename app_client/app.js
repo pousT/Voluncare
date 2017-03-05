@@ -13,6 +13,11 @@
             templateUrl: 'activities/activities.view.html',
             controller: 'activitiesCtrl'
         })
+        .state('userlist', {
+            url:'/userlist',
+            templateUrl: '/userlist/userlist.view.html',
+            controller: 'userlistCtrl'
+        })
         .state('detail', {
             url:'/activityDetail',
             params: {'activity': null},
