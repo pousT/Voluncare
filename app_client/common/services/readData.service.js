@@ -2,7 +2,20 @@ angular
 .module('myApp')
 .service('activitiesData', activitiesData)
 .service('activityData', activityData)
-.service('recordsData', recordsData);
+.service('recordsData', recordsData)
+.service('userData', userData);
+
+userData.$inject = ['$http','authentication'];
+function userData($http,authentication) {
+    var users = function() {
+        var url = '/api/users';
+        return $http.get(url, {
+            headers: {
+                Authorization: 'Bearer ' + authentication.getToken()
+            }
+        });        
+    }
+}
 
 activitiesData.$inject = ['$http'];
 function activitiesData ($http) {

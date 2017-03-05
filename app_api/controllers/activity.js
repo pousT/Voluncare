@@ -89,7 +89,6 @@ module.exports.actCreate = function (req, res) {
                 }
             });
         } else {
-            console.log(user);
             sendJSONresponse(res, 400, {
                 "message": "权限不足"
             });
