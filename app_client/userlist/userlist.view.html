@@ -1,0 +1,69 @@
+ <ion-view view-title="用户列表" >
+ <style>
+.col{
+  background-color: #F9FAFB;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  text-align: center;
+}
+</style>
+    <ion-content class="padding">
+ <div class="bar bar-header">
+    <div class="h1 title">用户列表</div>
+  </div>
+
+  <div class="content has-header">
+
+    <div class="row">
+      <div class="col">
+        <div class="col-demo">电话</div>
+      </div>
+      <div class="col">
+        <div class="col-demo">姓名</div>
+      </div>
+      <div class="col">
+        <div class="col-demo">出生日期</div>
+      </div>
+      <div class="col">
+        <div class="col-demo">性别</div>
+      </div>
+      <div class="col">
+        <div class="col-demo">积分</div>
+      </div>
+      <div class="col">
+        <div class="col-demo">余额</div>
+      </div>
+    </div>
+<ion-list ng-repeat="users in userlist">
+<a  ng-click="goDetail({{user}})">
+    <div class="row">
+      <div class="col">
+        <div class="col-demo">{{user.telephone}}</div>
+      </div>
+      <div class="col">
+        <div class="col-demo">{{user.name}}</div>
+      </div>
+      <div class="col">
+        <div class="col-demo">{{user.birthday}}</div>
+      </div>
+      <div class="col">
+        <div class="col-demo">{{user.gender}}</div>
+      </div>
+      <div class="col">
+        <div class="col-demo">{{user.credit}}</div>
+      </div>
+      <div class="col">
+        <div class="col-demo">{{user.balance}}</div>
+      </div>
+    </div>
+     </a>
+ </ion-list>
+  </div>
+
+         
+    
+   
+      </ion-list>
+ </ion-content>               
+</ion-view>
