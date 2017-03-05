@@ -15,6 +15,10 @@ function userData($http,authentication) {
             }
         });        
     }
+
+    return {
+        users: users        
+    }
 }
 
 activitiesData.$inject = ['$http'];
