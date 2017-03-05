@@ -8,11 +8,13 @@ var auth = jwt({
 
 var activityCtrl = require('../controllers/activity');
 var authCtrl = require('../controllers/authentication');
+var userCtrl = require('../controllers/user');
 var recordCtrl = require('../controllers/record');
 router.post('/register', authCtrl.register);
 router.post('/login', authCtrl.login);
 
-
+//用户
+router.get('/users', auth, userCtrl.users);
 //活动
 router.get('/activities', activityCtrl.activities);
 router.get('/activities/:actid', activityCtrl.actFindOne);
