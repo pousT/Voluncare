@@ -63,7 +63,10 @@
         </fieldset>
         <fieldset>
         <label>地址:</label>
-        <ionic-city-picker options='vm.CityPickData1'></ionic-city-picker>        
+          <input type="text" id="address" ng-model="formData.address" name="address" required/>
+            <div class="error-messages" ng-if="myForm.address.$dirty" ng-messages="myForm.address.$error">
+              <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>
+            </div>        
         </fieldset>
         <button ng-click="onSubmit()" ng-disabled="myForm.$invalid">注册！</button>
       </form>
