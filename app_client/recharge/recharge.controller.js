@@ -21,5 +21,24 @@ function rechargeCtrl($scope,$state) {
                         telephone:"13586699908",
                         phone:"0574-87155555"};
 
+    $scope.adjustValue = function() {
+        formData = {
+                    card: $scope.card.text,
+                    amount:$scope.amount.text,
+                    method:$scope.selectedMethod.text
+                };
+        if($scope.foundUser){
+            recordsData.createRecord(formData).success(function(data) {
+             window.location.reload();
+            });
+
+        } else {
+            console.log("fail");
+            window.alert("用户不存在,添加失败"); 
+        }
+
+
+
+    }
 }
 

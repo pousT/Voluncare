@@ -34,18 +34,9 @@ function recordsCtrl(recordsData,$scope,$state) {
         })
     }
 
-
-
-
-    
-
-
-
-
     $scope.reasons = ["公益活动", "学习成长", "其他"];
     $scope.number = {text: ""}
     $scope.selectedReason = {text: ""}
-
         
     $scope.adjustValue = function() {
         formData = {
