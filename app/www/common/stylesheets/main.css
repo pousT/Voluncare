@@ -1,0 +1,178 @@
+/*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}*/
+
+body {
+  color: #384047;
+  text-align: center;
+}
+
+.form {
+  margin: 10px auto;
+  padding: 10px 20px;
+  background: #f4f7f8;
+  border-radius: 8px;
+}
+
+h1 {
+  margin: 0 0 30px 0;
+  text-align: center;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+textarea,
+select {
+  background: rgba(255,255,255,0.1);
+  border: none;
+  font-size: 16px;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
+  width: 100%;
+  background-color: #e8eeef;
+  color: #8a97a0;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  margin-bottom: 10px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 0 4px 8px 0;
+}
+
+select {
+  padding: 6px;
+  height: 32px;
+  border-radius: 2px;
+}
+
+button {
+  padding: 19px 39px 18px 39px;
+  color: #FFF;
+  background-color: #4bc970;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  border-radius: 5px;
+  width: 100%;
+  border: 1px solid #3ac162;
+  border-width: 1px 1px 3px;
+  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+  margin-bottom: 10px;
+}
+button[disabled] {
+  opacity: 0.65; 
+}
+fieldset {
+  margin-bottom: 30px;
+  border: none;
+}
+
+legend {
+  font-size: 1.4em;
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+label.light {
+  font-weight: 300;
+  display: inline;
+}
+
+.number {
+  background-color: #5fcf80;
+  color: #fff;
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  font-size: 0.8em;
+  margin-right: 4px;
+  line-height: 30px;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+  border-radius: 100%;
+}
+
+
+label.btn span {
+  font-size: 1.5em ;
+}
+
+label input[type="radio"] ~ i.fa.fa-circle-o{
+    color: #c8c8c8;    display: inline;
+}
+label:hover input[type="radio"] ~ i.fa {
+color: #5fcf80;
+}
+
+div[data-toggle="buttons"] label.active{
+    color: #5fcf80;
+}
+
+div[data-toggle="buttons"] label {
+display: inline-block;
+padding: 6px 12px;
+margin-bottom: 0;
+font-size: 14px;
+font-weight: normal;
+line-height: 2em;
+text-align: left;
+white-space: nowrap;
+vertical-align: top;
+cursor: pointer;
+background-color: none;
+border: 0px solid 
+#c8c8c8;
+border-radius: 3px;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+-o-user-select: none;
+user-select: none;
+}
+
+div[data-toggle="buttons"] label:hover {
+color: #5fcf80;
+}
+
+div[data-toggle="buttons"] label:active, div[data-toggle="buttons"] label.active {
+-webkit-box-shadow: none;
+box-shadow: none;
+}
+.title {
+  text-align: center;
+}
+
+.error-messages.ng-active {
+  background:maroon;
+  color:white;
+  padding:5px;
+  border-radius:5px;
+  margin-top:15px;
+  position:relative;
+}
+.error-messages.ng-active:after {
+  position:absolute;
+  top:-10px;
+  content:"";
+  left:20px;
+  border-style:solid;
+  border-color:transparent transparent maroon;
+  border-width:5px;
+}

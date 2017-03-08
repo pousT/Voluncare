@@ -1,0 +1,20 @@
+  <ion-view view-title="账户充值">
+    <ion-content class="padding">
+        <input type="number" placeholder="请输入充值金额" ng-model="amount.text">
+         <select ng-init="selectedMethod.text = methods[0]" ng-model="selectedMethod.text" ng-options="x for x in methods">
+        </select>
+        <input type="number" placeholder="请备注卡号后4位" ng-model="card.text">
+      <button ng-click="adjustValue()" >立即充值</button>
+
+    <legend>充值说明</legend>
+    <p>微信：{{accounts.weChat}}</p> 
+    <p>支付宝：{{accounts.alipay}}</p>
+    <p>银行卡：{{accounts.bank.name}} {{accounts.bank.detail}} {{accounts.bank.id}} {{accounts.bank.owner}}</p>
+    <p>联系电话：{{accounts.phone}} {{accounts.telephone}}</p> 
+
+    <legend>财务记录</legend>
+
+
+
+    </ion-content>               
+</ion-view>

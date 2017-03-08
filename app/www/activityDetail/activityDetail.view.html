@@ -1,0 +1,15 @@
+  <ion-view view-title="活动详情">
+    <ion-content class="padding">
+          <p><h2>{{activity.title}}</h2></p>
+          <p class="info">
+            <p><img ng-src='../{{activity.image}}'/></p>
+            时间：{{activity.start |formatDate}} 
+			<p>活动总人数：{{activity.maxNumber}}</p>
+			<p>剩余可报名人数：{{ activity.maxNumber-activity.userSign.length }}<p>
+            <p>活动详情：{{ activity.description}}<p>
+          </p>
+       <label class="item item-input">
+         <button class="button button-block button-dark" ng-click="participate()||check()" ng-disabled="activity.userSign.length+activity.userFinish.length>activity.maxNumber-1" >报名</button>
+       </label>
+    </ion-content>               
+</ion-view>

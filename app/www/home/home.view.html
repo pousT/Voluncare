@@ -1,0 +1,60 @@
+      <ion-view view-title="个人主页">
+        <ion-content class="padding">
+      <div class="list card">
+        <div class="item item-avatar">
+          <img src="{{user.avatar}}">
+          <h2>{{user.name}}</h2>
+          <p>{{user.time}}</p>
+        </div>
+        <div class="item item-body">
+     <div class="list">
+        <div class="item item-icon-left">
+          <i class="icon ion-ios-telephone"></i>
+          {{user.telephone}}
+        </div>
+        <div class="item item-icon-left">
+          <i class="icon ion-ios-contact"></i>
+         {{user.name}}
+        </div>
+        <div class="item item-icon-left">
+          <i class="icon ion-male"></i>
+         {{user.gender}}
+        </div>
+        <a class="item item-icon-left" href="#">
+          <i class="icon ion-ios-calendar"></i>
+          {{user.birthday|formatDate}}
+        </a>
+        <a class="item item-icon-left" href="#">
+          <i class="icon ion-pin"></i>
+            {{user.address}}
+        </a>
+        <div class="item item-divider">
+          已购买
+        </div>
+        <a class="item item-icon-left" ui-sref="myActivities">
+          <i class="icon ion-ios-heart"></i>
+          活动
+          <span class="badge badge-assertive">{{user.actSign.length}}</span>
+        </a>
+        <a class="item item-icon-left" href="#">
+          <i class="icon ion-bag"></i>
+          产品
+          <span class="badge badge-assertive">0</span>
+        </a>
+
+      </div>                 
+        </div>
+      </div>
+        </ion-content>
+    <div class="tabs">
+      <a class="tab-item" href="#">
+        产品
+      </a>
+      <a class="tab-item" ui-sref="home">
+        主页
+      </a>
+      <a class="tab-item" ui-sref="activities">
+        活动
+      </a>
+    </div>
+      </ion-view>

@@ -1,0 +1,71 @@
+    <ion-view view-title="注册">  
+      <ion-content class="padding"> 
+      <form class="form" name = "myForm">       
+        <fieldset>
+          <legend><span class="number">1</span>账户信息</legend>
+          <label for="name">用户名:</label>
+          <input type="text" id="name" ng-model="formData.name" name="name" required/>
+            <div class="error-messages" ng-if="myForm.name.$dirty" ng-messages="myForm.name.$error">
+              <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>
+            </div>          
+          <label for="telephone">电话:</label>
+          <input type="number" id="telephone" ng-model="formData.telephone" ng-minlength="11" ng-maxlength="13" name="telephone" required/>
+            <div class="error-messages" ng-if="myForm.telephone.$dirty" ng-messages="myForm.telephone.$error">
+              <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>
+            </div>          
+          <label for="password">密码:</label>
+          <input type="password" ng-model="formData.pw" id="password" name="password" ng-minlength="6" ng-maxlength="16" password-characters-validator required/>
+            <div class="error-messages" ng-if="myForm.password.$dirty" ng-messages="myForm.password.$error">
+              <div ng-message="minlength">
+                密码长度需为6-16位
+              </div>
+              <div ng-message="maxlength">
+                密码长度需为6-16位
+              </div>              
+              <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>
+            </div>  
+          <label for="passwordC">确认密码:</label>
+          <input type="password" ng-model="formData.pwc" id="passwordC" name="passwordC" match-validator="formData.pw" required/>
+            <div class="error-messages" ng-if="myForm.passwordC.$dirty" ng-messages="myForm.passwordC.$error">
+              <div ng-message="match">输入不一致</div>
+              <div ng-message="minlength">
+                密码长度需为6-16位
+              </div>
+              <div ng-message="maxlength">
+                密码长度需为6-16位
+              </div>              
+              <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>
+            </div>          
+        </fieldset>
+        
+        <fieldset>
+          <legend class="title"><span class="number">2</span>个人资料</legend>
+          <label>生日:</label>
+
+            <onezone-datepicker datepicker-object="onezoneDatepicker">
+              <button class="button button-block button-outline button-stable show-onezone-datepicker">
+                {{onezoneDatepicker.date | formatDate}}
+              </button>
+            </onezone-datepicker>
+
+          <label>性别:</label>
+            <label class="item item-radio">
+              <ion-radio name="group" value="male" ng-model="formData.gender">
+                男
+              </ion-radio>
+            </label>
+
+            <label class="item item-radio">
+              <ion-radio name="group" value="female" ng-model="formData.gender">
+                女
+              </ion-radio>
+            </label>
+        </fieldset>
+        <fieldset>
+        <label>地址:</label>
+        <ionic-city-picker options='vm.CityPickData1'></ionic-city-picker>        
+        </fieldset>
+        <button ng-click="onSubmit()" ng-disabled="myForm.$invalid">注册！</button>
+      </form>
+    </ion-content>               
+  </ion-view>
