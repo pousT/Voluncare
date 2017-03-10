@@ -49,6 +49,7 @@
                     address:payload.address,
                     birthday:payload.birthday,
                     status:payload.status,
+                    balance:payload.balance,
                     _id:payload._id
                 };
             }
