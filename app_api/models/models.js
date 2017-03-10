@@ -30,6 +30,7 @@ userSchema.methods.generateJwt = function() {
         actSign:this.actSign,
         actFinish:this.actFinish,
         status:this.status,
+        balance: this.balance,
         exp:parseInt(expiry.getTime()/1000)}, process.env.JWT_SECRET);
 };
 mongoose.model('User', userSchema);
