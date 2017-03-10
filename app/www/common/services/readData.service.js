@@ -6,9 +6,10 @@ angular
 .service('userData', userData);
 
 userData.$inject = ['$http','authentication'];
+var base = "http://localhost:3000";
 function userData($http,authentication) {
     var users = function() {
-        var url = '/api/users';
+        var url = base +'/api/users';
         return $http.get(url, {
             headers: {
                 Authorization: 'Bearer ' + authentication.getToken()
@@ -23,12 +24,12 @@ function userData($http,authentication) {
 
 activitiesData.$inject = ['$http'];
 function activitiesData ($http) {
-    return $http.get('/api/activities');
+    return $http.get(base+'/api/activities');
 };
 activityData.$inject = ['$http','authentication'];
 function activityData ($http,authentication) {
     var getActivityById  = function(activityId) {
-        var url = '/api/activities/' + activityId;
+        var url = base +'/api/activities/' + activityId;
         return $http.get(url);
     };
     var addActivity = function(data) {
@@ -39,14 +40,14 @@ function activityData ($http,authentication) {
         });        
     };
     var participate = function(aid) {
-        return $http.put("/api/participate", {aid: aid}, {
+        return $http.put(base +"/api/participate", {aid: aid}, {
             headers: {
                 Authorization: 'Bearer ' + authentication.getToken()
             }            
         });
     }
     var myActivities = function() {
-        var url ="/api/myActivities";
+        var url =base +"/api/myActivities";
         return $http.get(url, {
             headers: {
                 Authorization: 'Bearer ' + authentication.getToken()
@@ -64,7 +65,7 @@ function activityData ($http,authentication) {
 recordsData.$inject = ['$http','authentication'];
 function recordsData ($http,authentication) {
     var records = function() {
-        var url = '/api/records';
+        var url = base +'/api/records';
         return $http.get(url, {
             headers: {
                 Authorization: 'Bearer ' + authentication.getToken()
@@ -72,7 +73,7 @@ function recordsData ($http,authentication) {
         });
     };
     var findUserByTelephone = function(telephone) {
-        var url = '/api/record/findUser';
+        var url = base +'/api/record/findUser';
         return $http.post(url, {telephone:telephone}, {
             headers: {
                 Authorization: 'Bearer ' + authentication.getToken()
@@ -81,7 +82,7 @@ function recordsData ($http,authentication) {
     }
 
     var createRecord = function(data) {
-        var url = 'api/record/createRecord';
+        var url = base +'api/record/createRecord';
         return $http.post(url, data, {
             headers: {
                 Authorization: 'Bearer ' + authentication.getToken()

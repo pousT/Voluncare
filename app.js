@@ -9,13 +9,8 @@ var multer = require('multer');
 var mongoose = require('mongoose');
 var app = express();
 
-//global.db = mongoose.connect("mongodb://localhost:27017/Voluncare");
-
 // 下边这里也加上 use(multer())
 app.use(bodyParser.urlencoded({ extended: true }));
-
-var routes = require('./app_server/routes/index');
-var users = require('./app_server/routes/users');
 
 var session = require('express-session');
 
@@ -55,13 +50,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'app/www')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
-app.use(express.static(path.join(__dirname, 'app/www')));
 var routesApi = require('./app_api/routes/index');
 var passport = require('passport');
 require('./app_api/config/passport');
 
 app.use(passport.initialize());
-//app.use('/', routes);
 app.use('/api', routesApi);
 app.use(function (req, res) {
     res.sendFile(path.join(__dirname, 'app/www', 'index.html'));

@@ -143,11 +143,13 @@ module.exports.participate = function (req, res) {
             } else {
                 user.actSign.addToSet(activity);
                 user.save(function (err, user) {
-                    console.log(user);
-                })
+                    console.log("用户更新成功");
+                });
                 activity.userSign.addToSet(user);
                 activity.save(function (err, activity) {
                     if (err) {
+                        console.log("出错了");
+                        console.log(err);
                         sendJSONresponse(res, 404, err);
                     } else {
                         sendJSONresponse(res, 200, activity);
@@ -161,6 +163,7 @@ module.exports.myActivities = function(req, res) {
     getAuthor(req, res, function(req, res,user) {
         Activity.find({_id: { $in:user.actSign}}).exec( function(err, activities) {
             if(err) {
+                    console.log(err);
                     sendJSONresponse(res, 400, err);
                     return;              
                 } else {

@@ -1,6 +1,7 @@
 angular
 .module('myApp')
 .controller('activityDetailCtrl',['$scope','$stateParams','activityData','authentication','$ionicPopup','$timeout',function($scope, $stateParams,activityData,authentication,$ionicPopup, $timeout){
+    console.log($stateParams);
     $scope.activity = $stateParams.activity;
     activityData.getActivityById($scope.activity._id).success(function (data) {
         message = data.length > 0 ? "" : "暂无数据";
@@ -30,6 +31,7 @@ angular
              alertPopup.then(function(res) {
                console.log('活动注册成功');
              });
+             $scope.activity = data;
         });
 		}
     }

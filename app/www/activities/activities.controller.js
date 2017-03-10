@@ -13,6 +13,7 @@ function activitiesCtrl(activitiesData,$scope,$state) {
         message = "Sorry, something's gone wrong ";
     });
     $scope.goDetail=function(activity){
+        console.log(activity);
         $state.go('detail',{activity:activity});  
     }
 }

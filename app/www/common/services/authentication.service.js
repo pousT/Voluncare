@@ -11,13 +11,14 @@
         var getToken = function () {
             return $window.localStorage['read-token'];
         };
+        var base = "http://localhost:3000";
         var register = function(user) {
-            return $http.post('/api/register', user).success(function(data) {
+            return $http.post(base + '/api/register', user).success(function(data) {
                 saveToken(data.token);
             });
         };
         var login = function(user) {
-            return $http.post('/api/login', user).success(function(data) {
+            return $http.post(base + '/api/login', user).success(function(data) {
                 saveToken(data.token);
             });
         };
