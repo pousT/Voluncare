@@ -1,3 +1,3 @@
 module.exports.angularApp = function (req, res) {
-    res.render('index', { title: '义工社' });
+    res.render('index', { title: '同修会' });
 };

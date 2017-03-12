@@ -8,7 +8,7 @@
             password: ''
         };
         
-        $scope.returnPage = $location.search().page || '/';
+        $scope.returnPage = $location.search().page || '/home';
         $scope.onSubmit = function () {
                 $scope.doLogin();
         };

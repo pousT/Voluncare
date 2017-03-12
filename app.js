@@ -11,7 +11,8 @@ var app = express();
 
 // 下边这里也加上 use(multer())
 app.use(bodyParser.urlencoded({ extended: true }));
-
+var routes = require('./app_server/routes/index');   
+var users = require('./app_server/routes/users');
 var session = require('express-session');
 
 app.use(session({//session持久化配置
