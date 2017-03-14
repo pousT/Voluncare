@@ -7,15 +7,13 @@
             title: "",
             description: '',
             credit: '',
-            //status:'',
             price:'',
-            birthday:'',
             address:'',
             start:'',
             end:'',
             maxNum:''
         };
-        $scope.returnPage = $location.search().page || '/';
+        $scope.returnPage = $location.search().page || '/activities';
         $scope.onSubmit = function() {
             doAddActivity($scope.formData);
             
@@ -25,17 +23,17 @@
                 title: formData.title,
                 description: formData.description,
                 credit: formData.credit,
-                //status: formData.status,
                 price: formData.price,
                 tags: formData.tags,
                 address: formData.address,
-                //bonus: formData.bonus,
                 maxNum:formData.maxNum,
                 start:formData.start,
                 end:formData.end
 
             }).success(function(data) {
                 console.log("success!");
+                $location.search('page', null);
+                $location.path($scope.returnPage);                
             }).error(function(data) {
                 $scope.formError = "添加失败，请再试一次";
                 console.log("error");

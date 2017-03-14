@@ -77,8 +77,7 @@ module.exports.actCreate = function (req, res) {
                 "address": address,
                 "maxNumber": maxNum,
                 "creditReq": creditReq,
-                "price": price,
-                "credit": bonus
+                "price": price
             }, function(err, activity) {
                 if (err) {
                     console.log(err);
