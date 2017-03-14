@@ -49,7 +49,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'app/www')));
+app.use(express.static(path.join(__dirname, 'app_client')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
 var routesApi = require('./app_api/routes/index');
 var passport = require('passport');
@@ -58,7 +58,7 @@ require('./app_api/config/passport');
 app.use(passport.initialize());
 app.use('/api', routesApi);
 app.use(function (req, res) {
-    res.sendFile(path.join(__dirname, 'app/www', 'index.html'));
+    res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
 });
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
