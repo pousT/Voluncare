@@ -23,7 +23,7 @@ module.exports = function(config) {
       '../*.js',
       '../*/*.*.js',
       '../*/*/*.*.js',
-      '/unit/*.test.js'
+      'unit/*/*.*.js'
     ],
 
 
