@@ -6,7 +6,6 @@ angular
 myActivitiesCtrl.$inject = ['activityData','$scope','$state'];
 function myActivitiesCtrl(activityData,$scope,$state) {
     activityData.myActivities().success(function (data) {
-        message = data.length > 0 ? "" : "暂无数据";
         $scope.activities = data;
     }).error(function (e) {
         console.log(e);
