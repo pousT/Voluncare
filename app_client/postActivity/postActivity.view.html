@@ -18,16 +18,21 @@
             <div class="error-messages" ng-if="myForm.credit.$dirty" ng-messages="myForm.credit.$error">
               <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>
             </div>   
-          <label for="status">身份要求:</label>    
+         <!-- <label for="status">身份要求:</label>    
           <input type="number" id="status" ng-model="formData.status" name="status" required/>
             <div class="error-messages" ng-if="myForm.status.$dirty" ng-messages="myForm.status.$error">
               <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>
-            </div> 
-          <label for="bonus">积分奖励:</label>    
+            </div> -->
+          <!--<label for="bonus">积分奖励:</label>    
           <input type="number" id="bonus" ng-model="formData.bonus" name="bonus" required/>
             <div class="error-messages" ng-if="myForm.bonus.$dirty" ng-messages="myForm.bonus.$error">
               <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>
-            </div>     
+            </div>  --> 
+            <label for="bonus">活动价格:</label>    
+          <input type="number" id="price" ng-model="formData.price" name="price" required/>
+            <div class="error-messages" ng-if="myForm.price.$dirty" ng-messages="myForm.price.$error">
+              <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>
+            </div>  
           <label for="maxNum">报名人数:</label>
           <input type="number" ng-model="formData.maxNum" id="maxNum" name="maxNum" required/>
             <div class="error-messages" ng-if="myForm.maxNum.$dirty" ng-messages="myForm.maxNum.$error">              <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>

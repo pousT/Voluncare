@@ -7,7 +7,6 @@ module.exports = new Mongoose.Schema({
         end:{type:Date},
         address:{type:String, required:true},
         creditReq:{type:Number,default:0},
-        credit:{type:Number,required:true},
         maxNumber:{type:Number, required:true},
         price:{type:Number, required:true, default:0},
         image:{type:String,default:"images/activity/default.jpg"},
