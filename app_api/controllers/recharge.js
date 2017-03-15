@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 var Recharge = mongoose.model('Recharge');
 var User = mongoose.model('User');
-
+var admin  = 0;
 var sendJSONresponse = function (res, status, content) {
     res.status(status);
     res.json(content);
@@ -30,7 +30,7 @@ var getAuthor = function (req, res, callback) {
     }
 };
 module.exports.recharges = function (req, res) {
-    Recharges.find().exec(function (err, recharges) {
+    Recharge.find().exec(function (err, recharges) {
         if (err) {
             console.log(err);
             sendJSONresponse(res, 400, err);
@@ -43,14 +43,14 @@ module.exports.recharges = function (req, res) {
 module.exports.rechargeCreate = function (req, res) {
      getAuthor(req, res, function(req, res,user) {
             var amount = req.body.amount;
-            var user = user._id;
             var method = req.body.method;
             var card = req.body.card;
             var userName = user.name;
+            var uid = user._id;
             var telephone = user.telephone;
             Recharge.create({
                 "amount": amount,
-                "user": user,
+                "user": uid,
                 "card": card,
                 "method": method,
                 "userName": userName,
@@ -70,7 +70,7 @@ module.exports.rechargeCreate = function (req, res) {
 
 module.exports.pass = function (req, res) {
     getAuthor(req, res, function(req, res,user) {
-        if(user.status < 1) {
+        if(user.status < admin) {
             sendJSONresponse(res, 400, {
                 "message": "权限不足"
         });
@@ -97,6 +97,7 @@ module.exports.pass = function (req, res) {
                             user.balance = user.balance + recharge.amount;
                             user.credit = user.credit + recharge.amount/100;
                             user.save(function(err, user) {
+                                console.log(user);
                                 if (err) {
                                     sendJSONresponse(res, 404, err);
                                 } else {
