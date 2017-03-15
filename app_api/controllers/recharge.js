@@ -67,99 +67,96 @@ module.exports.rechargeCreate = function (req, res) {
     });
 };
 
-module.exports.confirm = function (req, res) {
-    var id = req.params.actid;
-    Activity.findById(id).exec(function (err, activity) {
-        if (!activity) {
-            sendJSONresponse(res, 404, {
-                "message": "活动不存在"
-            });
-            return;
-        } else if (err) {
-            sendJSONresponse(res, 400, err);
-            return;
-        } else {
-        activity.image = "/images/activity/"+req.file.filename;
-        activity.save(function (err, activity) {
-            if (err) {
-                sendJSONresponse(res, 404, err);
-            } else {
-                sendJSONresponse(res, 200, activity);
-            }
-        });            
-        }
 
-    });
-};
-module.exports.participate = function (req, res) {
+module.exports.pass = function (req, res) {
     getAuthor(req, res, function(req, res,user) {
-        if(user.status < 0) {
-            console.log(user);
+        if(user.status < 1) {
             sendJSONresponse(res, 400, {
                 "message": "权限不足"
         });
         return;
         }
-        var aid = req.body.aid;
+        var id = req.body.rid;
 
-        Activity.findById(aid).exec(function (err, activity) {
-            if(!activity) {
+        Recharge.findById(id).exec(function (err, recharge) {
+            if(!recharge) {
                 sendJSONresponse(res, 404, {
-                    "message": "活动不存在"
+                    "message": "充值不存在"
                 });
                 return;            
             } else if (err) {
                 sendJSONresponse(res, 400, err);
                 return;            
             } else {
-                user.actSign.addToSet(activity);
-                user.save(function (err, user) {
-                    console.log(user);
-                })
-                activity.userSign.addToSet(user);
-                activity.save(function (err, activity) {
+                recharge.flag = 1;
+                recharge.save(function (err, recharge) {
                     if (err) {
                         sendJSONresponse(res, 404, err);
                     } else {
-                        sendJSONresponse(res, 200, activity);
+                        User.findById(recharge.user).exec(function (err, user) {
+                            user.balance = user.balance + recharge.amount;
+                            user.credit = user.credit + recharge.amount/100;
+                            user.save(function(err, user) {
+                                if (err) {
+                                    sendJSONresponse(res, 404, err);
+                                } else {
+                                    sendJSONresponse(res, 200, recharge);
+                                }
+                            });
+                        });
                     }
-                });
+                })
             }
         });
     });
 }
-module.exports.myActivities = function(req, res) {
+module.exports.myRecharges = function(req, res) {
     getAuthor(req, res, function(req, res,user) {
-        Activity.find({_id: { $in:user.actSign}}).exec( function(err, activities) {
+        Recharge.find({user: user._id}).exec( function(err, recharges) {
             if(err) {
                     sendJSONresponse(res, 400, err);
                     return;              
                 } else {
-                    sendJSONresponse(res, 200, activities);
+                    sendJSONresponse(res, 200, recharges);
                 }
         });
     });
 
 }
-
-module.exports.update = function (req, res) {
-    var id = req.params.actid;
-     Activity.findById(id).exec(function (err, activity) {
-        if (!activity) {
+module.exports.rechargeFindOne = function (req, res) {
+    var id = req.params.rid;
+    Recharge.findById(id).exec(function (err, recharge) {
+        if (!recharge) {
             sendJSONresponse(res, 404, {
-                "message": "活动不存在"
+                "message": "充值记录不存在"
             });
             return;
         } else if (err) {
             sendJSONresponse(res, 400, err);
             return;
         }
-        activity.users = req.body.users;
-        activity.save(function (err, activity) {
+        sendJSONresponse(res, 200, recharge);
+
+    });
+};
+module.exports.reject = function (req, res) {
+    var id = req.params.rid;
+     Recharge.findById(id).exec(function (err, recharge) {
+        if (!recharge) {
+            sendJSONresponse(res, 404, {
+                "message": "充值不存在"
+            });
+            return;
+        } else if (err) {
+            sendJSONresponse(res, 400, err);
+            return;
+        }
+        recharge.flag = 2;
+        recharge.save(function (err, recharge) {
             if (err) {
                 sendJSONresponse(res, 404, err);
             } else {
-                sendJSONresponse(res, 200, activity);
+                sendJSONresponse(res, 200, recharge);
             }
         });
     });   
