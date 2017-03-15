@@ -10,6 +10,7 @@ var activityCtrl = require('../controllers/activity');
 var authCtrl = require('../controllers/authentication');
 var userCtrl = require('../controllers/user');
 var recordCtrl = require('../controllers/record');
+var rechargeCtrl = require('../controllers/recharge');
 router.post('/register', authCtrl.register);
 router.post('/login', authCtrl.login);
 
@@ -22,9 +23,16 @@ router.post('/activity',auth, activityCtrl.actCreate);
 router.put('/actCover/:actid',auth,activityCtrl.updateCover);
 router.put('/participate',auth,activityCtrl.participate);
 router.get('/myActivities', auth, activityCtrl.myActivities);
-
+//积分记录
 router.post('/record',auth, recordCtrl.attend);
 router.get('/records',auth, recordCtrl.records);
 router.post('/record/findUser', auth, recordCtrl.findUser);
 router.post('/record/createRecord',auth, recordCtrl.postRecord);
+//充值
+router.get('/recharges', rechargeCtrl.recharges);
+router.get('/recharges/:rid', rechargeCtrl.rechargeFindOne);
+router.post('/recharge',auth, rechargeCtrl.rechargeCreate);
+router.put('/recharge/pass',auth,rechargeCtrl.pass);
+router.put('/recharge/reject',auth,rechargeCtrl.reject);
+router.get('/myRecharges', auth, rechargeCtrl.myRecharges);
 module.exports = router;
