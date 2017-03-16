@@ -28,9 +28,14 @@
           <i class="icon ion-pin"></i>
             {{user.address}}
         </a>
-        <div class="item item-icon-left">
+        <a class="item item-icon-left" href="#">
+          <i class="icon ion-cash"></i>
+            <span ng-click="showDiscount()" >{{user.credit}}</span>
+        </a>
+        <a class="item item-icon-left" href="#">
           <i class="icon ion-social-yen"></i>
-         {{user.balance}}
+            {{user.balance}}
+        </a>
         </div>
         <div class="item item-divider">
           已购买
