@@ -29,7 +29,7 @@ router.get('/records',auth, recordCtrl.records);
 router.post('/record/findUser', auth, recordCtrl.findUser);
 router.post('/record/createRecord',auth, recordCtrl.postRecord);
 //充值
-router.get('/recharges', rechargeCtrl.recharges);
+router.get('/recharges', auth, rechargeCtrl.recharges);
 router.get('/recharges/:rid', rechargeCtrl.rechargeFindOne);
 router.post('/recharge',auth, rechargeCtrl.rechargeCreate);
 router.put('/recharge/pass',auth,rechargeCtrl.pass);

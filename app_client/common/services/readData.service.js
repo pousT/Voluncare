@@ -3,7 +3,8 @@ angular
 .service('activitiesData', activitiesData)
 .service('activityData', activityData)
 .service('recordsData', recordsData)
-.service('userData', userData);
+.service('userData', userData)
+.service('rechargeData', rechargeData);
 
 userData.$inject = ['$http','authentication'];
 function userData($http,authentication) {
@@ -93,5 +94,45 @@ function recordsData ($http,authentication) {
         findUserByTelephone:findUserByTelephone,
         createRecord: createRecord
 
+    }
+}
+
+rechargeData.$inject = ['$http','authentication'];
+function rechargeData ($http,authentication) {
+    var recharges = function() {
+        var url = '/api/recharges';
+        return $http.get(url, {
+            headers: {
+                Authorization: 'Bearer ' + authentication.getToken()
+            }
+        });
+    };
+    var pass = function(rid) {
+        return $http.put("/api/recharge/pass", {rid: rid}, {
+            headers: {
+                Authorization: 'Bearer ' + authentication.getToken()
+            }            
+        });
+    }
+    var reject = function(rid) {
+        return $http.put("/api/recharge/reject", {rid: rid}, {
+            headers: {
+                Authorization: 'Bearer ' + authentication.getToken()
+            }            
+        });
+    }
+    var postRecharge = function(data) {
+        var url = 'api/recharge';
+        return $http.post(url, data, {
+            headers: {
+                Authorization: 'Bearer ' + authentication.getToken()
+            }
+        });
+    }
+    return {
+        recharges: recharges,
+        pass:pass,
+        reject:reject,
+        postRecharge:postRecharge
     }
 }
