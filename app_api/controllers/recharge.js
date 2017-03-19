@@ -30,13 +30,21 @@ var getAuthor = function (req, res, callback) {
     }
 };
 module.exports.recharges = function (req, res) {
-    Recharge.find().exec(function (err, recharges) {
-        if (err) {
-            console.log(err);
-            sendJSONresponse(res, 400, err);
-            return;
+    getAuthor(req, res, function(req, res,user) {
+        if(user.status <admin) {
+            sendJSONresponse(res, 400, {
+                "message": "权限不足"
+        });
+        return;            
         }
-        sendJSONresponse(res, 200, recharges);
+        Recharge.find().exec(function (err, recharges) {
+            if (err) {
+                console.log(err);
+                sendJSONresponse(res, 400, err);
+                return;
+            }
+            sendJSONresponse(res, 200, recharges);
+        });
     });
 };
 

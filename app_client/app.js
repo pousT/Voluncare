@@ -48,6 +48,11 @@
             url:'/myActivities',
             templateUrl: '/myActivities/myActivities.view.html',  
             controller:'myActivitiesCtrl'               
+        })
+        .state('rechargeAdmin', {
+            url:'/rechargeAdmin',
+            templateUrl: '/rechargeAdmin/rechargeAdmin.view.html',  
+            controller:'rechargeAdminCtrl'               
         });
         $urlRouterProvider.otherwise("/"); 
 };

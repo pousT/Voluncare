@@ -1,0 +1,34 @@
+  <ion-view view-title="充值管理">
+    <ion-content class="padding">
+      <ion-list>
+        <ion-item ng-repeat="recharge in recharges">
+        <div ng-click="openDetail({{recharge}})">
+            <p>手机:{{recharge.telephone}}</p>
+            <p>时间:{{recharge.time|formatDate}}</p> 
+            <p>金额:{{recharge.amount}}</p> 
+            <p>状态:{{showFlag(recharge.flag)}}</p>          
+        </div>
+        <script id="templates/modal.html" type="text/ng-template"><ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-positive">
+          <h1 class="title">充值详情</h1>
+          <button class="button button-clear button-primary" ng-click="modal.hide()">返回</button>
+        </ion-header-bar>
+        <ion-content class="padding">
+          <div class="list">
+          <p>用户:{{curRecharge.userName}}</p>
+          <p>方法:{{curRecharge.method}}</p>
+          <p>备注：{{curRecharge.card}}</p>
+          <p>状态:{{showFlag(curRecharge.flag)}}</p>
+          <div ng-hide="hasProcessed({{curRecharge.flag}})">
+            <button class="button button-full button-positive" ng-click="pass(curRecharge.id)">通过</button>
+            <button class="button button-full button-positive" ng-click="reject(curRecharge.id)">拒绝</button>
+            </div>
+          </div>
+        </ion-content>
+        </ion-modal-view>
+        </script> 
+        </ion-item>
+        
+      </ion-list>
+    </ion-content>               
+</ion-view>
