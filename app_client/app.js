@@ -49,6 +49,11 @@
             templateUrl: '/recharge/recharge.view.html',  
             controller:'rechargeCtrl'          
         })
+        .state('integralRecords', {
+            url:'/integralRecords',
+            templateUrl: '/integralRecords/integralRecords.view.html',  
+            controller:'integralRecordsCtrl'          
+        })
         .state('myActivities', {
             url:'/myActivities',
             templateUrl: '/myActivities/myActivities.view.html',  
