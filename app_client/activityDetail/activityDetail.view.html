@@ -6,10 +6,14 @@
             时间：{{activity.start |formatDate}} 
 			<p>活动总人数：{{activity.maxNumber}}</p>
 			<p>剩余可报名人数：{{ activity.maxNumber-activity.userSign.length }}<p>
-            <p>活动详情：{{ activity.description}}<p>
+            <p>积分要求： {{activity.creditReq}}<p>
+			<p>活动费用： {{activity.price}}<p>
+			<p>积分VIP: {{discount}}</p>
+			<p>活动状态： {{txt}}<p>
+			<p>活动详情：{{ activity.description}}<p>
           </p>
        <label class="item item-input">
          <button class="button button-block button-dark" ng-click="participate()||check()" ng-disabled="activity.userSign.length+activity.userFinish.length>activity.maxNumber-1" >报名</button>
        </label>
-    </ion-content>               
+	</ion-content>               
 </ion-view>
