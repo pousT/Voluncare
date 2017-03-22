@@ -40,7 +40,6 @@ $scope.onezoneDatepicker = {
   disablePastDays: false,
   disableSwipe: false,
   disableWeekend: false,
-  disableDates: [new Date(date.getFullYear(), date.getMonth(), 15), new Date(date.getFullYear(), date.getMonth(), 16), new Date(date.getFullYear(), date.getMonth(), 17)],
   showDatepicker: false,
   showTodayButton: true,
   calendarMode: false,

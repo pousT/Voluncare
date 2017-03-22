@@ -54,7 +54,15 @@
                 };
             }
         };
-        
+        var isAdmin = function() {
+            if (isLoggedIn()) {
+                var token = getToken();
+                var payload = JSON.parse($window.atob(token.split('.')[1]));
+                return (payload.status > 0);
+            } else {
+                return false
+            }
+        };        
 
         return {
             saveToken: saveToken,
@@ -64,6 +72,7 @@
             logout: logout,
             isLoggedIn: isLoggedIn,
             currentUser: currentUser,
+            isAdmin: isAdmin
         };
     }
 })();
