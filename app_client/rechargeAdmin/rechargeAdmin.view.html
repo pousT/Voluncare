@@ -19,9 +19,9 @@
           <p>方法:{{curRecharge.method}}</p>
           <p>备注：{{curRecharge.card}}</p>
           <p>状态:{{showFlag(curRecharge.flag)}}</p>
-          <div ng-hide="hasProcessed({{curRecharge.flag}})">
-            <button class="button button-full button-positive" ng-click="pass(curRecharge.id)">通过</button>
-            <button class="button button-full button-positive" ng-click="reject(curRecharge.id)">拒绝</button>
+          <div ng-hide="hasProcessed(curRecharge.flag)">
+            <button class="button button-full button-positive" ng-click="pass(curRecharge._id)">通过</button>
+            <button class="button button-full button-positive" ng-click="reject(curRecharge._id)">拒绝</button>
             </div>
           </div>
         </ion-content>

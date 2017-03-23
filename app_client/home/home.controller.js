@@ -2,7 +2,6 @@ angular
 .module('myApp')
 .controller('homeCtrl', homeCtrl);
 
- 
 homeCtrl.$inject = ['authentication','$scope','$location', '$rootScope'];
 function homeCtrl(authentication,$scope,$location,$rootScope) {
     $scope.user = {
@@ -19,6 +18,10 @@ function homeCtrl(authentication,$scope,$location,$rootScope) {
     });
     $scope.showDiscount = function() {
         $location.path('/integralRecords');
+    }
+
+    $scope.recharge = function() {
+        $location.path('/recharge');
     }
 }
 

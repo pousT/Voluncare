@@ -129,10 +129,19 @@ function rechargeData ($http,authentication) {
             }
         });
     }
+    var myRecharges = function(data) {
+        var url = 'api/myRecharges';
+        return $http.get(url, {
+            headers: {
+                Authorization: 'Bearer ' + authentication.getToken()
+            }
+        });        
+    }
     return {
         recharges: recharges,
         pass:pass,
         reject:reject,
-        postRecharge:postRecharge
+        postRecharge:postRecharge,
+        myRecharges: myRecharges
     }
 }
