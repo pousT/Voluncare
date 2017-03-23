@@ -16,6 +16,7 @@ router.post('/login', authCtrl.login);
 
 //用户
 router.get('/users', auth, userCtrl.users);
+router.get('/user', auth, userCtrl.curUser);
 //活动
 router.get('/activities', activityCtrl.activities);
 router.get('/activities/:actid', activityCtrl.actFindOne);

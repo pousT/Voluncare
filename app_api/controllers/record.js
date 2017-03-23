@@ -54,7 +54,6 @@ module.exports.attend = function (req, res) {
                     if (err) {
                         sendJSONresponse(res, 404, err);
                     } else {
-                        console.log(record);
                         sendJSONresponse(res, 200, record);
                     }                
             });

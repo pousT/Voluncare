@@ -3,7 +3,7 @@
       <form class="form" name = "myForm">       
         <fieldset>
           <legend><span class="number">1</span>账户信息</legend>
-          <label for="name">用户名:</label>
+          <label for="name">姓名:</label>
           <input type="text" id="name" ng-model="formData.name" name="name" required/>
             <div class="error-messages" ng-if="myForm.name.$dirty" ng-messages="myForm.name.$error">
               <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>

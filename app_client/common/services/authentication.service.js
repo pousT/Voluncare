@@ -3,17 +3,28 @@
         .module('myApp')
         .service('authentication', authentication);
     
-    authentication.$inject = ['$window','$http'];
-    function authentication($window, $http) {
+    authentication.$inject = ['$window','$http', '$rootScope'];
+    function authentication($window, $http, $rootScope) {
         var saveToken = function (token) {
             $window.localStorage['read-token'] = token;
         };
         var getToken = function () {
             return $window.localStorage['read-token'];
         };
+        var getUser = function () {
+            if (isLoggedIn()) {
+            var url = '/api/user';
+            return $http.get(url,  {
+                headers: {
+                    Authorization: 'Bearer ' + getToken()
+                }            
+            });
+        };
+    }
         var register = function(user) {
             return $http.post('/api/register', user).success(function(data) {
                 saveToken(data.token);
+                saveUser(data.user);
             });
         };
         var login = function(user) {
@@ -34,26 +45,7 @@
                 return false;
             }
         };
-        var currentUser = function() {
-            if (isLoggedIn()) {
-                var token = getToken();
-                var payload = JSON.parse($window.atob(token.split('.')[1]));
-                return {
-                    telephone: payload.telephone,
-                    name: payload.name,
-                    actSign: payload.actSign,
-                    actFinish:payload.actFinish,
-                    avatar:payload.avatar,
-                    credit:payload.credit,
-                    gender:payload.gender,
-                    address:payload.address,
-                    birthday:payload.birthday,
-                    status:payload.status,
-                    balance:payload.balance,
-                    _id:payload._id
-                };
-            }
-        };
+
         var isAdmin = function() {
             if (isLoggedIn()) {
                 var token = getToken();
@@ -68,10 +60,10 @@
             saveToken: saveToken,
             getToken: getToken,
             register: register,
+            getUser: getUser,
             login: login,
             logout: logout,
             isLoggedIn: isLoggedIn,
-            currentUser: currentUser,
             isAdmin: isAdmin
         };
     }

@@ -22,16 +22,7 @@ userSchema.methods.generateJwt = function() {
     return jwt.sign({
         _id: this._id,
         telephone: this.telephone,
-        name: this.name,
-        address: this.address,
-        birthday:this.birthday,
-        gender:this.gender,
-        credit:this.credit,
-        avatar:this.avatar,
-        actSign:this.actSign,
-        actFinish:this.actFinish,
         status:this.status,
-        balance: this.balance,
         exp:parseInt(expiry.getTime()/1000)}, process.env.JWT_SECRET);
 };
 mongoose.model('User', userSchema);

@@ -2,39 +2,39 @@
         <ion-content class="padding">
       <div class="list card">
         <div class="item item-avatar">
-          <img src="{{user.avatar}}">
-          <h2>{{user.name}}</h2>
-          <p>{{user.time}}</p>
+          <img src="{{user.data.avatar}}">
+          <h2>{{user.data.name}}</h2>
+          <p>{{user.data.time|formatDate}}</p>
         </div>
         <div class="item item-body">
      <div class="list">
         <div class="item item-icon-left">
           <i class="icon ion-ios-telephone"></i>
-          {{user.telephone}}
+          {{user.data.telephone}}
         </div>
         <div class="item item-icon-left">
           <i class="icon ion-ios-contact"></i>
-         {{user.name}}
+         {{user.data.name}}
         </div>
         <div class="item item-icon-left">
           <i class="icon ion-male"></i>
-         {{user.gender}}
+         {{user.data.gender}}
         </div>
         <a class="item item-icon-left" href="#">
           <i class="icon ion-ios-calendar"></i>
-          {{user.birthday|formatDate}}
+          {{user.data.birthday|formatDate}}
         </a>
         <a class="item item-icon-left" href="#">
           <i class="icon ion-pin"></i>
-            {{user.address}}
+            {{user.data.address}}
         </a>
         <a class="item item-icon-left" href="#">
           <i class="icon ion-cash"></i>
-            <span ng-click="showDiscount()" >{{user.credit}}</span>
+            <span ng-click="showDiscount()" >{{user.data.credit}}</span>
         </a>
         <a class="item item-icon-left" href="#">
           <i class="icon ion-social-yen"></i>
-            {{user.balance}}
+            {{user.data.balance}}
         </a>
         </div>
         <div class="item item-divider">
@@ -43,7 +43,7 @@
         <a class="item item-icon-left" ui-sref="myActivities">
           <i class="icon ion-ios-heart"></i>
           活动
-          <span class="badge badge-assertive">{{user.actSign.length}}</span>
+          <span class="badge badge-assertive">{{user.data.actSign.length}}</span>
         </a>
         <a class="item item-icon-left" href="#">
           <i class="icon ion-bag"></i>

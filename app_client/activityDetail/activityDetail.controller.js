@@ -1,6 +1,6 @@
 angular
 .module('myApp')
-.controller('activityDetailCtrl',['$scope','$stateParams','activityData','authentication','$ionicPopup','$timeout',function($scope, $stateParams,activityData,authentication,$ionicPopup, $timeout){
+.controller('activityDetailCtrl',['$scope','$stateParams','activityData','authentication','$ionicPopup','$timeout','$rootScope',function($scope, $stateParams,activityData,authentication,$ionicPopup, $timeout,$rootScope){
     $scope.activity = $stateParams.activity;
     activityData.getActivityById($scope.activity._id).success(function (data) {
         message = data.length > 0 ? "" : "暂无数据";
@@ -10,8 +10,15 @@ angular
         console.log(e);
         message = "Sorry, something's gone wrong ";
     });
-	
-	var cre = authentication.currentUser().credit;
+    $scope.details = {
+        activity:{},
+        user:{}
+    }
+    authentication.getUser().then(function(data) {
+            console.log(data.data);
+            $scope.details.user = data.data;
+    });	
+	var cre = $scope.details.user.credit;
 	var pri = $scope.activity.price;
 	if(cre>=100&&cre<500){
 		$scope.discount=pri*0.98;
@@ -40,7 +47,7 @@ angular
 	check1 = function() {
 		var arr = $scope.activity.userSign;
 		for(var i=0;i<arr.length;i++){
-			if(arr[i]==authentication.currentUser()._id){
+			if(arr[i]==$scope.details.user._id){
 				alert('你报过了');
 				return false;
 			}
@@ -49,7 +56,7 @@ angular
 	}
 	
 	check2 = function() {
-		if(authentication.currentUser().credit<$scope.activity.creditReq){
+		if($scope.details.user.credit<$scope.activity.creditReq){
 			alert('你分不够');
 			return false;
 		}	
@@ -57,7 +64,7 @@ angular
 	}	
 	
 	check3 = function() {
-		var arr = authentication.currentUser().balance;
+		var arr = $scope.details.user.balance;
 		if(arr<$scope.activity.price){
 			alert('你钱不够');
 			return false;

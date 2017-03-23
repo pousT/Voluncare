@@ -45,3 +45,8 @@ module.exports.users = function (req, res) {
 
     });
 };
+module.exports.curUser = function (req, res) {
+    getAuthor(req, res, function(req, res,user) {
+        sendJSONresponse(res, 200, user);           
+    });
+};
