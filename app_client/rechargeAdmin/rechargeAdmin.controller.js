@@ -40,10 +40,24 @@ function rechargeAdminCtrl(rechargeData,$scope,$state, $ionicModal) {
     $scope.pass = function(rid) {
         rechargeData.pass(rid).success(function(data) {
             $scope.message = "已通过";
+            $scope.modal.hide();
         }).error(function(e) {
 
         });
     }
+    $scope.reject = function(rid) {
+        rechargeData.reject(rid).success(function(data) {
+            $scope.message = "已拒绝";
+            $scope.modal.hide();
+            rechargeData.recharges().success(function (data) {
+                $scope.recharges = data;
+            }).error(function (e) {
+                $scope.message = "读取充值列表失败";
+            });
+                }).error(function(e) {
+
+                });
+            }
     $scope.number = {text: ""}
     $scope.selectedReason = {text: ""}
 

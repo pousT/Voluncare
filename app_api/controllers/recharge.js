@@ -149,7 +149,8 @@ module.exports.rechargeFindOne = function (req, res) {
     });
 };
 module.exports.reject = function (req, res) {
-    var id = req.params.rid;
+    var id = req.body.rid;
+    console.log(id);
      Recharge.findById(id).exec(function (err, recharge) {
         if (!recharge) {
             sendJSONresponse(res, 404, {
