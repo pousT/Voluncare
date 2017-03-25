@@ -3,16 +3,23 @@
       <ion-list>
         <ion-item ng-repeat="activity in activities">
         <!--<div class="item item-body"> -->
-        <div class="item">
           <h2 class="title"> {{activity.title}} </h2> <br>
       
           <a  ng-click="goDetail({{activity}})">
             <img class="full-image" style="height:20%; width:100%" ng-src='{{activity.image}}'/>
           </a>
             <p >
-            活动时间：{{activity.start|formatDateTime}} -- {{activity.end|formatDate}} <br> 
+            {{activity.start|formatDateTime}} - 
+            <br>{{activity.end|formatDateTime}} <br> 
             地址：{{activity.address}}   |  积分: {{activity.creditReq}}</p>
-            </div>
+          <div ng-hide="!curUser.admin">
+           <label class="toggle toggle-assertive">
+             <input type="checkbox">
+             <div class="track">
+               <div class="handle"></div>
+             </div>
+           </label>
+         </div>
         </ion-item>
       </ion-list>
  </ion-content>               

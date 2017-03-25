@@ -14,12 +14,10 @@ function rechargeAdminCtrl(rechargeData,$scope,$state, $ionicModal) {
 
 
     $scope.findUserByTelephone = function() {
-        console.log($scope.telephone);
         rechargeData.findUserByTelephone($scope.telephone.text).success(function(data) {
             //成功则data为查询到的用户，其中包含用户_id, telephone, name三个字段，如果电话不存在，则data为空
             if(data) {
                 $scope.foundUser = data; // 如果用户存在，则储存在foundUser变量中
-                console.log(data);
 
             } else {
                 //这里处理用户不存在

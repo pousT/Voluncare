@@ -20,7 +20,7 @@
         })
         .state('detail', {
             url:'/activityDetail',
-            params: {'activity': null},
+            params: {'activity': null, 'user': null},
             templateUrl: 'activityDetail/activityDetail.view.html',
             controller: 'activityDetailCtrl'
         })

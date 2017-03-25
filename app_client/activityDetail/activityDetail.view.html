@@ -1,19 +1,24 @@
   <ion-view view-title="活动详情">
     <ion-content class="padding">
-          <p><h2>{{activity.title}}</h2></p>
+          <p><h2>{{details.activity.title}}</h2></p>
           <p class="info">
-            <p><img ng-src='../{{activity.image}}'/></p>
-            时间：{{activity.start |formatDate}} 
-			<p>活动总人数：{{activity.maxNumber}}</p>
-			<p>剩余可报名人数：{{ activity.maxNumber-activity.userSign.length }}<p>
-            <p>积分要求： {{activity.creditReq}}<p>
-			<p>活动费用： {{activity.price}}<p>
+            <p><img ng-src='../{{details.activity.image}}'/></p>
+            时间：{{details.activity.start |formatDate}} 
+			<p>活动总人数：{{details.activity.maxNumber}}</p>
+			<p>剩余可报名人数：{{ details.activity.maxNumber-details.activity.userSign.length }}<p>
+            <p>积分要求： {{details.activity.creditReq}}<p>
+			<p>活动费用： {{details.activity.price}}<p>
 			<p>积分VIP: {{discount}}</p>
 			<p>活动状态： {{txt}}<p>
-			<p>活动详情：{{ activity.description}}<p>
+			<p>活动详情：{{ details.activity.description}}<p>
           </p>
+      <div ng-hide="details.user.admin">
        <label class="item item-input">
-         <button class="button button-block button-dark" ng-click="participate()||check()" ng-disabled="activity.userSign.length+activity.userFinish.length>activity.maxNumber-1" >报名</button>
+         <button class="button button-block button-dark" ng-click="participate()||check()" ng-disabled="detail.details.activity.userSign.length+detail.details.activity.userFinish.length>detail.details.activity.maxNumber-1" >报名</button>
        </label>
+     </div>
+     <div>
+        <legend>报名用户</legend>
+     </div>
 	</ion-content>               
 </ion-view>

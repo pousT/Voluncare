@@ -46,16 +46,6 @@
             }
         };
 
-        var isAdmin = function() {
-            if (isLoggedIn()) {
-                var token = getToken();
-                var payload = JSON.parse($window.atob(token.split('.')[1]));
-                return (payload.status > 0);
-            } else {
-                return false
-            }
-        };        
-
         return {
             saveToken: saveToken,
             getToken: getToken,
@@ -63,8 +53,7 @@
             getUser: getUser,
             login: login,
             logout: logout,
-            isLoggedIn: isLoggedIn,
-            isAdmin: isAdmin
+            isLoggedIn: isLoggedIn
         };
     }
 })();

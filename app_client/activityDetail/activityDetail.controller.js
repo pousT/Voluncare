@@ -1,25 +1,22 @@
 angular
 .module('myApp')
 .controller('activityDetailCtrl',['$scope','$stateParams','activityData','authentication','$ionicPopup','$timeout','$rootScope',function($scope, $stateParams,activityData,authentication,$ionicPopup, $timeout,$rootScope){
-    $scope.activity = $stateParams.activity;
-    activityData.getActivityById($scope.activity._id).success(function (data) {
+    $scope.details = {
+        activity:{},
+        user:{}
+    }    
+    $scope.details.activity = $stateParams.activity;
+    $scope.details.user = $stateParams.user;
+    activityData.getActivityById($scope.details.activity._id).success(function (data) {
         message = data.length > 0 ? "" : "暂无数据";
-        $scope.activity = data;
-        console.log(data);
+        $scope.details.activity = data;
     }).error(function (e) {
         console.log(e);
         message = "Sorry, something's gone wrong ";
     });
-    $scope.details = {
-        activity:{},
-        user:{}
-    }
-    authentication.getUser().then(function(data) {
-            console.log(data.data);
-            $scope.details.user = data.data;
-    });	
+
 	var cre = $scope.details.user.credit;
-	var pri = $scope.activity.price;
+	var pri = $scope.details.activity.price;
 	if(cre>=100&&cre<500){
 		$scope.discount=pri*0.98;
 	}
@@ -33,7 +30,7 @@ angular
 		$scope.discount=pri;
 	}
 	
-    var end = $scope.activity.end;
+    var end = $scope.details.activity.end;
 	var date1 = new Date();
 	var date2 = new Date(end);
 
@@ -44,8 +41,8 @@ angular
 		$scope.txt="报名中";
 	}
 	
-	check1 = function() {
-		var arr = $scope.activity.userSign;
+	checkparticipate = function() {
+		var arr = $scope.details.activity.userSign;
 		for(var i=0;i<arr.length;i++){
 			if(arr[i]==$scope.details.user._id){
 				alert('你报过了');
@@ -55,25 +52,25 @@ angular
 		return true;
 	}
 	
-	check2 = function() {
-		if($scope.details.user.credit<$scope.activity.creditReq){
+	checkcredit = function() {
+		if($scope.details.user.credit<$scope.details.activity.creditReq){
 			alert('你分不够');
 			return false;
 		}	
 		return true;
 	}	
 	
-	check3 = function() {
+	checkbalance = function() {
 		var arr = $scope.details.user.balance;
-		if(arr<$scope.activity.price){
+		if(arr<$scope.details.activity.price){
 			alert('你钱不够');
 			return false;
 		}
 		return true;
 	}
 	
-	check4 = function() {
-		var end = $scope.activity.end;
+	checkend = function() {
+		var end = $scope.details.activity.end;
 		var date1 = new Date();
 		var date2 = new Date(end);
 
@@ -85,10 +82,10 @@ angular
 	}
 		
     $scope.participate = function() {
-		if(check1()){
-		if(check2()){	
-		if(check3()){	
-		if(check4()){
+		if(checkparticipate()){
+		if(checkcredit()){	
+		if(checkbalance()){	
+		if(checkend()){
         activityData.participate($stateParams.activity._id).success(function (data) {
              var alertPopup = $ionicPopup.alert({
                title: '注册成功',
