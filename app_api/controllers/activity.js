@@ -58,7 +58,7 @@ module.exports.actFindOne = function (req, res) {
 };
 module.exports.actCreate = function (req, res) {
      getAuthor(req, res, function(req, res,user) {
-        if(user.status >-1) {
+        if(user.status > 0) {
             var title = req.body.title;
             var start = req.body.start;
             var end = req.body.end;
@@ -121,13 +121,6 @@ module.exports.updateCover = function (req, res) {
 };
 module.exports.participate = function (req, res) {
     getAuthor(req, res, function(req, res,user) {
-        if(user.status < 0) {
-            console.log(user);
-            sendJSONresponse(res, 400, {
-                "message": "权限不足"
-        });
-        return;
-        }
         var aid = req.body.aid;
 
         Activity.findById(aid).exec(function (err, activity) {
@@ -172,26 +165,26 @@ module.exports.myActivities = function(req, res) {
     });
 
 }
-
-module.exports.update = function (req, res) {
-    var id = req.params.actid;
-     Activity.findById(id).exec(function (err, activity) {
-        if (!activity) {
-            sendJSONresponse(res, 404, {
-                "message": "活动不存在"
-            });
-            return;
-        } else if (err) {
-            sendJSONresponse(res, 400, err);
-            return;
-        }
-        activity.users = req.body.users;
-        activity.save(function (err, activity) {
-            if (err) {
-                sendJSONresponse(res, 404, err);
-            } else {
-                sendJSONresponse(res, 200, activity);
-            }
+module.exports.signedUser = function(req, res) {
+    getAuthor(req, res, function(req, res,user) {
+        if(user.status < 1) {
+            console.log(user);
+            sendJSONresponse(res, 400, {
+                "message": "权限不足"
         });
-    });   
+        return;
+        }
+        var ids = req.body.uids;
+        console.log(ids);
+        User.find({_id: { $in:ids}}).exec( function(err, users) {
+            if(err) {
+                    console.log(err);
+                    sendJSONresponse(res, 400, err);
+                    return;              
+                } else {
+                    sendJSONresponse(res, 200, users);
+                }
+        });
+    });
+
 }

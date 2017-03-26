@@ -1,12 +1,13 @@
 angular
 .module('myApp')
-.controller('activityDetailCtrl',['$scope','$stateParams','activityData','authentication','$ionicPopup','$timeout','$rootScope',function($scope, $stateParams,activityData,authentication,$ionicPopup, $timeout,$rootScope){
+.controller('activityDetailCtrl',['$scope','$stateParams','activityData','authentication','$ionicPopup','$timeout','$state',function($scope, $stateParams,activityData,authentication,$ionicPopup, $timeout,$state){
     $scope.details = {
         activity:{},
         user:{}
     }    
     $scope.details.activity = $stateParams.activity;
     $scope.details.user = $stateParams.user;
+    console.log($scope.details.activity);
     activityData.getActivityById($scope.details.activity._id).success(function (data) {
         message = data.length > 0 ? "" : "暂无数据";
         $scope.details.activity = data;
@@ -83,22 +84,26 @@ angular
 		
     $scope.participate = function() {
 		if(checkparticipate()){
-		if(checkcredit()){	
-		if(checkbalance()){	
-		if(checkend()){
-        activityData.participate($stateParams.activity._id).success(function (data) {
-             var alertPopup = $ionicPopup.alert({
-               title: '注册成功',
-               template: '欢迎参加活动'
-             });
-             alertPopup.then(function(res) {
-               console.log('活动注册成功');
-             });
-        });
+    		if(checkcredit()){	
+        		if(checkbalance()){	
+            		if(checkend()){
+                        activityData.participate($stateParams.activity._id).success(function (data) {
+                             var alertPopup = $ionicPopup.alert({
+                               title: '注册成功',
+                               template: '欢迎参加活动'
+                             });
+                             alertPopup.then(function(res) {
+                               console.log('活动注册成功');
+                             });
+                        });
+            		}
+        		}
+    		}
 		}
-		}
-		}
-		}
+    }
+
+    $scope.signedUser = function() {
+        $state.go('signedUsers',{uids:$scope.details.activity.userSign});  
     }
 }])
 

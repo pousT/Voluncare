@@ -54,11 +54,20 @@ function activityData ($http,authentication) {
             }
         });
     }
+    var signedUsers = function(ids) {
+        var url ="/api/activity/signedUser";
+        return $http.put(url, {uids:ids},{
+            headers: {
+                Authorization: 'Bearer ' + authentication.getToken()
+            }
+        });
+    }
     return {
         getActivityById: getActivityById,
         addActivity: addActivity,
         participate: participate,
-        myActivities: myActivities
+        myActivities: myActivities,
+        signedUsers:signedUsers
     };  
 };
 

@@ -1,0 +1,53 @@
+ <ion-view view-title="报名用户" >
+ <style>
+.col{
+  background-color: #F9FAFB;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 1px;
+  text-align: center;
+}
+</style>
+    <ion-content class="padding">
+  <div class="content">
+    <div class="row">
+      <div class="col col-20">
+        <div class="col-demo">电话</div>
+      </div>
+      <div class="col col-20">
+        <div class="col-demo">姓名</div>
+      </div>
+      <div class="col">
+        <div class="col-demo">性别</div>
+      </div>
+      <div class="col">
+        <div class="col-demo">积分</div>
+      </div>
+      <div class="col">
+        <div class="col-demo">余额</div>
+      </div>
+    </div>
+<ion-list ng-repeat="user in users">
+<a  ng-click="goDetail({{user}})">
+    <div class="row">
+      <div class="col col-20">
+        <div class="col-demo">{{user.telephone}}</div>
+      </div>
+      <div class="col col-20">
+        <div class="col-demo">{{user.name}}</div>
+      </div>
+      <div class="col">
+        <div class="col-demo">{{user.gender}}</div>
+      </div>
+      <div class="col">
+        <div class="col-demo">{{user.credit}}</div>
+      </div>
+      <div class="col">
+        <div class="col-demo">{{user.balance}}</div>
+      </div>
+    </div>
+     </a>
+ </ion-list>
+  </div>
+ </ion-content>               
+</ion-view>

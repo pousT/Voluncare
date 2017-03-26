@@ -24,7 +24,6 @@ function activitiesCtrl(activitiesData,$scope,$state,authentication) {
 
     });    
     $scope.goDetail=function(activity){
-        console.log($scope.curUser);
         $state.go('detail',{activity:activity, user:$scope.curUser});  
     }
 }

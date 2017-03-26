@@ -21,9 +21,9 @@ router.get('/user', auth, userCtrl.curUser);
 router.get('/activities', activityCtrl.activities);
 router.get('/activities/:actid', activityCtrl.actFindOne);
 router.post('/activity',auth, activityCtrl.actCreate);
-router.put('/actCover/:actid',auth,activityCtrl.updateCover);
 router.put('/participate',auth,activityCtrl.participate);
 router.get('/myActivities', auth, activityCtrl.myActivities);
+router.put('/activity/signedUser', auth, activityCtrl.signedUser); 
 //积分记录
 router.post('/record',auth, recordCtrl.attend);
 router.get('/records',auth, recordCtrl.records);

@@ -63,7 +63,13 @@
             url:'/rechargeAdmin',
             templateUrl: '/rechargeAdmin/rechargeAdmin.view.html',  
             controller:'rechargeAdminCtrl'               
-        });
+        })
+        .state('signedUsers', {
+            url:'/userSigned',
+            params: {'uids': null},
+            templateUrl: 'userSigned/userSigned.view.html',
+            controller: 'userSignedCtrl'
+        })        ;
         $urlRouterProvider.otherwise("/"); 
 };
     angular
