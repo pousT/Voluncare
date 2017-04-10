@@ -12,6 +12,9 @@
         $scope.onSubmit = function () {
                 $scope.doLogin();
         };
+        $scope.goToRegister = function(path) {
+            $location.path(path);
+        }
         $scope.doLogin = function () {
             authentication.login($scope.formData).error(function (err) {
                 $scope.formError = err.message;
