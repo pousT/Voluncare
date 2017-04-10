@@ -1,4 +1,5 @@
  <ion-view view-title="报名用户" >
+
  <style>
 .col{
   background-color: #F9FAFB;
@@ -27,6 +28,7 @@
         <div class="col-demo">余额</div>
       </div>
     </div>
+     {{message.text}}
 <ion-list ng-repeat="user in users">
 <a  ng-click="goDetail({{user}})">
     <div class="row">

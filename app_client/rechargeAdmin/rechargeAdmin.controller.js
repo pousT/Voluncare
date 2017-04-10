@@ -8,7 +8,7 @@ function rechargeAdminCtrl(rechargeData,$scope,$state, $ionicModal) {
     rechargeData.recharges().success(function (data) {
         $scope.recharges = data;
     }).error(function (e) {
-        $scope.message = "读取充值列表失败";
+        $scope.message = e.message;
     });
         $scope.telephone = {text: ""};
 
@@ -26,7 +26,7 @@ function rechargeAdminCtrl(rechargeData,$scope,$state, $ionicModal) {
             }
         }).error(function (e) {
             console.log(e);
-            message = "Sorry, something's gone wrong ";            
+            $scope.message = e.message;            
         })
     }
     $scope.curRecharge = {};
@@ -35,6 +35,7 @@ function rechargeAdminCtrl(rechargeData,$scope,$state, $ionicModal) {
       $scope.curRecharge = recharge;
       $scope.modal.show();
     }
+
     $scope.pass = function(rid) {
         rechargeData.pass(rid).success(function(data) {
             $scope.message = "已通过";
@@ -65,6 +66,7 @@ function rechargeAdminCtrl(rechargeData,$scope,$state, $ionicModal) {
           }).then(function(modal) {
             $scope.modal = modal;
           });
+
     $scope.showFlag = function (flag){
       if (flag == 0) {
         return "未处理";
@@ -77,5 +79,4 @@ function rechargeAdminCtrl(rechargeData,$scope,$state, $ionicModal) {
     $scope.hasProcessed = function(flag) {
       return flag != 0;
     }
-
 }

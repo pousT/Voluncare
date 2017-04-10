@@ -1,0 +1,30 @@
+import { ElementRef, EventEmitter } from '@angular/core';
+export declare class FroalaEditorDirective {
+    private _opts;
+    private _$element;
+    private SPECIAL_TAGS;
+    private INNER_HTML_ATTR;
+    private _hasSpecialTag;
+    private _editor;
+    private _model;
+    private _listeningEvents;
+    private _editorInitialized;
+    private _oldModel;
+    constructor(el: ElementRef);
+    froalaEditor: any;
+    froalaModel: string;
+    froalaModelChange: EventEmitter<any>;
+    froalaInit: EventEmitter<Object>;
+    private updateModel();
+    private registerEvent(element, eventName, callback);
+    private initListeners();
+    private registerFroalaEvents();
+    private createEditor();
+    private setHtml();
+    private setContent(firstTime?);
+    private destroyEditor();
+    private getEditor();
+    private generateManualController();
+    ngOnInit(): void;
+    ngOnDestroy(): void;
+}

@@ -51,6 +51,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'app_client')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
+app.use(express.static(path.join(__dirname, 'node_modules')));
 var routesApi = require('./app_api/routes/index');
 var passport = require('passport');
 require('./app_api/config/passport');

@@ -48,12 +48,13 @@
           </i>
             <span ng-click="showDiscount()" >{{user.data.credit}}</span>
         </a>
-        <a class="item item-icon-left" href="#">
+        <div class="item item-icon-left">
           <i class="icon ion-social-yen">
             <span class="item">余额</span>
           </i>
             {{user.data.balance}}
-        </a>
+            <span class="badge badge-assertive" ui-sref="recharge">充值</span>
+        </div>
         </div>
         <div class="item item-divider">
           已购买
