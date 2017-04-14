@@ -176,3 +176,13 @@ box-shadow: none;
   border-color:transparent transparent maroon;
   border-width:5px;
 }
+
+
+html,body{
+-webkit-user-select: none;
+-webkit-touch-callout: none;
+}
+
+*[contenteditable] {
+-webkit-user-select: auto !important;
+}

@@ -55,7 +55,6 @@ app.use(express.static(path.join(__dirname, 'node_modules')));
 var routesApi = require('./app_api/routes/index');
 var passport = require('passport');
 require('./app_api/config/passport');
-
 app.use(passport.initialize());
 app.use('/api', routesApi);
 app.use(function (req, res) {

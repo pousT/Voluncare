@@ -10,7 +10,7 @@
             </div>          
           <label for="description">活动详情:</label>
 
- <ng-quill-editor id="description" ng-model="formData.description" name="description" toolbar="true" placeholder="请输入图文详情" link-tooltip="true" image-tooltip="true" toolbar-entries="font size bold list bullet italic underline strike align color background link image" editor-required="true" required="" error-class="input-error" required></ng-quill-editor>
+ <textarea ui-tinymce="tinymceOptions" ng-model="formData.description"></textarea>
             <div class="error-messages" ng-if="myForm.description.$dirty" ng-messages="myForm.description.$error">
               <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>
             </div>
@@ -27,11 +27,13 @@
           <label for="maxNum">报名人数:</label>
           <input type="number" ng-model="formData.maxNum" id="maxNum" name="maxNum" required/>
             <div class="error-messages" ng-if="myForm.maxNum.$dirty" ng-messages="myForm.maxNum.$error">              <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>
-            </div>           
+            </div> 
+          <label for="image">封面图片:</label>
+          <input type="text" ng-model="formData.image" id="image" name="image"/>         
         </fieldset>
         
         <fieldset>
-          <legend class="title"><span class="number">2</span>个人资料</legend>
+          <legend class="title"><span class="number">2</span>时间地点</legend>
           <label>开始时间:</label>
             <div class="item" ion-datetime-picker ng-model="formData.start">
             {{formData.start| date: "yyyy-MM-dd H:mm:ss"}}
@@ -48,6 +50,7 @@
               <ng-messages-include src="/common/services/errorMessages.js"></ng-messages-include>
             </div>      
         </fieldset>
+
         <button ng-click="onSubmit()" ng-disabled="myForm.$invalid">创建</button>
       </form>
     </ion-content>               

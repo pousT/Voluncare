@@ -15,6 +15,7 @@
         };
         $scope.returnPage = $location.search().page || '/activities';
         $scope.onSubmit = function() {
+            //console.log($scope.formData);
             doAddActivity($scope.formData);
             
         };
@@ -24,7 +25,6 @@
                 description: formData.description,
                 credit: formData.credit,
                 price: formData.price,
-                tags: formData.tags,
                 address: formData.address,
                 maxNum:formData.maxNum,
                 start:formData.start,
@@ -34,9 +34,9 @@
                 console.log("success!");
                 $location.search('page', null);
                 $location.path($scope.returnPage);                
-            }).error(function(data) {
+            }).error(function(err) {
                 $scope.formError = "添加失败，请再试一次";
-                console.log("error");
+                console.log(err);
             });
             return false;
         };
@@ -49,6 +49,17 @@
                         $scope.changeDetected = true;
                         console.log('editor: ', editor, 'html: ', html, 'text:', text);
                     };
+                      $scope.tinymceOptions = {
+    onChange: function(e) {
+      // put logic here for keypress and cut/paste changes
+    },
+    inline: false,
+    plugins : 'advlist autolink link image lists charmap print preview',
+    skin: 'lightgray',
+    theme : 'modern'
+  };
 
     }
+
+
 })();

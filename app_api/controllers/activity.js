@@ -1,5 +1,6 @@
 var dbHandle = require('../models/dbHandle.js');
 var mongoose = require('mongoose');
+var multer = require('multer');
 var Activity = mongoose.model('Activity');
 var User = mongoose.model('User');
 
@@ -58,7 +59,7 @@ module.exports.actFindOne = function (req, res) {
 };
 module.exports.actCreate = function (req, res) {
      getAuthor(req, res, function(req, res,user) {
-        if(user.status > 0) {
+        if(user.status == 0) {
             var title = req.body.title;
             var start = req.body.start;
             var end = req.body.end;

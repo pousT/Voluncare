@@ -33,6 +33,9 @@ function activityData ($http,authentication) {
         return $http.get(url);
     };
     var addActivity = function(data) {
+        var fd = new FormData();
+        for(var key in data)
+            fd.append(key, data[key]);        
         return $http.post("/api/activity", data, {
             headers: {
                 Authorization: 'Bearer ' + authentication.getToken()
