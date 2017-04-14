@@ -3,18 +3,21 @@ angular
 .controller('myAppCtrl', myAppCtrl);
 
 
-myAppCtrl.$inject = ['$scope','$state','authentication'];
-function myAppCtrl($scope,$state,authentication) {
+myAppCtrl.$inject = ['$scope','$state','authentication','$location'];
+function myAppCtrl($scope,$state,authentication,$location) {
     $scope.curUser = {};
-    authentication.getUser().then(function(data) {
-        if(data == undefined) {
-            $scope.curUser.admin = false;   
-            return;    
-        } else {
-            $scope.curUser = data.data;
-            $scope.curUser.admin = (data.data.status > 0);
-        }
+    if(authentication.isLoggedIn()) {
+        authentication.getUser().then(function(data) {
+            if(data == undefined) {
+                $location.path('/login');    
+                return;    
+            } else {
+                $scope.user.data = data.data;
+            }
 
-    });    
+        });        
+    } else {
+                $location.path('/login');           
+    }  
 }
 
