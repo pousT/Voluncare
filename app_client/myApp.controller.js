@@ -12,7 +12,7 @@ function myAppCtrl($scope,$state,authentication,$location) {
                 $location.path('/login');    
                 return;    
             } else {
-                $scope.user.data = data.data;
+                $scope.curUser.data = data.data;
             }
 
         });        
