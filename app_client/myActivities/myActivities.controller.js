@@ -3,8 +3,8 @@ angular
 .controller('myActivitiesCtrl', myActivitiesCtrl);
 
 
-myActivitiesCtrl.$inject = ['activityData','$scope','$state'];
-function myActivitiesCtrl(activityData,$scope,$state) {
+myActivitiesCtrl.$inject = ['activityData','$scope','$state','$rootScope'];
+function myActivitiesCtrl(activityData,$scope,$state,$rootScope) {
     activityData.myActivities().success(function (data) {
         $scope.activities = data;
     }).error(function (e) {
@@ -12,6 +12,6 @@ function myActivitiesCtrl(activityData,$scope,$state) {
         message = "Sorry, something's gone wrong ";
     });
     $scope.goDetail=function(activity){
-        $state.go('detail',{activity:activity});  
+        $state.go('detail',{activity:activity,  user:$rootScope.curUser});  
     }
 }

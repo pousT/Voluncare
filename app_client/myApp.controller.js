@@ -3,8 +3,8 @@ angular
 .controller('myAppCtrl', myAppCtrl);
 
 
-myAppCtrl.$inject = ['$scope','$state','authentication','$location'];
-function myAppCtrl($scope,$state,authentication,$location) {
+myAppCtrl.$inject = ['$scope','$state','authentication','$location','$rootScope'];
+function myAppCtrl($scope,$state,authentication,$location,$rootScope) {
     $scope.curUser = {};
     if(authentication.isLoggedIn()) {
         authentication.getUser().then(function(data) {
@@ -13,6 +13,7 @@ function myAppCtrl($scope,$state,authentication,$location) {
                 return;    
             } else {
                 $scope.curUser.data = data.data;
+                $rootScope.curUser = data.data;
             }
 
         });        
