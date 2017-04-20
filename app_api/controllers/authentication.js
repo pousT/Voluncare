@@ -8,9 +8,10 @@ var sendJSONresponse = function (res, status, content) {
 
 
 module.exports.register = function(req, res) {
-    if (!req.body.name || !req.body.telephone || !req.body.pw || !req.body.address || !req.body.gender || !req.body.birthday) {
         console.log(req.body);
-        sendJSONresponse(res, 400, { message: "请完成所有字段" });
+    if (!req.body.name || !req.body.telephone || !req.body.pw || !req.body.address || !req.body.gender || !req.body.birthday) {
+                console.log("register");
+        sendJSONresponse(res, 400, { 'err': "请完成所有字段" });
         return;
     }
     var user = new User();
@@ -30,9 +31,17 @@ module.exports.register = function(req, res) {
     user.save(function(err) {
         var token;
         if (err) {
-            sendJSONresponse(res, 404, err);
+
+            if(err.code == "11000") {
+                sendJSONresponse(res, 400, {'err': "该电话已经被注册"});
+            } else {
+                sendJSONresponse(res, 400, {'err': "注册失败，请检查您的表单"});
+            }
+            
         } else {
+
             token = user.generateJwt();
+
             sendJSONresponse(res, 200, { 'token': token});
         }
 

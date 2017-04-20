@@ -3,8 +3,8 @@ angular
 .controller('activitiesCtrl', activitiesCtrl);
 
 
-activitiesCtrl.$inject = ['activitiesData','$scope','$state','authentication'];
-function activitiesCtrl(activitiesData,$scope,$state,authentication) {
+activitiesCtrl.$inject = ['activitiesData','$scope','$state','authentication','$location'];
+function activitiesCtrl(activitiesData,$scope,$state,authentication,$location) {
     activitiesData.success(function (data) {
         message = data.length > 0 ? "" : "暂无数据";
         $scope.activities = data;
@@ -25,6 +25,9 @@ function activitiesCtrl(activitiesData,$scope,$state,authentication) {
     });    
     $scope.goDetail=function(activity){
         $state.go('detail',{activity:activity, user:$scope.curUser});  
+    }
+    $scope.newActivity = function() {
+        $location.path('/postActivity');
     }
 }
 

@@ -1,8 +1,9 @@
 (function() {
     angular.module('myApp')
         .controller('registerCtrl', registerCtrl);
-    registerCtrl.$inject = ['$scope','$location','authentication'];
-    function registerCtrl($scope,$location, authentication,dateService) {
+    registerCtrl.$inject = ['$scope','$location','authentication','$ionicPickerI18n'];
+    function registerCtrl($scope,$location, authentication,$ionicPickerI18n) {
+       $ionicPickerI18n.months = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
         $scope.formData = {
             name: "",
             telephone: '',
@@ -12,6 +13,8 @@
             address:'',
             gender:""
         };
+       $ionicPickerI18n.ok = "确认";
+       $ionicPickerI18n.cancel = "取消";   
         $scope.returnPage = $location.search().page || '/';
         $scope.onSubmit = function() {
             authentication.register($scope.formData).error(function(err) {
@@ -21,36 +24,7 @@
                 $location.path($scope.returnPage);
             });
         };
-//日历测试
-var currentDate = new Date();
-var date = new Date(currentDate.getFullYear(), currentDate.getMonth(), 23);
-$scope.date = date;
-$scope.myFunction = function (date) {
-  $scope.formData.birthday = date;
-  console.log($scope.formData);
-};
 
-$scope.onezoneDatepicker = {
-  date: date,
-  mondayFirst: false,
-  months: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
-  daysOfTheWeek: ["日", "一", "二", "三", "四", "五", "六"],
-  startDate: new Date(1989, 1, 26),
-  endDate: new Date(2024, 1, 26),
-  disablePastDays: false,
-  disableSwipe: false,
-  disableWeekend: false,
-  showDatepicker: false,
-  showTodayButton: true,
-  calendarMode: false,
-  hideCancelButton: false,
-  hideSetButton: true,
-  callback: $scope.myFunction
-};
-
-$scope.showDatepicker = function () {
-  $scope.onezoneDatepicker.showDatepicker = true;
-};
 };
 angular.module('myApp')
 .directive('matchValidator', function() {

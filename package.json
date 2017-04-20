@@ -3,22 +3,35 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "mocha"
   },
   "dependencies": {
+    "@angular/common": "^2.4.8",
+    "@angular/compiler": "^2.4.8",
+    "@angular/core": "^2.4.8",
+    "@angular/forms": "^2.4.8",
     "body-parser": "~1.15.1",
+    "compression": "~1.0.11",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
+    "dotenv": "^4.0.0",
     "ejs": "~2.4.1",
     "express": "~4.13.4",
+    "method-override": "~2.2.0",
     "mongoose": "^4.6.8",
     "morgan": "~1.7.0",
+    "rxjs": "^5.2.0",
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
+    "@angular/cli": "^1.0.0",
     "jasmine-core": "^2.5.2",
     "karma": "^1.5.0",
     "karma-chrome-launcher": "^2.0.0",
-    "karma-jasmine": "^1.1.0"
+    "karma-jasmine": "^1.1.0",
+    "mocha": "^3.2.0",
+    "should": "~4.0.4",
+    "supertest": "~0.13.0"
   }
 }

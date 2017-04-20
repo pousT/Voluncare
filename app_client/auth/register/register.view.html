@@ -1,6 +1,7 @@
     <ion-view view-title="注册">  
       <ion-content class="padding"> 
-      <form class="form" name = "myForm">       
+      <form class="form" name = "myForm"> 
+      {{formError.err}}      
         <fieldset>
           <legend><span class="number">1</span>账户信息</legend>
           <label for="name">姓名:</label>
@@ -41,12 +42,9 @@
         <fieldset>
           <legend class="title"><span class="number">2</span>个人资料</legend>
           <label>生日:</label>
-
-            <onezone-datepicker datepicker-object="onezoneDatepicker">
-              <button class="button button-block button-outline button-stable show-onezone-datepicker">
-                {{onezoneDatepicker.date | formatDate}}
-              </button>
-            </onezone-datepicker>
+            <div class="item" ion-datetime-picker date only-valid="{'before': 'today', 'inclusive': false}" ng-model="formData.birthday">
+            {{formData.birthday| date: "yyyy-MM-dd"}}
+            </div>
 
           <label>性别:</label>
             <label class="item item-radio">

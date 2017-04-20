@@ -17,7 +17,6 @@
   ],
   "dependencies": {
     "angular-cookies": "^1.5.9",
-    "onezone-datepicker": "*",
     "ion-datetime-picker": "^0.5.0",
     "angular-ui-tinymce": "latest"
   }

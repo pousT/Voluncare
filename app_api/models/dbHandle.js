@@ -1,8 +1,7 @@
 var mongoose = require('mongoose');
-
-var dbURI = 'mongodb://localhost:27017/Voluncare';
+var config = require('../../config/config');
 //var dbURI = 'mongodb://reader:loveReading@ds021343.mlab.com:21343/readingdb';
-mongoose.connect(dbURI);
+mongoose.connect(config.db);
 
 //var dbURIlog = 'mongodb://localhost/RClublog';
 //var logDB = mongoose.createConnection(dbURIlog);
@@ -16,7 +15,7 @@ mongoose.connect(dbURI);
 mongoose.Promise = global.Promise;
 // 连接事件
 mongoose.connection.on('connected', function () {
-    console.log('Mongoose connected to ' + dbURI);
+    console.log('Mongoose connected to ' + config.db);
 });
 mongoose.connection.on('error', function (err) {
     console.log('Mongoose connection error: ' + err);

@@ -1,5 +1,6 @@
   <ion-view view-title="活动列表">
     <ion-content class="padding">
+    <button ng-click="newActivity()" ng-hide="curUser.admin">新建活动</button>
       <ion-list>
         <ion-item ng-repeat="activity in activities">
         <!--<div class="item item-body"> -->
