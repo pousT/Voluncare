@@ -1,4 +1,4 @@
-  <ion-view view-title="活动详情" class="padding">
+  <ion-view view-title="活动详情" >
     <ion-content class="padding">
           <p><h2>{{details.activity.title}}</h2></p>
           <p class="info">
@@ -15,7 +15,7 @@
           </p>
       <div ng-hide="details.user.admin">
        <label class="item item-input">
-         <button class="button button-block button-dark" ng-click="participate()||check()" ng-disabled="detail.details.activity.userSign.length+detail.details.activity.userFinish.length>detail.details.activity.maxNumber-1" ng-hide = "details.user.admin">报名</button>
+         <button class="button button-block button-dark" ng-click="participate()||check()" ng-disabled="details.activity.userSign.length+details.activity.userFinish.length>details.activity.maxNumber-1" ng-hide = "details.user.admin">报名</button>
        </label>
      </div>
      <div>

@@ -14,6 +14,7 @@ function myAppCtrl($scope,$state,authentication,$location,$rootScope) {
             } else {
                 $scope.curUser.data = data.data;
                 $rootScope.curUser = data.data;
+                $scope.curUser.admin = (data.data.status == 1);
             }
 
         });        

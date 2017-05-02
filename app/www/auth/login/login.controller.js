@@ -14,7 +14,9 @@
         };
         $scope.doLogin = function () {
             authentication.login($scope.formData).error(function (err) {
-                $scope.formError = err.message;
+                if(err) {
+                $scope.formError = err.message;                    
+            }
             }).success(function () {
                 $location.search('page', null);
                 $location.path($scope.returnPage);

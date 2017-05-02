@@ -1,6 +1,6 @@
 angular
 .module('myApp')
-.controller('activityDetailCtrl',['$scope','$stateParams','activityData','authentication','$ionicPopup','$timeout','$state',function($scope, $stateParams,activityData,authentication,$ionicPopup, $timeout,$state){
+.controller('activityDetailCtrl',['$scope','$stateParams','activityData','authentication','$ionicPopup','$timeout','$state','$location',function($scope, $stateParams,activityData,authentication,$ionicPopup, $timeout,$state,$location){
     $scope.details = {
         activity:{},
         user:{}
@@ -94,6 +94,7 @@ angular
                              });
                              alertPopup.then(function(res) {
                                console.log('活动注册成功');
+                               $location.path('/myActivities');
                              });
                         });
                     }

@@ -5,7 +5,10 @@
           <img src="img/{{user.data.avatar}}">
 
           <h2>{{user.data.name}}</h2>
-          <p>{{user.data.time}}</p>
+          <p>{{user.data.time|formatDate}}</p>
+              <div ng-click="logout()">
+              <span class="badge badge-assertive">退出</span>
+            </div>
         </div>
        <div class="item item-body">  
     <div  class="list">  
@@ -72,6 +75,5 @@
 
       </div>                 
         </div>
-      </div>
         </ion-content>
       </ion-view>

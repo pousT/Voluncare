@@ -22,11 +22,15 @@ function homeCtrl(authentication,$scope,$location,$rootScope) {
     }
 
     $scope.showDiscount = function() {
-        $location.path('/integralRecords');
+        $location.path('/');
     }
 
     $scope.recharge = function() {
         $location.path('/recharge');
     }
+    $scope.logout = function() {
+        authentication.logout();
+        $location.path('/login');         
+    } 
 }
 
