@@ -3,9 +3,8 @@ angular
 .controller('rechargeCtrl', rechargeCtrl);
 
 
-rechargeCtrl.$inject = ['$scope','$state'];
-function rechargeCtrl($scope,$state) {
-
+rechargeCtrl.$inject = ['$scope','$state','rechargeData'];
+function rechargeCtrl($scope,$state,rechargeData) {
     $scope.methods = ["请选择充值方式", "微信转账", "支付宝转账", "银行卡转账", "现金充值"];
     $scope.amount = {text: ""}
     $scope.card = {text: ""}
@@ -27,18 +26,27 @@ function rechargeCtrl($scope,$state) {
                     amount:$scope.amount.text,
                     method:$scope.selectedMethod.text
                 };
-        if($scope.foundUser){
-            recordsData.createRecord(formData).success(function(data) {
+            rechargeData.postRecharge(formData).success(function(data) {
+            window.alert("提交成功"); 
              window.location.reload();
             });
-
-        } else {
-            console.log("fail");
-            window.alert("用户不存在,添加失败"); 
-        }
-
-
-
     }
-}
 
+    rechargeData.myRecharges().success(function (data) {
+        $scope.recharges = data;
+    }).error(function (e) {
+        console.log(e);
+        $scope.message = "读取充值列表失败";
+    });
+
+    $scope.showFlag = function (flag){
+      if (flag == 0) {
+        return "未处理";
+      } else if (flag == 1) {
+        return "已通过";
+      } else {
+        return "已拒绝";
+      }
+    }
+
+}

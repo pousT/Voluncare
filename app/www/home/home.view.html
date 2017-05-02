@@ -1,40 +1,68 @@
       <ion-view view-title="个人主页">
         <ion-content class="padding">
-      <div class="list card">
+     <div class="list card">  
         <div class="item item-avatar">
-          <img src="{{user.avatar}}">
-          <h2>{{user.name}}</h2>
-          <p>{{user.time}}</p>
+          <img src="img/{{user.data.avatar}}">
+
+          <h2>{{user.data.name}}</h2>
+          <p>{{user.data.time}}</p>
         </div>
-        <div class="item item-body">
-     <div class="list">
-        <div class="item item-icon-left">
-          <i class="icon ion-ios-telephone"></i>
-          {{user.telephone}}
+       <div class="item item-body">  
+    <div  class="list">  
+      <div class="item item-icon-left">
+          <i class="icon ion-ios-telephone">
+          <a class="item">电话</a>
+          </i>
+          {{user.data.telephone}} 
         </div>
+
         <div class="item item-icon-left">
-          <i class="icon ion-ios-contact"></i>
-         {{user.name}}
+          <i class="icon ion-ios-contact">
+          <a class="item">姓名</a>
+          </i>
+            {{user.data.name}} 
         </div>
+
         <div class="item item-icon-left">
-          <i class="icon ion-male"></i>
-         {{user.gender}}
+          <i class="icon ion-male">
+            <a class="item">性别</a>
+          </i>
+         {{user.data.gender}}
         </div>
         <a class="item item-icon-left" href="#">
-          <i class="icon ion-ios-calendar"></i>
-          {{user.birthday|formatDate}}
+          <i class="icon ion-ios-calendar">
+            <span class="item">生日</span>
+          </i>
+          {{user.data.birthday|formatDate}}
+        </a>
+
+        <a class="item item-icon-left" href="#">
+          <i class="icon ion-pin">
+            <span class="item">地址</span>
+          </i>
+            {{user.data.address}}
         </a>
         <a class="item item-icon-left" href="#">
-          <i class="icon ion-pin"></i>
-            {{user.address}}
+          <i class="icon ion-cash">
+            <span class="item">积分</span>
+          </i>
+            <span ng-click="showDiscount()" >{{user.data.credit}}</span>
         </a>
+        <div class="item item-icon-left">
+          <i class="icon ion-social-yen">
+            <span class="item">余额</span>
+          </i>
+            {{user.data.balance}}
+            <span class="badge badge-assertive" ui-sref="recharge">充值</span>
+        </div>
+        </div>
         <div class="item item-divider">
           已购买
         </div>
         <a class="item item-icon-left" ui-sref="myActivities">
           <i class="icon ion-ios-heart"></i>
           活动
-          <span class="badge badge-assertive">{{user.actSign.length}}</span>
+          <span class="badge badge-assertive">{{user.data.actSign.length}}</span>
         </a>
         <a class="item item-icon-left" href="#">
           <i class="icon ion-bag"></i>

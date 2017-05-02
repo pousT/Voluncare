@@ -1,8 +1,10 @@
   <ion-view view-title="活动详情" class="padding">
     <ion-content class="padding">
+    <ion-list>
+    <ion-item>
           <p><h2>{{details.activity.title}}</h2></p>
           <p class="info">
-            <p><img ng-src='../{{details.activity.image}}'/></p>
+            <p><img class="full-image" ng-src='{{details.activity.image}}'/></p>
             时间：{{details.activity.start |formatDate}} 
 			<p>活动总人数：{{details.activity.maxNumber}}</p>
 			<p>剩余可报名人数：{{ details.activity.maxNumber-details.activity.userSign.length }}<p>
@@ -23,5 +25,7 @@
          <button class="button button-block button-dark" ng-click="signedUser()" ng-hide = "!details.user.admin">查看报名用户</button>
                 </label>
      </div>
+   </ion-item>
+    </ion-list>
 	</ion-content>               
 </ion-view>

@@ -56,7 +56,7 @@ describe('Testing the save method', function() {
         });
          var user2 = new User({
          name: 'testName',
-         telephone: '12345678',
+         telephone: '1234567',
          address: 'UK',
          birthday: new Date(),
          gender: 'male'

@@ -11,7 +11,8 @@
             address:'',
             start:'',
             end:'',
-            maxNum:''
+            maxNum:'',
+            image:''
         };
         $scope.returnPage = $location.search().page || '/activities';
         $scope.onSubmit = function() {
@@ -28,7 +29,8 @@
                 address: formData.address,
                 maxNum:formData.maxNum,
                 start:formData.start,
-                end:formData.end
+                end:formData.end,
+                image:formData.image
 
             }).success(function(data) {
                 console.log("success!");

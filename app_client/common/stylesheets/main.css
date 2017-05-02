@@ -186,3 +186,9 @@ html,body{
 *[contenteditable] {
 -webkit-user-select: auto !important;
 }
+#nav{
+
+  font-size: 18px;
+  text-align: left;
+
+}

@@ -4,7 +4,7 @@ module.exports = new Mongoose.Schema({
         title:{type:String, required:true},
         description:{type:String, required:true},
         start:{type:Date, required:true},
-        end:{type:Date},
+        end:{type:Date, required:true},
         address:{type:String, required:true},
         creditReq:{type:Number,default:0},
         maxNumber:{type:Number, required:true},

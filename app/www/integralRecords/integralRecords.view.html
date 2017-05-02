@@ -1,0 +1,38 @@
+  <ion-view view-title="积分纪录">
+    <ion-content class="padding"> 
+  
+    <table width="100%">
+    <tr>
+      <th>积分≥100</th>
+      <th>积分≥500</th>
+      <th>积分≥2000</th>
+    </tr>
+    <tr>
+      <td>0.98</td>
+      <td>0.95</td>
+      <td>0.92</td>
+    </tr>
+  </table>
+
+    <legend>积分记录</legend>
+
+
+    <table width="100%">
+    <tr>
+      <th>日期</th>
+      <th>缘由</th>
+      <th>数值</th>
+    </tr>
+    </table>
+
+      <ion-list>
+        <ion-item ng-repeat="record in records">
+            <p class="item">Title：{{record.reason}} | 
+            时间：{{record.time|formatDate}}</p>
+        </ion-item>   
+      </ion-list>
+
+
+
+    </ion-content>               
+</ion-view>

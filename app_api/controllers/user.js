@@ -28,7 +28,7 @@ var getAuthor = function (req, res, callback) {
 };
 module.exports.users = function (req, res) {
     getAuthor(req, res, function(req, res,user) {
-        if(user.status >-1) {
+        if(user.status >0) {
             User.find().exec(function (err, users) {
                 if (err) {
                     console.log(err);

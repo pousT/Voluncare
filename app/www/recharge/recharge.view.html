@@ -13,8 +13,15 @@
     <p>联系电话：{{accounts.phone}} {{accounts.telephone}}</p> 
 
     <legend>财务记录</legend>
-
-
-
+      <ion-list>
+        <ion-item ng-repeat="recharge in recharges">
+        <div ng-click="openDetail({{recharge}})">
+            <p>手机:{{recharge.telephone}}</p>
+            <p>时间:{{recharge.time|formatDate}}</p> 
+            <p>金额:{{recharge.amount}}</p> 
+            <p>状态:{{showFlag(recharge.flag)}}</p>          
+        </div>
+        </ion-item>       
+      </ion-list>
     </ion-content>               
 </ion-view>

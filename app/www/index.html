@@ -29,36 +29,38 @@
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
-<script src="../node_modules/angular-messages/angular-messages.min.js"></script>
-<script  src="js/app.js"></script>
-<script  src="js/controllers.js"></script>
-<script  src="js/services.js"></script>
-<script  src="/home/home.controller.js"></script>
-<script  src="/activities/activities.controller.js"></script>
-<script  src="/records/records.controller.js"></script>
-<script  src="/activityDetail/activityDetail.controller.js"></script>
-<script  src="/common/services/readData.service.js"></script>
-<script  src="/common/services/authentication.service.js"></script>
-<script  src="/common/filters/formatDate.filter.js"></script>
-<script  src="/ionic-citypicker/dist/ionic-citypicker.min.js"></script>
-<script src="/onezone-datepicker/dist/onezone-datepicker.min.js"></script>
-<script  src="/auth/register/register.controller.js"></script>
-<script  src="/auth/login/login.controller.js"></script>
-<script  src="/home/home.controller.js"></script>
-<script  src="/myActivities/myActivities.controller.js"></script>
-<script  src="/postActivity/postActivity.controller.js"></script>
+<script src="/app.js"></script>
+<script src="lib/angular-messages/angular-messages.min.js"></script>
+<script src="lib/angular-sanitize/angular-sanitize.min.js"></script>
+<script src="lib/showdown/compressed/showdown.min.js"></script>
+<script src="lib/angular-markdown-directive/markdown.js"></script>
+<script src="/home/home.controller.js"></script>
+<script src="/activities/activities.controller.js"></script>
+<script src="/records/records.controller.js"></script>
+<script src="/activityDetail/activityDetail.controller.js"></script>
+<script src="/common/services/readData.service.js"></script>
+<script src="/common/services/authentication.service.js"></script>
+<script src="/common/filters/formatDate.filter.js"></script>
+<script src="/auth/register/register.controller.js"></script>
+<script src="/auth/login/login.controller.js"></script>
+<script src="/home/home.controller.js"></script>
+<script src="myApp.controller.js"></script>
+<script src="/myActivities/myActivities.controller.js"></script>
+<script src="/postActivity/postActivity.controller.js"></script>
 <script type="text/javascript" src="/recharge/recharge.controller.js"></script>
-<script src="/ion-datetime-picker/release/ion-datetime-picker.min.js"></script>
-<link href="/ion-datetime-picker/release/ion-datetime-picker.min.css" rel="stylesheet">
-<link href="/common/stylesheets/main.css" rel="stylesheet" type="text/css"/>
+<script src="lib/ion-datetime-picker/release/ion-datetime-picker.min.js"></script>
+<link href="lib/ion-datetime-picker/release/ion-datetime-picker.min.css" rel="stylesheet">
+<script type="text/javascript" src="lib/tinymce/tinymce.js"></script>
+<script type="text/javascript" src="lib/angular-ui-tinymce/src/tinymce.js"></script>
+<link href="/common/stylesheets/main.css" rel="stylesheet" type="text/css">
   </head>
-  <body ng-app="myApp">
+  <body ng-app="myApp" ng-controller = "myAppCtrl">
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
-    <ion-nav-bar class="bar-stable nav-title-slide-ios7">
-      <ion-nav-back-button class="button-icon icon ion-chevron-left button-clear">
-        返回
+    <ion-nav-bar align-title="center" class="bar-stable nav-title-slide-ios7">
+      <ion-nav-back-button class="button-icon icon ion-chevron-left button-clear" id="nav">
+        &#x8FD4;&#x56DE;
       </ion-nav-back-button>
     </ion-nav-bar>
     <!--
@@ -69,13 +71,13 @@
     <ion-nav-view></ion-nav-view>
         <div class="tabs">
       <a class="tab-item" href="#">
-        产品
+        &#x4EA7;&#x54C1;
       </a>
       <a class="tab-item" ui-sref="home">
-        主页
+        &#x4E3B;&#x9875;
       </a>
       <a class="tab-item" ui-sref="activities">
-        活动
+        &#x6D3B;&#x52A8;
       </a>
     </div>
   </body>

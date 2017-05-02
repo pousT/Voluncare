@@ -52,7 +52,6 @@ module.exports.actFindOne = function (req, res) {
             sendJSONresponse(res, 400, err);
             return;
         }
-        console.log(activity);
         sendJSONresponse(res, 200, activity);
 
     });
@@ -68,8 +67,7 @@ module.exports.actCreate = function (req, res) {
             var maxNum = req.body.maxNum;
             var creditReq = req.body.credit;
             var price = req.body.price;
-            var bonus = req.body.bonus;
-            var address = req.body.address;
+            var image = req.body.image;
             Activity.create({
                 "title": title,
                 "description": description,
@@ -78,13 +76,13 @@ module.exports.actCreate = function (req, res) {
                 "address": address,
                 "maxNumber": maxNum,
                 "creditReq": creditReq,
-                "price": price
+                "price": price,
+                "image":image
             }, function(err, activity) {
                 if (err) {
                     console.log(err);
                     sendJSONresponse(res, 400, err);
                 } else {
-                    console.log(activity);
                     sendJSONresponse(res, 201, activity);
                 }
             });
@@ -169,7 +167,6 @@ module.exports.myActivities = function(req, res) {
 module.exports.signedUser = function(req, res) {
     getAuthor(req, res, function(req, res,user) {
         if(user.status < 1) {
-            console.log(user);
             sendJSONresponse(res, 400, {
                 "message": "权限不足"
         });
